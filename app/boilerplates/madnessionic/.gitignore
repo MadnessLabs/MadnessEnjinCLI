@@ -1,0 +1,17 @@
+node_modules/
+platforms/
+plugins/
+build/
+logs/
+*.sublime-project
+*.sublime-workspace
+*.log
+.deploy
+.env
+.history
+.vscode/settings.json
+www/js/
+www/css/
+www/html/
+www/index.html
+app/typings

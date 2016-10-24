@@ -1,0 +1,21 @@
+{
+    "manifest_version": 2,
+    "name": "MadnessIonic",
+    "description": "The build process used by Madness Labs to build Ionic hybrid apps",
+    "version": "1.0",
+    "browser_action": {
+        "default_icon": "img/icon.png",
+        "default_popup": "extension.html"
+    },
+    "background": {
+        "scripts": [
+            "js/background.js"
+        ]
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "permissions": [
+        "background",
+        "tabs",
+        "<all_urls>"
+    ]
+}

@@ -1,0 +1,11 @@
+doctype html
+html(lang="en")
+    head
+        title=name
+        link(rel="stylesheet" href="css/extension.css")
+        script(src='js/extension.js')
+    body(ng-app=name)
+        ion-nav-bar.bar-positive.has-tabs-top
+            ion-nav-buttons(side='left')
+                button.button.button-icon.icon.ion-navicon()
+        ion-nav-view

@@ -1,0 +1,471 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'version',
+1 verbose cli   'patch' ]
+2 info using npm@2.15.8
+3 info using node@v4.4.7
+4 info git [ 'status', '--porcelain' ]
+5 verbose stack Error: Git working directory not clean.
+5 verbose stack A  .gitignore
+5 verbose stack A  app/boilerplates/madnessionic/.editorconfig
+5 verbose stack A  app/boilerplates/madnessionic/.env-sample
+5 verbose stack A  app/boilerplates/madnessionic/.gitignore
+5 verbose stack A  app/boilerplates/madnessionic/README.md
+5 verbose stack A  app/boilerplates/madnessionic/app/js/README.md
+5 verbose stack A  app/boilerplates/madnessionic/app/pug/app.pug
+5 verbose stack A  app/boilerplates/madnessionic/app/pug/directive/README.md
+5 verbose stack A  app/boilerplates/madnessionic/app/pug/favicon.pug
+5 verbose stack A  app/boilerplates/madnessionic/app/pug/modal/README.md
+5 verbose stack A  app/boilerplates/madnessionic/app/pug/page/README.md
+5 verbose stack A  app/boilerplates/madnessionic/app/pug/popover/README.md
+5 verbose stack A  app/boilerplates/madnessionic/app/scss/directive/README.md
+5 verbose stack A  app/boilerplates/madnessionic/app/scss/layout/README.md
+5 verbose stack A  app/boilerplates/madnessionic/app/scss/layout/body.scss
+5 verbose stack A  app/boilerplates/madnessionic/app/scss/layout/grid.scss
+5 verbose stack A  app/boilerplates/madnessionic/app/scss/mixin/README.md
+5 verbose stack A  app/boilerplates/madnessionic/app/scss/mixin/_clearfix.scss
+5 verbose stack A  app/boilerplates/madnessionic/app/scss/modal/README.md
+5 verbose stack A  app/boilerplates/madnessionic/app/scss/page/README.md
+5 verbose stack A  app/boilerplates/madnessionic/app/ts/controller/README.md
+5 verbose stack A  app/boilerplates/madnessionic/app/ts/directive/README.md
+5 verbose stack A  app/boilerplates/madnessionic/app/ts/filter/README.md
+5 verbose stack A  app/boilerplates/madnessionic/app/ts/service/README.md
+5 verbose stack A  app/boilerplates/madnessionic/enjin.json
+5 verbose stack A  app/boilerplates/madnessionic/gulpfile.js
+5 verbose stack A  app/boilerplates/madnessionic/hooks/README.md
+5 verbose stack A  app/boilerplates/madnessionic/hooks/after_prepare/010_add_platform_class.js
+5 verbose stack A  app/boilerplates/madnessionic/ionic.config.json
+5 verbose stack AM app/boilerplates/madnessionic/package.json
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/icon/drawable-hdpi-icon.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/icon/drawable-ldpi-icon.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/icon/drawable-mdpi-icon.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/icon/drawable-xhdpi-icon.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/icon/drawable-xxhdpi-icon.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/icon/drawable-xxxhdpi-icon.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/splash/drawable-land-hdpi-screen.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/splash/drawable-land-ldpi-screen.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/splash/drawable-land-mdpi-screen.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/splash/drawable-land-xhdpi-screen.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/splash/drawable-land-xxhdpi-screen.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/splash/drawable-land-xxxhdpi-screen.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/splash/drawable-port-hdpi-screen.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/splash/drawable-port-ldpi-screen.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/splash/drawable-port-mdpi-screen.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/splash/drawable-port-xhdpi-screen.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/splash/drawable-port-xxhdpi-screen.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/android/splash/drawable-port-xxxhdpi-screen.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/icon.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/icon/icon-40.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/icon/icon-40@2x.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/icon/icon-50.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/icon/icon-50@2x.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/icon/icon-60.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/icon/icon-60@2x.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/icon/icon-60@3x.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/icon/icon-72.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/icon/icon-72@2x.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/icon/icon-76.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/icon/icon-76@2x.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/icon/icon-small.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/icon/icon-small@2x.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/icon/icon-small@3x.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/icon/icon.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/icon/icon@2x.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/splash/Default-568h@2x~iphone.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/splash/Default-667h.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/splash/Default-736h.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/splash/Default-Landscape-736h.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/splash/Default-Landscape@2x~ipad.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/splash/Default-Landscape~ipad.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/splash/Default-Portrait@2x~ipad.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/splash/Default-Portrait~ipad.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/splash/Default@2x~iphone.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/ios/splash/Default~iphone.png
+5 verbose stack A  app/boilerplates/madnessionic/resources/splash.png
+5 verbose stack A  app/boilerplates/madnessionic/sass-lint.yml
+5 verbose stack A  app/boilerplates/madnessionic/tslint.json
+5 verbose stack A  app/boilerplates/madnessionic/typings.json
+5 verbose stack A  app/enjin/madnessionic/index.js
+5 verbose stack A  app/enjin/madnessionic/package.json
+5 verbose stack A  app/enjin/madnessionic/services/addComponent.js
+5 verbose stack A  app/enjin/madnessionic/services/addController.js
+5 verbose stack A  app/enjin/madnessionic/services/addDirective.js
+5 verbose stack A  app/enjin/madnessionic/services/addFilter.js
+5 verbose stack A  app/enjin/madnessionic/services/addModal.js
+5 verbose stack A  app/enjin/madnessionic/services/addPage.js
+5 verbose stack A  app/enjin/madnessionic/services/addPopover.js
+5 verbose stack A  app/enjin/madnessionic/services/addRoute.js
+5 verbose stack A  app/enjin/madnessionic/services/addService.js
+5 verbose stack A  app/enjin/madnessionic/services/addState.js
+5 verbose stack A  app/enjin/madnessionic/services/capFirstLetter.js
+5 verbose stack A  app/enjin/madnessionic/services/checkString.js
+5 verbose stack A  app/enjin/madnessionic/services/cleanString.js
+5 verbose stack A  app/enjin/madnessionic/services/copyFile.js
+5 verbose stack A  app/enjin/madnessionic/services/merge.js
+5 verbose stack A  app/enjin/madnessionic/services/onError.js
+5 verbose stack A  app/enjin/madnessionic/services/removeComponent.js
+5 verbose stack A  app/enjin/madnessionic/services/removeController.js
+5 verbose stack A  app/enjin/madnessionic/services/removeFilter.js
+5 verbose stack A  app/enjin/madnessionic/services/removeModal.js
+5 verbose stack A  app/enjin/madnessionic/services/removePage.js
+5 verbose stack A  app/enjin/madnessionic/services/removePopover.js
+5 verbose stack A  app/enjin/madnessionic/services/removeRoute.js
+5 verbose stack A  app/enjin/madnessionic/services/removeService.js
+5 verbose stack A  app/enjin/madnessionic/services/removeSpaces.js
+5 verbose stack A  app/enjin/madnessionic/services/removeState.js
+5 verbose stack AM app/enjin/madnessionic/services/setVars.js
+5 verbose stack A  app/enjin/madnessionic/tasks/add/component.js
+5 verbose stack A  app/enjin/madnessionic/tasks/add/controller.js
+5 verbose stack A  app/enjin/madnessionic/tasks/add/directive.js
+5 verbose stack A  app/enjin/madnessionic/tasks/add/filter.js
+5 verbose stack A  app/enjin/madnessionic/tasks/add/modal.js
+5 verbose stack A  app/enjin/madnessionic/tasks/add/page.js
+5 verbose stack A  app/enjin/madnessionic/tasks/add/popover.js
+5 verbose stack A  app/enjin/madnessionic/tasks/add/route.js
+5 verbose stack A  app/enjin/madnessionic/tasks/add/service.js
+5 verbose stack A  app/enjin/madnessionic/tasks/add/state.js
+5 verbose stack A  app/enjin/madnessionic/tasks/android.js
+5 verbose stack A  app/enjin/madnessionic/tasks/android/run.js
+5 verbose stack A  app/enjin/madnessionic/tasks/build.js
+5 verbose stack A  app/enjin/madnessionic/tasks/clean/build.js
+5 verbose stack A  app/enjin/madnessionic/tasks/clean/install.js
+5 verbose stack A  app/enjin/madnessionic/tasks/config.js
+5 verbose stack A  app/enjin/madnessionic/tasks/config/build.js
+5 verbose stack A  app/enjin/madnessionic/tasks/config/cordova.js
+5 verbose stack A  app/enjin/madnessionic/tasks/config/css.js
+5 verbose stack A  app/enjin/madnessionic/tasks/config/ionic.js
+5 verbose stack A  app/enjin/madnessionic/tasks/config/js.js
+5 verbose stack A  app/enjin/madnessionic/tasks/config/node.js
+5 verbose stack A  app/enjin/madnessionic/tasks/config/run.js
+5 verbose stack A  app/enjin/madnessionic/tasks/config/sublime.js
+5 verbose stack A  app/enjin/madnessionic/tasks/css/build.js
+5 verbose stack A  app/enjin/madnessionic/tasks/css/compile.js
+5 verbose stack A  app/enjin/madnessionic/tasks/css/concat.js
+5 verbose stack A  app/enjin/madnessionic/tasks/css/import.js
+5 verbose stack A  app/enjin/madnessionic/tasks/css/libraries.js
+5 verbose stack A  app/enjin/madnessionic/tasks/css/lint.js
+5 verbose stack A  app/enjin/madnessionic/tasks/css/minify.js
+5 verbose stack A  app/enjin/madnessionic/tasks/default.js
+5 verbose stack A  app/enjin/madnessionic/tasks/deploy.js
+5 verbose stack A  app/enjin/madnessionic/tasks/extension.js
+5 verbose stack A  app/enjin/madnessionic/tasks/extension/angular.js
+5 verbose stack A  app/enjin/madnessionic/tasks/extension/background.js
+5 verbose stack A  app/enjin/madnessionic/tasks/extension/build.js
+5 verbose stack A  app/enjin/madnessionic/tasks/extension/config.js
+5 verbose stack A  app/enjin/madnessionic/tasks/extension/copy.js
+5 verbose stack A  app/enjin/madnessionic/tasks/extension/css.js
+5 verbose stack A  app/enjin/madnessionic/tasks/extension/font.js
+5 verbose stack A  app/enjin/madnessionic/tasks/extension/html.js
+5 verbose stack A  app/enjin/madnessionic/tasks/extension/icon.js
+5 verbose stack A  app/enjin/madnessionic/tasks/extension/install.js
+5 verbose stack A  app/enjin/madnessionic/tasks/extension/js.js
+5 verbose stack A  app/enjin/madnessionic/tasks/extension/popup.js
+5 verbose stack A  app/enjin/madnessionic/tasks/extension/router.js
+5 verbose stack A  app/enjin/madnessionic/tasks/extension/uninstall.js
+5 verbose stack A  app/enjin/madnessionic/tasks/extension/watch.js
+5 verbose stack A  app/enjin/madnessionic/tasks/font/copy.js
+5 verbose stack A  app/enjin/madnessionic/tasks/html/build.js
+5 verbose stack A  app/enjin/madnessionic/tasks/html/compile.js
+5 verbose stack A  app/enjin/madnessionic/tasks/html/lint.js
+5 verbose stack A  app/enjin/madnessionic/tasks/html/template.js
+5 verbose stack A  app/enjin/madnessionic/tasks/img/icon.js
+5 verbose stack A  app/enjin/madnessionic/tasks/img/icon/copy.js
+5 verbose stack A  app/enjin/madnessionic/tasks/img/icon/favorite.js
+5 verbose stack A  app/enjin/madnessionic/tasks/install.js
+5 verbose stack A  app/enjin/madnessionic/tasks/ios.js
+5 verbose stack A  app/enjin/madnessionic/tasks/js/app.js
+5 verbose stack A  app/enjin/madnessionic/tasks/js/build.js
+5 verbose stack A  app/enjin/madnessionic/tasks/js/compile.js
+5 verbose stack A  app/enjin/madnessionic/tasks/js/concat.js
+5 verbose stack A  app/enjin/madnessionic/tasks/js/libraries.js
+5 verbose stack A  app/enjin/madnessionic/tasks/js/lint.js
+5 verbose stack A  app/enjin/madnessionic/tasks/js/minify.js
+5 verbose stack A  app/enjin/madnessionic/tasks/lint.js
+5 verbose stack A  app/enjin/madnessionic/tasks/minify.js
+5 verbose stack AM app/enjin/madnessionic/tasks/reinstall.js
+5 verbose stack A  app/enjin/madnessionic/tasks/remove/component.js
+5 verbose stack A  app/enjin/madnessionic/tasks/remove/controller.js
+5 verbose stack A  app/enjin/madnessionic/tasks/remove/directive.js
+5 verbose stack A  app/enjin/madnessionic/tasks/remove/filter.js
+5 verbose stack A  app/enjin/madnessionic/tasks/remove/modal.js
+5 verbose stack A  app/enjin/madnessionic/tasks/remove/page.js
+5 verbose stack A  app/enjin/madnessionic/tasks/remove/popover.js
+5 verbose stack A  app/enjin/madnessionic/tasks/remove/route.js
+5 verbose stack A  app/enjin/madnessionic/tasks/remove/service.js
+5 verbose stack A  app/enjin/madnessionic/tasks/remove/state.js
+5 verbose stack A  app/enjin/madnessionic/tasks/router.js
+5 verbose stack A  app/enjin/madnessionic/tasks/sync/reload.js
+5 verbose stack A  app/enjin/madnessionic/tasks/sync/start.js
+5 verbose stack A  app/enjin/madnessionic/tasks/typings.js
+5 verbose stack A  app/enjin/madnessionic/tasks/vars.js
+5 verbose stack A  app/enjin/madnessionic/tasks/watch.js
+5 verbose stack A  app/enjin/madnessionic/templates/config/config.xml
+5 verbose stack A  app/enjin/madnessionic/templates/config/extension.json
+5 verbose stack A  app/enjin/madnessionic/templates/config/sublime.json
+5 verbose stack A  app/enjin/madnessionic/templates/extension/backgroundService.ts
+5 verbose stack A  app/enjin/madnessionic/templates/extension/extension.json
+5 verbose stack A  app/enjin/madnessionic/templates/extension/extension.pug
+5 verbose stack A  app/enjin/madnessionic/templates/extension/extension.scss
+5 verbose stack A  app/enjin/madnessionic/templates/extension/manifest.json
+5 verbose stack A  app/enjin/madnessionic/templates/pug/directive.pug
+5 verbose stack A  app/enjin/madnessionic/templates/pug/modal.pug
+5 verbose stack A  app/enjin/madnessionic/templates/pug/page.pug
+5 verbose stack A  app/enjin/madnessionic/templates/pug/popover.pug
+5 verbose stack A  app/enjin/madnessionic/templates/pug/state.pug
+5 verbose stack A  app/enjin/madnessionic/templates/scss/directive.scss
+5 verbose stack A  app/enjin/madnessionic/templates/scss/libraries.scss
+5 verbose stack A  app/enjin/madnessionic/templates/scss/modal.scss
+5 verbose stack A  app/enjin/madnessionic/templates/scss/page.scss
+5 verbose stack A  app/enjin/madnessionic/templates/scss/popover.scss
+5 verbose stack A  app/enjin/madnessionic/templates/scss/state.scss
+5 verbose stack A  app/enjin/madnessionic/templates/ts/app.ts
+5 verbose stack A  app/enjin/madnessionic/templates/ts/controller.ts
+5 verbose stack A  app/enjin/madnessionic/templates/ts/directive.ts
+5 verbose stack A  app/enjin/madnessionic/templates/ts/filter.ts
+5 verbose stack A  app/enjin/madnessionic/templates/ts/router.ts
+5 verbose stack A  app/enjin/madnessionic/templates/ts/run.ts
+5 verbose stack A  app/enjin/madnessionic/templates/ts/service.ts
+5 verbose stack A  app/enjin/madnessionic/templates/ts/serviceRest.ts
+5 verbose stack AM index.js
+5 verbose stack A  package.json
+5 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\version.js:171:21
+5 verbose stack     at ChildProcess.exithandler (child_process.js:204:7)
+5 verbose stack     at emitTwo (events.js:87:13)
+5 verbose stack     at ChildProcess.emit (events.js:172:7)
+5 verbose stack     at maybeClose (internal/child_process.js:827:16)
+5 verbose stack     at Socket.<anonymous> (internal/child_process.js:319:11)
+5 verbose stack     at emitOne (events.js:77:13)
+5 verbose stack     at Socket.emit (events.js:169:7)
+5 verbose stack     at Pipe._onclose (net.js:486:12)
+6 verbose cwd C:\xampp\htdocs\EnjinCLI
+7 error Windows_NT 10.0.14942
+8 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "version" "patch"
+9 error node v4.4.7
+10 error npm  v2.15.8
+11 error Git working directory not clean.
+11 error A  .gitignore
+11 error A  app/boilerplates/madnessionic/.editorconfig
+11 error A  app/boilerplates/madnessionic/.env-sample
+11 error A  app/boilerplates/madnessionic/.gitignore
+11 error A  app/boilerplates/madnessionic/README.md
+11 error A  app/boilerplates/madnessionic/app/js/README.md
+11 error A  app/boilerplates/madnessionic/app/pug/app.pug
+11 error A  app/boilerplates/madnessionic/app/pug/directive/README.md
+11 error A  app/boilerplates/madnessionic/app/pug/favicon.pug
+11 error A  app/boilerplates/madnessionic/app/pug/modal/README.md
+11 error A  app/boilerplates/madnessionic/app/pug/page/README.md
+11 error A  app/boilerplates/madnessionic/app/pug/popover/README.md
+11 error A  app/boilerplates/madnessionic/app/scss/directive/README.md
+11 error A  app/boilerplates/madnessionic/app/scss/layout/README.md
+11 error A  app/boilerplates/madnessionic/app/scss/layout/body.scss
+11 error A  app/boilerplates/madnessionic/app/scss/layout/grid.scss
+11 error A  app/boilerplates/madnessionic/app/scss/mixin/README.md
+11 error A  app/boilerplates/madnessionic/app/scss/mixin/_clearfix.scss
+11 error A  app/boilerplates/madnessionic/app/scss/modal/README.md
+11 error A  app/boilerplates/madnessionic/app/scss/page/README.md
+11 error A  app/boilerplates/madnessionic/app/ts/controller/README.md
+11 error A  app/boilerplates/madnessionic/app/ts/directive/README.md
+11 error A  app/boilerplates/madnessionic/app/ts/filter/README.md
+11 error A  app/boilerplates/madnessionic/app/ts/service/README.md
+11 error A  app/boilerplates/madnessionic/enjin.json
+11 error A  app/boilerplates/madnessionic/gulpfile.js
+11 error A  app/boilerplates/madnessionic/hooks/README.md
+11 error A  app/boilerplates/madnessionic/hooks/after_prepare/010_add_platform_class.js
+11 error A  app/boilerplates/madnessionic/ionic.config.json
+11 error AM app/boilerplates/madnessionic/package.json
+11 error A  app/boilerplates/madnessionic/resources/android/icon/drawable-hdpi-icon.png
+11 error A  app/boilerplates/madnessionic/resources/android/icon/drawable-ldpi-icon.png
+11 error A  app/boilerplates/madnessionic/resources/android/icon/drawable-mdpi-icon.png
+11 error A  app/boilerplates/madnessionic/resources/android/icon/drawable-xhdpi-icon.png
+11 error A  app/boilerplates/madnessionic/resources/android/icon/drawable-xxhdpi-icon.png
+11 error A  app/boilerplates/madnessionic/resources/android/icon/drawable-xxxhdpi-icon.png
+11 error A  app/boilerplates/madnessionic/resources/android/splash/drawable-land-hdpi-screen.png
+11 error A  app/boilerplates/madnessionic/resources/android/splash/drawable-land-ldpi-screen.png
+11 error A  app/boilerplates/madnessionic/resources/android/splash/drawable-land-mdpi-screen.png
+11 error A  app/boilerplates/madnessionic/resources/android/splash/drawable-land-xhdpi-screen.png
+11 error A  app/boilerplates/madnessionic/resources/android/splash/drawable-land-xxhdpi-screen.png
+11 error A  app/boilerplates/madnessionic/resources/android/splash/drawable-land-xxxhdpi-screen.png
+11 error A  app/boilerplates/madnessionic/resources/android/splash/drawable-port-hdpi-screen.png
+11 error A  app/boilerplates/madnessionic/resources/android/splash/drawable-port-ldpi-screen.png
+11 error A  app/boilerplates/madnessionic/resources/android/splash/drawable-port-mdpi-screen.png
+11 error A  app/boilerplates/madnessionic/resources/android/splash/drawable-port-xhdpi-screen.png
+11 error A  app/boilerplates/madnessionic/resources/android/splash/drawable-port-xxhdpi-screen.png
+11 error A  app/boilerplates/madnessionic/resources/android/splash/drawable-port-xxxhdpi-screen.png
+11 error A  app/boilerplates/madnessionic/resources/icon.png
+11 error A  app/boilerplates/madnessionic/resources/ios/icon/icon-40.png
+11 error A  app/boilerplates/madnessionic/resources/ios/icon/icon-40@2x.png
+11 error A  app/boilerplates/madnessionic/resources/ios/icon/icon-50.png
+11 error A  app/boilerplates/madnessionic/resources/ios/icon/icon-50@2x.png
+11 error A  app/boilerplates/madnessionic/resources/ios/icon/icon-60.png
+11 error A  app/boilerplates/madnessionic/resources/ios/icon/icon-60@2x.png
+11 error A  app/boilerplates/madnessionic/resources/ios/icon/icon-60@3x.png
+11 error A  app/boilerplates/madnessionic/resources/ios/icon/icon-72.png
+11 error A  app/boilerplates/madnessionic/resources/ios/icon/icon-72@2x.png
+11 error A  app/boilerplates/madnessionic/resources/ios/icon/icon-76.png
+11 error A  app/boilerplates/madnessionic/resources/ios/icon/icon-76@2x.png
+11 error A  app/boilerplates/madnessionic/resources/ios/icon/icon-small.png
+11 error A  app/boilerplates/madnessionic/resources/ios/icon/icon-small@2x.png
+11 error A  app/boilerplates/madnessionic/resources/ios/icon/icon-small@3x.png
+11 error A  app/boilerplates/madnessionic/resources/ios/icon/icon.png
+11 error A  app/boilerplates/madnessionic/resources/ios/icon/icon@2x.png
+11 error A  app/boilerplates/madnessionic/resources/ios/splash/Default-568h@2x~iphone.png
+11 error A  app/boilerplates/madnessionic/resources/ios/splash/Default-667h.png
+11 error A  app/boilerplates/madnessionic/resources/ios/splash/Default-736h.png
+11 error A  app/boilerplates/madnessionic/resources/ios/splash/Default-Landscape-736h.png
+11 error A  app/boilerplates/madnessionic/resources/ios/splash/Default-Landscape@2x~ipad.png
+11 error A  app/boilerplates/madnessionic/resources/ios/splash/Default-Landscape~ipad.png
+11 error A  app/boilerplates/madnessionic/resources/ios/splash/Default-Portrait@2x~ipad.png
+11 error A  app/boilerplates/madnessionic/resources/ios/splash/Default-Portrait~ipad.png
+11 error A  app/boilerplates/madnessionic/resources/ios/splash/Default@2x~iphone.png
+11 error A  app/boilerplates/madnessionic/resources/ios/splash/Default~iphone.png
+11 error A  app/boilerplates/madnessionic/resources/splash.png
+11 error A  app/boilerplates/madnessionic/sass-lint.yml
+11 error A  app/boilerplates/madnessionic/tslint.json
+11 error A  app/boilerplates/madnessionic/typings.json
+11 error A  app/enjin/madnessionic/index.js
+11 error A  app/enjin/madnessionic/package.json
+11 error A  app/enjin/madnessionic/services/addComponent.js
+11 error A  app/enjin/madnessionic/services/addController.js
+11 error A  app/enjin/madnessionic/services/addDirective.js
+11 error A  app/enjin/madnessionic/services/addFilter.js
+11 error A  app/enjin/madnessionic/services/addModal.js
+11 error A  app/enjin/madnessionic/services/addPage.js
+11 error A  app/enjin/madnessionic/services/addPopover.js
+11 error A  app/enjin/madnessionic/services/addRoute.js
+11 error A  app/enjin/madnessionic/services/addService.js
+11 error A  app/enjin/madnessionic/services/addState.js
+11 error A  app/enjin/madnessionic/services/capFirstLetter.js
+11 error A  app/enjin/madnessionic/services/checkString.js
+11 error A  app/enjin/madnessionic/services/cleanString.js
+11 error A  app/enjin/madnessionic/services/copyFile.js
+11 error A  app/enjin/madnessionic/services/merge.js
+11 error A  app/enjin/madnessionic/services/onError.js
+11 error A  app/enjin/madnessionic/services/removeComponent.js
+11 error A  app/enjin/madnessionic/services/removeController.js
+11 error A  app/enjin/madnessionic/services/removeFilter.js
+11 error A  app/enjin/madnessionic/services/removeModal.js
+11 error A  app/enjin/madnessionic/services/removePage.js
+11 error A  app/enjin/madnessionic/services/removePopover.js
+11 error A  app/enjin/madnessionic/services/removeRoute.js
+11 error A  app/enjin/madnessionic/services/removeService.js
+11 error A  app/enjin/madnessionic/services/removeSpaces.js
+11 error A  app/enjin/madnessionic/services/removeState.js
+11 error AM app/enjin/madnessionic/services/setVars.js
+11 error A  app/enjin/madnessionic/tasks/add/component.js
+11 error A  app/enjin/madnessionic/tasks/add/controller.js
+11 error A  app/enjin/madnessionic/tasks/add/directive.js
+11 error A  app/enjin/madnessionic/tasks/add/filter.js
+11 error A  app/enjin/madnessionic/tasks/add/modal.js
+11 error A  app/enjin/madnessionic/tasks/add/page.js
+11 error A  app/enjin/madnessionic/tasks/add/popover.js
+11 error A  app/enjin/madnessionic/tasks/add/route.js
+11 error A  app/enjin/madnessionic/tasks/add/service.js
+11 error A  app/enjin/madnessionic/tasks/add/state.js
+11 error A  app/enjin/madnessionic/tasks/android.js
+11 error A  app/enjin/madnessionic/tasks/android/run.js
+11 error A  app/enjin/madnessionic/tasks/build.js
+11 error A  app/enjin/madnessionic/tasks/clean/build.js
+11 error A  app/enjin/madnessionic/tasks/clean/install.js
+11 error A  app/enjin/madnessionic/tasks/config.js
+11 error A  app/enjin/madnessionic/tasks/config/build.js
+11 error A  app/enjin/madnessionic/tasks/config/cordova.js
+11 error A  app/enjin/madnessionic/tasks/config/css.js
+11 error A  app/enjin/madnessionic/tasks/config/ionic.js
+11 error A  app/enjin/madnessionic/tasks/config/js.js
+11 error A  app/enjin/madnessionic/tasks/config/node.js
+11 error A  app/enjin/madnessionic/tasks/config/run.js
+11 error A  app/enjin/madnessionic/tasks/config/sublime.js
+11 error A  app/enjin/madnessionic/tasks/css/build.js
+11 error A  app/enjin/madnessionic/tasks/css/compile.js
+11 error A  app/enjin/madnessionic/tasks/css/concat.js
+11 error A  app/enjin/madnessionic/tasks/css/import.js
+11 error A  app/enjin/madnessionic/tasks/css/libraries.js
+11 error A  app/enjin/madnessionic/tasks/css/lint.js
+11 error A  app/enjin/madnessionic/tasks/css/minify.js
+11 error A  app/enjin/madnessionic/tasks/default.js
+11 error A  app/enjin/madnessionic/tasks/deploy.js
+11 error A  app/enjin/madnessionic/tasks/extension.js
+11 error A  app/enjin/madnessionic/tasks/extension/angular.js
+11 error A  app/enjin/madnessionic/tasks/extension/background.js
+11 error A  app/enjin/madnessionic/tasks/extension/build.js
+11 error A  app/enjin/madnessionic/tasks/extension/config.js
+11 error A  app/enjin/madnessionic/tasks/extension/copy.js
+11 error A  app/enjin/madnessionic/tasks/extension/css.js
+11 error A  app/enjin/madnessionic/tasks/extension/font.js
+11 error A  app/enjin/madnessionic/tasks/extension/html.js
+11 error A  app/enjin/madnessionic/tasks/extension/icon.js
+11 error A  app/enjin/madnessionic/tasks/extension/install.js
+11 error A  app/enjin/madnessionic/tasks/extension/js.js
+11 error A  app/enjin/madnessionic/tasks/extension/popup.js
+11 error A  app/enjin/madnessionic/tasks/extension/router.js
+11 error A  app/enjin/madnessionic/tasks/extension/uninstall.js
+11 error A  app/enjin/madnessionic/tasks/extension/watch.js
+11 error A  app/enjin/madnessionic/tasks/font/copy.js
+11 error A  app/enjin/madnessionic/tasks/html/build.js
+11 error A  app/enjin/madnessionic/tasks/html/compile.js
+11 error A  app/enjin/madnessionic/tasks/html/lint.js
+11 error A  app/enjin/madnessionic/tasks/html/template.js
+11 error A  app/enjin/madnessionic/tasks/img/icon.js
+11 error A  app/enjin/madnessionic/tasks/img/icon/copy.js
+11 error A  app/enjin/madnessionic/tasks/img/icon/favorite.js
+11 error A  app/enjin/madnessionic/tasks/install.js
+11 error A  app/enjin/madnessionic/tasks/ios.js
+11 error A  app/enjin/madnessionic/tasks/js/app.js
+11 error A  app/enjin/madnessionic/tasks/js/build.js
+11 error A  app/enjin/madnessionic/tasks/js/compile.js
+11 error A  app/enjin/madnessionic/tasks/js/concat.js
+11 error A  app/enjin/madnessionic/tasks/js/libraries.js
+11 error A  app/enjin/madnessionic/tasks/js/lint.js
+11 error A  app/enjin/madnessionic/tasks/js/minify.js
+11 error A  app/enjin/madnessionic/tasks/lint.js
+11 error A  app/enjin/madnessionic/tasks/minify.js
+11 error AM app/enjin/madnessionic/tasks/reinstall.js
+11 error A  app/enjin/madnessionic/tasks/remove/component.js
+11 error A  app/enjin/madnessionic/tasks/remove/controller.js
+11 error A  app/enjin/madnessionic/tasks/remove/directive.js
+11 error A  app/enjin/madnessionic/tasks/remove/filter.js
+11 error A  app/enjin/madnessionic/tasks/remove/modal.js
+11 error A  app/enjin/madnessionic/tasks/remove/page.js
+11 error A  app/enjin/madnessionic/tasks/remove/popover.js
+11 error A  app/enjin/madnessionic/tasks/remove/route.js
+11 error A  app/enjin/madnessionic/tasks/remove/service.js
+11 error A  app/enjin/madnessionic/tasks/remove/state.js
+11 error A  app/enjin/madnessionic/tasks/router.js
+11 error A  app/enjin/madnessionic/tasks/sync/reload.js
+11 error A  app/enjin/madnessionic/tasks/sync/start.js
+11 error A  app/enjin/madnessionic/tasks/typings.js
+11 error A  app/enjin/madnessionic/tasks/vars.js
+11 error A  app/enjin/madnessionic/tasks/watch.js
+11 error A  app/enjin/madnessionic/templates/config/config.xml
+11 error A  app/enjin/madnessionic/templates/config/extension.json
+11 error A  app/enjin/madnessionic/templates/config/sublime.json
+11 error A  app/enjin/madnessionic/templates/extension/backgroundService.ts
+11 error A  app/enjin/madnessionic/templates/extension/extension.json
+11 error A  app/enjin/madnessionic/templates/extension/extension.pug
+11 error A  app/enjin/madnessionic/templates/extension/extension.scss
+11 error A  app/enjin/madnessionic/templates/extension/manifest.json
+11 error A  app/enjin/madnessionic/templates/pug/directive.pug
+11 error A  app/enjin/madnessionic/templates/pug/modal.pug
+11 error A  app/enjin/madnessionic/templates/pug/page.pug
+11 error A  app/enjin/madnessionic/templates/pug/popover.pug
+11 error A  app/enjin/madnessionic/templates/pug/state.pug
+11 error A  app/enjin/madnessionic/templates/scss/directive.scss
+11 error A  app/enjin/madnessionic/templates/scss/libraries.scss
+11 error A  app/enjin/madnessionic/templates/scss/modal.scss
+11 error A  app/enjin/madnessionic/templates/scss/page.scss
+11 error A  app/enjin/madnessionic/templates/scss/popover.scss
+11 error A  app/enjin/madnessionic/templates/scss/state.scss
+11 error A  app/enjin/madnessionic/templates/ts/app.ts
+11 error A  app/enjin/madnessionic/templates/ts/controller.ts
+11 error A  app/enjin/madnessionic/templates/ts/directive.ts
+11 error A  app/enjin/madnessionic/templates/ts/filter.ts
+11 error A  app/enjin/madnessionic/templates/ts/router.ts
+11 error A  app/enjin/madnessionic/templates/ts/run.ts
+11 error A  app/enjin/madnessionic/templates/ts/service.ts
+11 error A  app/enjin/madnessionic/templates/ts/serviceRest.ts
+11 error AM index.js
+11 error A  package.json
+12 error If you need help, you may report this error at:
+12 error     <https://github.com/npm/npm/issues>
+13 verbose exit [ 1, true ]

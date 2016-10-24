@@ -1,0 +1,32 @@
+{
+    "extension": {
+        "name": "MadnessIonic",
+        "version": "1.0",
+        "plugins": [
+            "ionic"
+        ],
+        "build": {
+            "popup": [
+                "node_modules/ionic-sdk/release/js/ionic.bundle.js",
+                "app/extension/build/app.js",
+                "app/extension/build/router.js",
+                "build/js/config.js"
+            ],
+            "background": [
+                "app/extension/build/backgroundService.js"
+            ]
+        },
+        "routes": [],
+        "background": {
+            "scripts": [
+                "build/background.js"
+            ]
+        },
+        "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+        "permissions": [
+            "background",
+            "tabs",
+            "<all_urls>"
+        ]
+    }
+}

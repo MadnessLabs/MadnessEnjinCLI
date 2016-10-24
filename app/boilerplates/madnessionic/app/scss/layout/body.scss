@@ -1,0 +1,78 @@
+@import '../variables';
+@import '../mixin/clearfix';
+
+body {
+    @include clearfix();
+    width: 100%;
+}
+
+.hide-sidebar{
+    transform: none !important;
+    width: auto !important;
+}
+
+
+.loading {
+    border-radius: 100% !important;
+    padding: 15px !important;
+    background-color: rgba(red($theme-primary), green($theme-primary), blue($theme-primary), 0.7) !important;
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.state-loading{
+    transition: all 2s ease;
+}
+
+.state-loaded{
+    opacity:1 !important;
+}
+
+.theme-primary{
+    background-color: $theme-primary;
+    color: #fff !important;
+}
+
+.theme-secondary{
+    background-color: $theme-secondary;
+}
+
+.theme-light-gray {
+    background-color: $theme-light-gray;
+}
+
+.theme-dark-gray {
+    background-color: $theme-dark-gray;
+}
+
+.nav-bar-block{
+    ion-header-bar {
+        .title, .title-left {
+            text-align: center !important;
+            text-indent: 0;
+            left: 0 !important;
+            right: 0 !important;
+        }
+        @media (min-width: $screen-sm) {
+            .title {
+                text-indent: 275px;
+            }
+        }
+
+        .ion-android-search {
+            transform: rotateY(180deg);
+        }
+    }
+}
+
+.buttons-left.header-item{
+    display: block;
+}
+
+@media (min-width: $screen-sm) {
+    .buttons-left.header-item{
+        display: none;
+    }
+}
