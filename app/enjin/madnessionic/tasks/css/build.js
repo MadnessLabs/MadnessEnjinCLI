@@ -8,6 +8,7 @@ module.exports = function(gulp, callback) {
         'css:libraries', 
         //'css:lint', 
         'css:compile', 
-        'css:concat'
+        'css:concat',
+        callback
     );
 };

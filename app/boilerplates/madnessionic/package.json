@@ -3,7 +3,7 @@
   "version": "1.0.0-beta",
   "description": "The build process used by Madness Labs to build Ionic hybrid apps",
   "scripts": {
-    "postinstall": "gulp reinstall",
+    "postinstall": "gulp enjin:install",
     "start": "gulp",
     "build": "gulp build"
   },

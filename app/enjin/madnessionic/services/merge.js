@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function merge() {
     var destination = {},
         sources = [].slice.call( arguments, 0 );
     sources.forEach(function( source ) {

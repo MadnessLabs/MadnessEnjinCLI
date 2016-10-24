@@ -6,6 +6,7 @@ module.exports = function(gulp, callback) {
         'config:js', 
         //'js:lint', 
         'js:compile', 
-        'js:concat'
+        'js:concat',
+        callback
     );
 };

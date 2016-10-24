@@ -5,7 +5,8 @@ module.exports = function(gulp, callback) {
     if(global.synced){
         runSequence(
             'js:concat', 
-            'sync:reload'
+            'sync:reload',
+            callback
         );
     }
 };
