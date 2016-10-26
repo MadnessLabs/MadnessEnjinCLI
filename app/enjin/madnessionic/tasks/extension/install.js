@@ -12,6 +12,12 @@ module.exports = function(gulp, callback) {
         .pipe(gulp.dest('./'));
     gulp.src([tmplDir + 'extension/extension.pug', tmplDir + 'extension/extension.scss'])
         .pipe(gulp.dest('./app/extension'));
+    gulp.src(tmplDir + 'extension/platform.ts')
+        .pipe(template({
+            app: appName
+        }))
+        .pipe(gulp.dest('./app/extension'));
+    fs.appendFile('./.gitignore', '\nextension/');
     gulp.src(tmplDir + 'extension/backgroundService.ts')
         .pipe(template({
             app: appName
@@ -19,10 +25,4 @@ module.exports = function(gulp, callback) {
         .pipe(gulp.dest('./app/extension')).on('end', function() {
             runSequence('extension:icon', 'extension', callback);
         });
-    gulp.src(tmplDir + 'extension/platform.ts')
-        .pipe(template({
-            app: appName
-        }))
-        .pipe(gulp.dest('./app/extension'));
-    fs.appendFile('./.gitignore', '\nextension/');
 };
