@@ -7,15 +7,12 @@ module <%= app %> {
 
     class AppRunner {
         constructor(
-            $ionicPlatform, 
-            $cordovaKeyboard, 
-            $cordovaSplashscreen, 
             $rootScope, 
             enjin, 
             $state, 
             $ionicLoading, 
             $ionicSideMenuDelegate,
-            $http
+            Platform
         ) {
             $rootScope.host = {
                 api: enjin.db.api.host.slice(0, -3),
@@ -39,25 +36,7 @@ module <%= app %> {
                 $ionicLoading.hide();
             });
 
-            $ionicPlatform.ready(function() {
-                if (window.cordova && window.cordova.plugins.Keyboard) {
-                    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-                }
-
-                if (window.cordova) {
-                    $cordovaSplashscreen.hide();
-
-                    $rootScope.$watch(function() {
-                        return $cordovaKeyboard.isVisible();
-                    }, function(value) {
-                        $rootScope.keyboardOpen = value;
-                    });
-                }
-
-                $rootScope.toggleMenu = function() {
-                    $ionicSideMenuDelegate.toggleLeft();
-                };
-            });
+            Platform.run();
         }
     }
     angular.module('<%= app %>').run(AppRunner);

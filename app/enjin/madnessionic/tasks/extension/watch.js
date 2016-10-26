@@ -10,7 +10,7 @@ module.exports = function(gulp, callback) {
     watch('app/extension/**/*.ts', function() {
         runSequence('extension:build');
     });
-    watch('app/extension/**/*.jade', function() {
+    watch('app/extension/**/*.pug', function() {
         runSequence('extension:html');
     });
     watch(configFile, function() {

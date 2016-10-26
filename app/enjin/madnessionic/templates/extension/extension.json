@@ -6,20 +6,23 @@
     "build": {
         "popup": [
             "node_modules/ionic-sdk/release/js/ionic.bundle.js",
+            "node_modules/ng-cordova/dist/ng-cordova.js",
+            "app/js/**/*.js",
             "extension/build/app.js",
+            "extension/build/platform.js",
+            "build/js/run.js",
             "extension/build/router.js",
             "build/js/config.js",
             "build/js/filter/**/*.js",
             "build/js/directive/**/*.js",
             "build/js/service/**/*.js",
             "build/js/state/**/*.js",
-            "extension/build/js/page/**/*.js"
+            "extension/build/page/**/*.js"
         ],
         "background": [
-            "extension/js/backgroundService.js"
+            "extension/build/backgroundService.js"
         ]
     },
-    "routes": [],
     "permissions": [
         "background",
         "tabs",

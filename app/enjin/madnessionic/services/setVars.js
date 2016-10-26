@@ -16,6 +16,9 @@ module.exports = function(callback) {
     configJSON   = JSON.parse(fs.readFileSync(configFile));
     configJSON   = merge(configJSON, env);
     // ENJIN
+    if (configJSON.extension && !configJSON.extension.routes) {
+        configJSON.extension.routes = configJSON.routes;
+    }
     global.enjin.type = configJSON.type;
     // APP
     appName      = configJSON.name;
@@ -70,7 +73,7 @@ module.exports = function(callback) {
     jsLib        = configJSON.js.libraries;
     jsWatch      = configJSON.js.watch;
     // TEMPLATES
-    tmplDir      =  global.enjin.path  + 'templates/';
+    tmplDir      =  global.enjin.path  + '/app/enjin/' + global.enjin.type + '/templates/';
 
     if (callback && typeof callback === "function") {
         callback();

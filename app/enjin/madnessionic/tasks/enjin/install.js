@@ -11,6 +11,7 @@ module.exports = function(gulp, callback) {
         'clean:build',
         'clean:install',
         'js:app',
+        'config:platform',
         'config:run',
         'config:js', 
         'config:css', 

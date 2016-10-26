@@ -23,8 +23,8 @@ module.exports = function(gulp, callback) {
             }
         }));
 
-        tsResult.dts.pipe(gulp.dest('extension/js'));
-        tsResult.js.pipe(gulp.dest('extension/js')).on('end', function() {
+        tsResult.dts.pipe(gulp.dest('extension/build'));
+        tsResult.js.pipe(gulp.dest('extension/build')).on('end', function() {
             callback();
         });
 };

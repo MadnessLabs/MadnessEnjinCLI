@@ -3,10 +3,13 @@ browserSync   = require('browser-sync').create();
 
 const setVars = require('./services/setVars');
 const slash   = require('slash');
+const path    = require('path');
+
 
 module.exports = function(){
     global.enjin = {
-        path: slash(__dirname) + '/'
+        path: slash(path.join(__dirname, '..', '..', '..')),
+        type: 'madnessionic'
     };
     global.env = environment = argv.e ? argv.e : false;
     global.isWatching = false;
