@@ -88,6 +88,7 @@
             "build/css/libraries.css",
             "build/css/layout/**/*.css",
             "build/css/directive/**/*.css",
+            "build/css/popover/**/*.css",
             "build/css/page/**/*.css",
             "build/css/modal/**/*.css"
         ],
