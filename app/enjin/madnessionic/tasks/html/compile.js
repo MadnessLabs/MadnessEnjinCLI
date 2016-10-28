@@ -3,7 +3,7 @@ const gulpif = require('gulp-if');
 const plumber = require('gulp-plumber');
 const rename = require('gulp-rename');
 const cache  = require('gulp-cached');
-const runSequence = require('run-sequence').use(gulp);
+
 
 module.exports = function(gulp, callback) {
     var errored = false;
@@ -33,9 +33,7 @@ module.exports = function(gulp, callback) {
         }))
         .pipe(gulp.dest(htmlDir))
         .on('end', function(){
-            if(!errored && global.isWatching && global.synced){
-                runSequence('sync:reload');
-            }else if(errored && global.isWatching && global.synced){
+            if(errored && global.isWatching && global.synced){
                 cache.caches = {};
                 browserSync.notify("<div style='text-align:left;'>"+errorMessage.join("<hr />")+"</div>", errorTimeout);
             }
