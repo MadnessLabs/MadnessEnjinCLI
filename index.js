@@ -3,10 +3,9 @@
 'use strict';
 
 const slash   = require('slash');
-const fs = require('fs');
-const packageJSON = JSON.parse(fs.readFileSync('./package.json'));
-
 const enjinDir = slash(__dirname);
+const fs = require('fs');
+const packageJSON = JSON.parse(fs.readFileSync(enjinDir + '/package.json'));
 
 
 if (process.argv.length > 2) {
