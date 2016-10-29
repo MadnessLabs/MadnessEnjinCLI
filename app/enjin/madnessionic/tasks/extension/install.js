@@ -17,7 +17,7 @@ module.exports = function(gulp, callback) {
             app: appName
         }))
         .pipe(gulp.dest('./app/extension'));
-    fs.appendFile('./.gitignore', '\nextension/');
+    fs.appendFile('./.gitignore', '\nextension/\n!/app/extension');
     gulp.src(tmplDir + 'extension/backgroundService.ts')
         .pipe(template({
             app: appName
