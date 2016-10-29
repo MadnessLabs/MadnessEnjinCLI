@@ -8,6 +8,7 @@ logs/
 *.log
 .deploy
 .env
+.env-app
 .history
 .vscode/settings.json
 www/js/

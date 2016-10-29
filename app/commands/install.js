@@ -23,15 +23,35 @@ module.exports = function(enjinDir) {
     } else {
         folderName = enjinModule.split('/')[1];
     }
-
+    var folderPath = process.cwd() + '/' + folderName;
+    
     gitClone += enjinModule;
 
     console.log('Cloning ' + enjinModule + ' into ' + folderName + ' ...');
     exec(gitClone, function(error, stdout, stderr) {
-        console.log('Installing Dependencies ...');
-        
-        exec('npm install', {cwd: process.cwd() + '/' + folderName}, function(error, stdout, stderr){
-            console.log('App installed successfully! ^_^');
+        console.log('Setting up environments ...');
+        var envPath = folderPath + '/.env-sample';
+        var envJSON = JSON.parse(fs.readFileSync(envPath));
+        var enjinJSON = JSON.parse(fs.readFileSync(folderPath + '/enjin.json'));
+        envJSON.enjinPath = enjinDir + '/';
+        envJSON.type = enjinJSON.type;
+        fs.writeFile(folderPath + '/.env', JSON.stringify(envJSON), function(err) {
+            if(err) {
+                return console.log(err);
+            }
+            envJSON.mobile = true;
+            envJSON.local = false;
+            fs.writeFile(folderPath + '/.env-app', JSON.stringify(envJSON), function(err) {
+                var packagePath = folderPath + '/package.json';
+                var packageJSON = JSON.parse(fs.readFileSync(packagePath));
+                packageJSON.scripts.postinstall = 'gulp enjin:reinstall';
+                fs.writeFile(packagePath, JSON.stringify(packageJSON), function(err) {
+                    console.log('Now installing ...');
+                    exec('npm install', {cwd: folderPath}, function(error, stdout, stderr){
+                        console.log('App installed! ^_^');
+                    });
+                });
+            });
         });
     });
 };
