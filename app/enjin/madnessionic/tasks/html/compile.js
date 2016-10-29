@@ -36,6 +36,8 @@ module.exports = function(gulp, callback) {
             if(errored && global.isWatching && global.synced){
                 cache.caches = {};
                 browserSync.notify("<div style='text-align:left;'>"+errorMessage.join("<hr />")+"</div>", errorTimeout);
+            } else {
+                browserSync.reload();
             }
         });
 };
