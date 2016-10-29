@@ -26,4 +26,6 @@ if (process.argv.length > 2) {
     console.log('\n');
     console.log('--- CURRENT COMMANDS ---');
     console.log('start APP_NAME - This will start a new app in the folder APP_NAME');
+    console.log('install REPO_LINK [FOLDER_NAME] - This will clone and install an app from a repo link');
+    console.log('env [ENVIRONMENT] - This will create a new .env file with an optional name');
 }

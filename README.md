@@ -36,3 +36,15 @@ Example:
 ```enjin install REPO_LINK [FOLDER_NAME]```
 
 ---
+
+## env
+
+- ENVIRONMENT - The name of the environment
+
+This will create an environment (.env) file in the directory.
+
+Example:
+
+```enjin env [ENVIRONMENT]```
+
+---
