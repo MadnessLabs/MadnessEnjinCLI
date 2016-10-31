@@ -4,13 +4,13 @@ const template = require('gulp-template');
 const capFirstLetter = require('./capFirstLetter');
 
 
-module.exports = function(name, dir, dependencies) {
-    var destDir = jsSrcDir + dir + '/';
-    gulp.src(tmplDir+'ts/controller.ts')
+module.exports = function(name, resolves) {
+    var destDir = jsSrcDir + 'resolver';
+    gulp.src(tmplDir+'ts/resolver.ts')
         .pipe(template({
             app: appName,
             name: capFirstLetter(name),
-            dependencies: dependencies    
+            resolves: resolves
         }))
         .pipe(rename(name+'.ts'))
         .pipe(gulp.dest(destDir));

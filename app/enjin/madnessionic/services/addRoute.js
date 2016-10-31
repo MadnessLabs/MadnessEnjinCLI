@@ -4,7 +4,8 @@ const runSequence  = require('run-sequence').use(gulp);
 const jeditor      = require("gulp-json-editor");
 
 
-module.exports = function(name, url, template, controller, view) {
+module.exports = function(name, url, template, controller, resolver, view) {
+
     if (!view) {
         view = 'tab';
     }
@@ -13,6 +14,12 @@ module.exports = function(name, url, template, controller, view) {
         state: name,
         url: url
     };
+
+    if (resolver) {
+        newState.resolve = resolver;
+    }
+
+    console.log(name);
 
     if (name.indexOf('.') > 0) {
         var stateSteps = name.split('.');
@@ -27,12 +34,14 @@ module.exports = function(name, url, template, controller, view) {
         newState.views = {
             [view]: {
                 templateUrl: template,
-                controller: appName + '.' + controller + ' as ' + view
+                controller: appName + '.' + controller,
+                controllerAs: view
             }
         };
     } else {
         newState.templateUrl = template;
-        newState.controller = appName + '.' + controller + ' as ctrl';
+        newState.controller = appName + '.' + controller;
+        newState.controllerAs = 'ctrl';
     }
 
     newRoutes.push(newState);

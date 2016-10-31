@@ -110,6 +110,7 @@
             "build/js/app.js",
             "build/js/platform.js",
             "build/js/run.js",
+            "build/js/resolver/**/*.js",
             "build/js/router.js",
             "build/js/config.js",
             "app/js/**/*.js",

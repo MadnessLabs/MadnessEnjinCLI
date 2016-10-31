@@ -1,5 +1,5 @@
 const clean    = require('gulp-clean');
-const runSequence = require("run-sequence");
+const runSequence  = require('run-sequence').use(gulp);
 
 module.exports = function(name, dir) {
     dir = dir ? dir : 'controller' ;

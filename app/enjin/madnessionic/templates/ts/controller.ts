@@ -3,7 +3,9 @@ module <%= app %> {
     'use strict';
 
     class <%= name %>Controller {
-        constructor() {
+        constructor(
+            <% _.each(dependencies, function(dependency, key) { %>protected <%= dependency %><%= key === dependencies.length - 1 ? '' : ',\n\t\t\t' %><% }); %>
+        ) {
             // ON LOAD       
         }
     }

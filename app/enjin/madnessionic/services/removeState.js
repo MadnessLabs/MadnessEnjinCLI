@@ -1,6 +1,6 @@
 const clean    = require('gulp-clean');
 const jeditor  = require("gulp-json-editor");
-const runSequence = require("run-sequence");
+const runSequence  = require('run-sequence').use(gulp);
 const fs          = require('fs');
 
 
@@ -25,7 +25,8 @@ module.exports = function(name) {
         cssSrcDir+'state/'+name+'.scss',
         htmlSrcDir+'state/'+name+'.pug',
         htmlDir+'state/'+name+'.html',
-        jsSrcDir+'state/'+name+'State.ts'
+        jsSrcDir+'state/'+name+'State.ts',
+        jsSrcDir+'resolver/'+name+'.ts'
     ],{
         read: false
     })

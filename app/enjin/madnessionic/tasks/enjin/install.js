@@ -4,7 +4,7 @@ const addPage = require('../../services/addPage');
 
 module.exports = function(gulp, callback) {
     if (!configJSON.routes.length) {
-        addPage('home');
+        addPage('home', []);
     }
 
     runSequence(

@@ -2,24 +2,26 @@ const template = require('gulp-template');
 
 
 module.exports = function(gulp, callback) {
-    var routes = [];
+    var resolves = [];
     var defaultRoute = appEntry;
 
-    for(var i=0; i < appRoutes.length; i++){
+    for (var i=0; i < appRoutes.length; i++) {
         var route = appRoutes[i];
-        var stateName = route.state;
-        delete route.state;
-        if(!defaultRoute){
-            defaultRoute = stateName;
+        if (!defaultRoute) {
+            defaultRoute = route.state;
         }
-        routes.push(".state('"+stateName+"', "+ JSON.stringify(route).replace(/"/g, "'").replace(/,/g, ", \n") +")");
+
+        if (route.resolve) {
+            resolves.push(route.resolve);
+        }
     }
 
     return gulp.src(tmplDir+'ts/router.ts')
         .pipe(template({
             app: appName,
-            routes: routes.join("\n\t\t\t\t"),
-            defaultRoute: defaultRoute
+            routes: appRoutes,
+            defaultRoute: defaultRoute,
+            resolves: resolves.length ? resolves.join(', ') : false
         }))
         .pipe(gulp.dest(jsSrcDir));
 };

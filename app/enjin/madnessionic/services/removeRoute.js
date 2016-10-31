@@ -1,5 +1,5 @@
 const jeditor  = require("gulp-json-editor");
-const runSequence = require("run-sequence");
+const runSequence  = require('run-sequence').use(gulp);
 
 module.exports = function(name) {
     var newRoutes = appRoutes;

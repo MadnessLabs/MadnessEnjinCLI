@@ -61,10 +61,10 @@ module.exports = function(gulp, callback) {
                 var pages = res.pages.split(',');
                 
                 for (var i = 0; i < pages.length; i++) {
-                    addPage(pages[i]);
+                    addPage(pages[i], []);
                 }
             } else {
-                addPage(res.pages);
+                addPage(res.pages, []);
             }
 
             runSequence(

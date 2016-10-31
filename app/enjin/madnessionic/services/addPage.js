@@ -4,9 +4,9 @@ const template = require('gulp-template');
 const capFirstLetter = require('./capFirstLetter');
 const addController  = require('./addController');
 const addRoute       = require('./addRoute');
+const addResolver     = require('./addResolver');
 
-
-module.exports = function(name) {
+module.exports = function(name, resolves) {
     gulp.src(tmplDir+'pug/page.pug')
         .pipe(template({
             name: name
@@ -19,6 +19,15 @@ module.exports = function(name) {
         }))
         .pipe(rename(name+'.scss'))
         .pipe(gulp.dest(cssSrcDir+'page/'));
-    addController(name, 'page');
-    addRoute(name, '/'+name, 'html/page/'+name+'.html', capFirstLetter(name)+'Controller');
+    addController(name, 'page', resolves);
+    addRoute(
+        name, 
+        '/'+name, 
+        'html/page/'+name+'.html', 
+        capFirstLetter(name)+'Controller',
+        capFirstLetter(name)+'Resolver'
+    );
+    if (resolves) {
+        addResolver(name, resolves);
+    }
 };
