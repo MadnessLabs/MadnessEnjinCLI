@@ -2,12 +2,16 @@ const template = require('gulp-template');
 
 
 module.exports = function(gulp, callback) {
+    var resolves = [];
     var defaultRoute = appEntry;
 
     for (var i=0; i < appRoutes.length; i++) {
         var route = appRoutes[i];
         if (!defaultRoute) {
             defaultRoute = route.state;
+        }
+        if (route.resolve) {
+            resolves.push(route.resolve);
         }
     }
 

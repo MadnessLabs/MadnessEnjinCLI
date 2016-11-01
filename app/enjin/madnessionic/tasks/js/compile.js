@@ -13,13 +13,7 @@ module.exports = function(gulp, callback) {
             }
         })))
         .pipe(gulpif(global.isWatching,  cache('js:compile')))
-        .pipe(addsrc('app/typings/index.d.ts'))
-        .pipe(ts({
-            "compilerOptions": {
-                "target": "es5",
-                "sourceMap": false
-            }
-        }));
+        .pipe(ts());
 
         tsResult.dts.pipe(gulp.dest('build/js'));
         tsResult.js.pipe(gulp.dest('build/js')).on('end', function() {
