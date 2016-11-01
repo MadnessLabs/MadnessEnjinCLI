@@ -12,7 +12,6 @@ module.exports = function(gulp, callback) {
                 this.emit('end');
             }
         })))
-        .pipe(gulpif(global.isWatching,  cache('js:compile')))
         .pipe(ts());
 
         tsResult.dts.pipe(gulp.dest('build/js'));
