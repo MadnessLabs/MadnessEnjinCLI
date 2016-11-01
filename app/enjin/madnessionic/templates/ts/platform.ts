@@ -1,5 +1,3 @@
-/// <reference path="../typings/index.d.ts"/>
-
 module <%= app %> {
     class PlatformService {
 

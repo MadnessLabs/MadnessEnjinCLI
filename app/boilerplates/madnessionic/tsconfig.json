@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "module": "system",
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outFile": "build/js/tsc.js",
+        "sourceMap": true
+    },
+    "include": [
+        "app/ts/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}

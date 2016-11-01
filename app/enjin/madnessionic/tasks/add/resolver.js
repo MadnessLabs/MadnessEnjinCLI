@@ -6,7 +6,7 @@ const addResolver = require('../../services/addResolver');
 
 module.exports = function(gulp, callback) {
     if (argv.n) {
-        addResolver(argv.n, argv.r.split(','));
+        addResolver(argv.n, argv.r ? argv.r.split(',') : false);
         callback();
     } else {
         inquirer.prompt([{
@@ -18,7 +18,7 @@ module.exports = function(gulp, callback) {
             message: 'What do you need to resolve? (Comma Separated List)',
             name: 'resolves'
         }], function(res) {
-            addResolver(res.name, res.resolves.split(','));
+            addResolver(res.name, res.resolves ? res.resolves.split(',') : false);
             callback();
         });
     }

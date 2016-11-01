@@ -4,7 +4,7 @@ const runSequence  = require('run-sequence').use(gulp);
 const fs          = require('fs');
 
 
-module.exports = function(name) {
+module.exports = function(name) {    
     var newRoutes = appRoutes;
     var stateSteps = name.split(/(?=[A-Z])/);
     var state = stateSteps.join(".").toLowerCase();
@@ -25,7 +25,7 @@ module.exports = function(name) {
         cssSrcDir+'state/'+name+'.scss',
         htmlSrcDir+'state/'+name+'.pug',
         htmlDir+'state/'+name+'.html',
-        jsSrcDir+'state/'+name+'State.ts',
+        jsSrcDir+'state/'+name+'.ts',
         jsSrcDir+'resolver/'+name+'.ts'
     ],{
         read: false

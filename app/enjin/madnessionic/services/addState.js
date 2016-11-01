@@ -6,9 +6,19 @@ const addController  = require('./addController');
 const addRoute       = require('./addRoute');
 const capFirstLetter = require('./capFirstLetter');
 const addResolver    = require('./addResolver');
+const stateExists    = require('./stateExists');
 
 
 module.exports = function(name, view, resolves) {
+    if (stateExists(name)) {
+        console.log(`${name} state already exists!`);
+        return false;
+    }
+
+    if (!view) {
+        view = 'tab';
+    }
+
     gulp.src(tmplDir+'pug/state.pug')
         .pipe(template({name: name}))
         .pipe(rename(name+'.pug'))
@@ -17,10 +27,17 @@ module.exports = function(name, view, resolves) {
         .pipe(template({name: name}))
         .pipe(rename(name+'.scss'))
         .pipe(gulp.dest(cssSrcDir+'state/'));
-    addController(name + 'State', 'state', resolves);
+    addController(name, 'state', resolves);
     var stateSteps = name.split(/(?=[A-Z])/);
     var state = stateSteps.join(".").toLowerCase();
-    addRoute(state, '/'+stateSteps[stateSteps.length - 1].toLowerCase(), 'html/state/'+name+'.html', capFirstLetter(name)+'StateController', capFirstLetter(name)+'Resolver', view);
+    addRoute(
+        state, 
+        '/'+stateSteps[stateSteps.length - 1].toLowerCase(), 
+        'html/state/'+name+'.html', 
+        capFirstLetter(name)+'Controller', 
+        resolves ? capFirstLetter(name)+'Resolver' : false, 
+        view
+    );
     if (resolves) {
         addResolver(name, resolves);
     }

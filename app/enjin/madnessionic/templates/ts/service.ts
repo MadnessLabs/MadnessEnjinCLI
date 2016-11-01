@@ -1,5 +1,3 @@
-/// <reference path="../../typings/index.d.ts"/>
-
 module <%= app %> {
     class <%= name %>Service {
 
@@ -10,4 +8,3 @@ module <%= app %> {
 
     angular.module('<%= app %>').service('<%= name %>', <%= name %>Service);
 }
-

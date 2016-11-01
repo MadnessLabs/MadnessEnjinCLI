@@ -1,10 +1,17 @@
 const rename   = require('gulp-rename');
 const template = require('gulp-template');
 const runSequence  = require('run-sequence').use(gulp);
-const jeditor      = require("gulp-json-editor");
+const jeditor      = require('gulp-json-editor');
+
+const stateExists = require('./stateExists');
 
 
 module.exports = function(name, url, template, controller, resolver, view) {
+
+    if (stateExists(name)) {
+        console.log(`${name} state already exists!`);
+        return false;
+    }
 
     if (!view) {
         view = 'tab';
@@ -15,11 +22,7 @@ module.exports = function(name, url, template, controller, resolver, view) {
         url: url
     };
 
-    if (resolver) {
-        newState.resolve = resolver;
-    }
-
-    console.log(name);
+    
 
     if (name.indexOf('.') > 0) {
         var stateSteps = name.split('.');
@@ -38,10 +41,16 @@ module.exports = function(name, url, template, controller, resolver, view) {
                 controllerAs: view
             }
         };
+        if (resolver) {
+            newState.views[view].resolve = resolver;
+        }
     } else {
         newState.templateUrl = template;
         newState.controller = appName + '.' + controller;
         newState.controllerAs = 'ctrl';
+        if (resolver) {
+            newState.resolve = resolver;
+        }
     }
 
     newRoutes.push(newState);

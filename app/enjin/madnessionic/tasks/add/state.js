@@ -5,8 +5,8 @@ const addState = require('../../services/addState');
 
 
 module.exports = function(gulp, callback) {
-    if (argv.n && argv.v) {
-        addState(argv.n, argv.v, argv.r.split(','));
+    if (argv.n) {
+        addState(argv.n, argv.v, argv.r ? argv.r.split(',') : false);
         callback();
     } else {
         inquirer.prompt([{
@@ -21,9 +21,10 @@ module.exports = function(gulp, callback) {
         }, {
             type: 'input',
             message: 'What are the resolves needed? (Comma Separated List)',
-            name: 'resolves'
+            name: 'resolves',
+            default: false
         }], function(res) {
-            addState(res.name, res.view, res.resolves.split(','));
+            addState(res.name, res.view, res.resolves ? res.resolves.split(',') : false);
             callback();
         });
     }

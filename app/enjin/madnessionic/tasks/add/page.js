@@ -6,7 +6,7 @@ const addPage = require('../../services/addPage');
 
 module.exports = function(gulp, callback) {
     if (argv.n) {
-        addPage(argv.n, argv.r.split(','));
+        addPage(argv.n, argv.r ? argv.r.split(',') : false);
         callback();
     } else {
         inquirer.prompt([{
@@ -16,9 +16,10 @@ module.exports = function(gulp, callback) {
         }, {
             type: 'input',
             message: 'What resolves will the page need?',
-            name: 'name'
+            name: 'resolves',
+            default: false
         }], function(res) {
-            addPage(res.name, res.resolves.split(','));
+            addPage(res.name, res.resolves ? res.resolves.split(',') : false);
             callback();
         });
     }

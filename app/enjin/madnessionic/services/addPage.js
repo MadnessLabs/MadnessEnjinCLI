@@ -4,9 +4,16 @@ const template = require('gulp-template');
 const capFirstLetter = require('./capFirstLetter');
 const addController  = require('./addController');
 const addRoute       = require('./addRoute');
-const addResolver     = require('./addResolver');
+const addResolver    = require('./addResolver');
+const stateExists    = require('./stateExists'); 
+
 
 module.exports = function(name, resolves) {
+    if (stateExists(name)) {
+        console.log(`${name} state already exists!`);
+        return false;
+    }
+
     gulp.src(tmplDir+'pug/page.pug')
         .pipe(template({
             name: name
@@ -25,7 +32,7 @@ module.exports = function(name, resolves) {
         '/'+name, 
         'html/page/'+name+'.html', 
         capFirstLetter(name)+'Controller',
-        capFirstLetter(name)+'Resolver'
+        resolves ? capFirstLetter(name)+'Resolver' : false
     );
     if (resolves) {
         addResolver(name, resolves);
