@@ -1,4 +1,4 @@
-const exec = require('child_process').exec;
+const runSequence = require('run-sequence').use(gulp);
 
 
 module.exports = function(gulp, callback) {
