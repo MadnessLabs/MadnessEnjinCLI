@@ -35,13 +35,13 @@ module.exports = function(enjinDir) {
                     var envJSON = JSON.parse(fs.readFileSync(envPath));
                     envJSON.enjinPath = enjinDir + '/';
                     envJSON.type = enjinJSON.type;
-                    fs.writeFile(toDir + '/.env', JSON.stringify(envJSON), function(err) {
+                    fs.writeFile(toDir + '/.env', JSON.stringify(envJSON, null, 4), function(err) {
                         if(err) {
                             return console.log(err);
                         }
                         envJSON.mobile = true;
                         envJSON.local = false;
-                        fs.writeFile(toDir + '/.env-app', JSON.stringify(envJSON), function(err) {
+                        fs.writeFile(toDir + '/.env-app', JSON.stringify(envJSON, null, 4), function(err) {
                             console.log("Now installing ...");
                             exec('npm install', {
                                 cwd: toDir

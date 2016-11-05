@@ -33,6 +33,10 @@ module <%= app %> {
                 $ionicLoading.hide();
             });
 
+            $rootScope.toggleMenu = function() {
+                $ionicSideMenuDelegate.toggleLeft();
+            };
+
             Platform.run();
         }
     }

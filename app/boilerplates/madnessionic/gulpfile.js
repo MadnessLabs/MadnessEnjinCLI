@@ -4,11 +4,11 @@ fs           = require('fs');
 gulp         = require('gulp');
 env          = JSON.parse(fs.readFileSync('.env'));
 startEnjin   = require(env.enjinPath + '/app/enjin/' + env.type);
-taskDir      = env.taskDir ? process.cwd() + '/' + env.taskDir : process.cwd() + '/tasks';
 
  /////////////////////////////////////
 // ON LOAD
 startEnjin();
+taskDir = configJSON.taskDir ? process.cwd() + '/' + configJSON.taskDir : process.cwd() + '/tasks';
 
  /////////////////////////////////////
 // TASKS
