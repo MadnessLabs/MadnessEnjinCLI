@@ -1,0 +1,8 @@
+{
+    "name": "fireenjin",
+    "dependencies": ["angularfire"],
+    "install": ["madnesslabs/fireenjin"],
+    "copy": {
+        "node_modules/fireenjin/FireEnjin.ts": "app/ts/service"
+    }
+}

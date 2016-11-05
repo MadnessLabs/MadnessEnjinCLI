@@ -4,6 +4,7 @@
     "dependencies": ["firebase"],
     "merge": {
         "enjin.json": {
+            "plugins": ["firebase"],
             "js": {
                 "libraries": [
                     "node_modules/angularfire/dist/angularfire.js"

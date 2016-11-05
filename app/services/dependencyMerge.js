@@ -1,5 +1,15 @@
 const _ = require('lodash');
 
+function containsObjectWithKey(obj, list, key) {
+    var i;
+    for (i = 0; i < list.length; i++) {
+        if (list[i][key] === obj[key]) {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 module.exports = function merge() {
     var destination = {},
@@ -9,15 +19,14 @@ module.exports = function merge() {
         var toTop = false;
 
         for ( prop in source ) {
-            if (prop.indexOf('^') > 0) {
-                toTop = true;
-                prop = prop.slice(0, -1);
-            }
             if ( prop in destination && Array.isArray( destination[ prop ] ) ) {
-                if (toTop) {
-                    console.log(prop);
-                    destination[ prop ] = _.union(source[ prop + '^' ], destination[prop]);
-                    toTop = false;
+                if (typeof source[prop][0] === 'object' && (source[prop][0].name || source[prop][0].id)) {
+                    var key = source[prop][0].id ? 'id' : 'name';
+                    source[prop].forEach(function(obj, index) {
+                        if (!containsObjectWithKey(obj, destination[prop], key)) {
+                           destination[prop].push(obj);
+                        }
+                    });
                 } else {
                     destination[ prop ] = _.union(destination[prop], source[ prop ]);
                 }
