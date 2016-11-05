@@ -15,7 +15,6 @@ module.exports = function merge() {
             }
             if ( prop in destination && Array.isArray( destination[ prop ] ) ) {
                 if (toTop) {
-                    console.log(prop);
                     destination[ prop ] = _.union(source[ prop + '^' ], destination[prop]);
                     toTop = false;
                 } else {

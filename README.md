@@ -15,36 +15,48 @@ Sorry for the long list of global components, we hope to solve this on a future 
 
 ## start
 
-- APP_NAME - The name of the application / folder
+- NAME - The name of the application / folder
 
 This will copy the boilerplate from http://github.com/madnesslabs/madnessionic into a folder with the APP_NAME provided and then run the install for you.
 
 Example:
 
-```enjin start APP_NAME```
+```enjin start NAME```
 
 ---
 ## install
 
-- REPO_LINK - The link to the repo you wish to reinstall
-- FOLDER_NAME - The name you wish to give the folder
+- REPO - The link to the repo you wish to reinstall
+- [NAME] - The name you wish to give the folder / project
 
 This will clone the repo and then run the install for you. You can use short links for GitHub, like MadnessLabs/Animadness.  You can also pass in credentials for private repos in the short link style using the convention, user:password@MadnessLabs/Animadness.
 
 Example:
 
-```enjin install REPO_LINK [FOLDER_NAME]```
+```enjin install REPO [NAME]```
 
 ---
 
 ## env
 
-- ENVIRONMENT - The name of the environment
+- [NAME] - The name of the environment
 
 This will create an environment (.env) file in the directory.
 
 Example:
 
-```enjin env [ENVIRONMENT]```
+```enjin env [NAME]```
+
+---
+
+## plugin
+
+- NAME - The name of the plugin to install
+
+This will install a plugin and any plugins it depends on into your project.
+
+Example:
+
+```enjin plugin NAME```
 
 ---
