@@ -1,3 +1,4 @@
+/// <reference path="../../typings/index.d.ts"/>
 class <%= name %>Resolver {
     constructor() {
         return {

@@ -26,10 +26,8 @@
     "angular": "github:DefinitelyTyped/DefinitelyTyped/angularjs/angular.d.ts#977da240f263e88215a27cb44f2e31524ca07135",
     "angular-animate": "github:DefinitelyTyped/DefinitelyTyped/angularjs/angular-animate.d.ts#977da240f263e88215a27cb44f2e31524ca07135",
     "angular-ui-router": "github:DefinitelyTyped/DefinitelyTyped/angular-ui-router/angular-ui-router.d.ts#4af10f4fae29eabec77058fc16b88af282bbea70",
-    "angularfire": "github:DefinitelyTyped/DefinitelyTyped/angularfire/angularfire.d.ts#32029fcb4e1a3ef8968711b545d77b584435729d",
     "cordova": "github:DefinitelyTyped/DefinitelyTyped/cordova/cordova.d.ts#98d3168c2c570352a3a7393788e2ec9fbb08ade6",
     "cordova-ionic": "registry:dt/cordova-ionic#0.0.0+20160316155526",
-    "firebase": "github:DefinitelyTyped/DefinitelyTyped/firebase/firebase.d.ts#32029fcb4e1a3ef8968711b545d77b584435729d",
     "ionic": "github:DefinitelyTyped/DefinitelyTyped/ionic/ionic.d.ts#98d3168c2c570352a3a7393788e2ec9fbb08ade6",
     "jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#fa8d9683f37d07ed79617a6e037916c6718aeb11",
     "keyboard": "github:DefinitelyTyped/DefinitelyTyped/cordova-ionic/plugins/keyboard.d.ts#05557455c49043ff0189182e27c9e04403a70802"

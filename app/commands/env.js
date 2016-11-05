@@ -16,7 +16,7 @@ module.exports = function(enjinDir) {
         envPath += '-' + process.argv[3];
     }
 
-    fs.writeFile(envPath, JSON.stringify(envJSON), function(err) {
+    fs.writeFile(envPath, JSON.stringify(envJSON, null, 4), function(err) {
         if(err) {
             return console.log(err);
         }

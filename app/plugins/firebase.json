@@ -1,0 +1,48 @@
+{
+    "name": "firebase",
+    "install": ["firebase"],
+    "questions": [{
+        "type": "input",
+        "name": "apiKey",
+        "message": "What is your project API Key?"
+    }, {
+        "type": "input",
+        "name": "authDomain",
+        "message": "What is your project auth domain?"
+    }, {
+        "type": "input",
+        "name": "databaseURL",
+        "message": "What is your project database url?"
+    }, {
+        "type": "input",
+        "name": "storageBucket",
+        "message": "What is your project storage bucket?"
+    }, {
+        "type": "input",
+        "name": "messagingSenderId",
+        "message": "What is your project sender Id?"
+    }],
+    "merge": {
+        "enjin.json": {
+            "google": {
+                "firebase": {
+                    "apiKey": "<%= answers.apiKey %>",
+                    "authDomain": "<%= answers.authDomain %>",
+                    "databaseURL": "<%= answers.databaseURL %>",
+                    "storageBucket": "<%= answers.storageBucket %>",
+                    "messagingSenderId": "<%= answers.messagingSenderId %>"
+                }
+            },
+            "js": {
+                "libraries": [
+                    "node_modules/firebase/firebase.js"
+                ]
+            } 
+        },
+        "typings.json": {
+            "globalDependencies": {
+                "firebase": "github:DefinitelyTyped/DefinitelyTyped/firebase/firebase.d.ts#32029fcb4e1a3ef8968711b545d77b584435729d"
+            }
+        }
+    }
+}

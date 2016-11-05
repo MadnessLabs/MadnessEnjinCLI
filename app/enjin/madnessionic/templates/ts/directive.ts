@@ -1,3 +1,4 @@
+/// <reference path="../../typings/index.d.ts"/>
 angular.module('<%= app %>').directive('<%= name %>', function() {
     return {
         restrict: <%= restrict %>,<%= template %>

@@ -41,11 +41,11 @@ module.exports = function(enjinDir) {
             }
             envJSON.mobile = true;
             envJSON.local = false;
-            fs.writeFile(folderPath + '/.env-app', JSON.stringify(envJSON), function(err) {
+            fs.writeFile(folderPath + '/.env-app', JSON.stringify(envJSON, null, 4), function(err) {
                 var packagePath = folderPath + '/package.json';
                 var packageJSON = JSON.parse(fs.readFileSync(packagePath));
                 packageJSON.scripts.postinstall = 'gulp enjin:reinstall';
-                fs.writeFile(packagePath, JSON.stringify(packageJSON), function(err) {
+                fs.writeFile(packagePath, JSON.stringify(packageJSON, null, 4), function(err) {
                     console.log('Now installing ...');
                     exec('npm install', {cwd: folderPath}, function(error, stdout, stderr){
                         console.log('App installed! ^_^');
