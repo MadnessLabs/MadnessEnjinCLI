@@ -1,11 +1,13 @@
-const copydir = require('copy-dir');
 const exec    = require('child_process').exec;
 const _       = require('lodash');
-const fs      = require('fs');
+const fs      = require('fs-extra');
 var inquirer  = require('inquirer');
+const replace = require('replace');
 
 const merge   = require('../services/merge');
 const dependencyMerge = require('../services/dependencyMerge');
+var queue = [];
+var currentStep = 0;
 
 
 function install(pluginJSON, callback) {
@@ -14,7 +16,7 @@ function install(pluginJSON, callback) {
         exec('npm install --save ' + pluginJSON.install.join(' '), {
             cwd: process.cwd()
         }, function(error, stdout, stderr) {
-            configure(pluginJSON, callback);
+            next(pluginJSON, callback);
         });
     } else {
         console.log('Nothing to install ...');
@@ -27,29 +29,56 @@ function configure(pluginJSON, callback) {
     Object.keys(pluginJSON.merge).forEach(function(fileName, index, arr) {
         var configFile = process.cwd() + '/' + fileName;
         var configJSON = JSON.parse(fs.readFileSync(configFile));
-        //console.log(configJSON, pluginJSON.merge[fileName]);
         fs.writeFile(configFile, JSON.stringify(merge(configJSON, pluginJSON.merge[fileName]), null, 4), function(err) {
             if(err) {
                 errors.push(err);
                 return console.log(err);
             } else {
+                if (fileName === 'typings.json') {
+                    console.log('Installing typings ...');
+                    exec('typings install', {
+                        cwd: process.cwd()
+                    });
+                }
                 if (index + 1 === arr.length && errors.length === 0) {
-                    if (callback && typeof callback === 'function') {
-                        callback(pluginJSON);
-                    }
-                    console.log('Successfully installed ' + pluginJSON.name + ' plugin! ^_^');
+                    next(pluginJSON, callback);
                 }
             }
         });   
     });
 }
 
+function copy(pluginJSON, callback) {
+    console.log('Copying files ...');
+    Object.keys(pluginJSON.copy).forEach(function(from, index, arr) {
+        var to = pluginJSON.copy[from];
+        fs.copy(process.cwd() + '/' + from, process.cwd() + '/' + to, function (err) {
+            if (index + 1 === arr.length) {
+                next(pluginJSON, callback);
+            }
+        });
+    });
+}
+
+function render(pluginJSON, callback) {
+    console.log('Rendering files ...');
+    Object.keys(pluginJSON.render).forEach(function(from, index, arr) {
+        var toFile = process.cwd() + '/' + pluginJSON.render[from];
+        var fromFile = _.template(fs.readFileSync(from))(pluginJSON);
+        fs.writeFile(toFile, fromFile, function(err) {        
+            if (index + 1 === arr.length) {
+                next(pluginJSON, callback);
+            }
+        });
+    });
+}
+
+
 function preInstall(pluginJSON, callback) {
     if (pluginJSON.questions && pluginJSON.questions.length > 0) {
         inquirer.prompt(pluginJSON.questions, function(answers) {
             pluginJSON.answers = answers;
-            var newPluginJSON = JSON.parse(_.template(JSON.stringify(pluginJSON))(pluginJSON));
-            install(newPluginJSON, callback);
+            install(pluginJSON, callback);
         });
     } else {
         install(pluginJSON, callback);
@@ -72,6 +101,57 @@ function checkDependencies(pluginDir, pluginJSON, callback) {
     } else {
         preInstall(pluginJSON, callback);
     }
+}
+
+function finish(pluginJSON, callback) {
+    if (callback && typeof callback === 'function') {
+        callback(pluginJSON);
+    }
+    console.log('Successfully installed ' + pluginJSON.name + ' plugin! ^_^');
+}
+
+function modify(pluginJSON, callback) {
+    console.log('Modifying project files ...');
+    pluginJSON.modify.forEach(function(modification, index, arr) {
+        replace(modification);
+        if (index + 1 === arr.length) {
+            next(pluginJSON, callback);
+        }
+    });
+}
+
+function next(pluginJSON, callback) {
+    if (queue.length === 0) {
+        pluginJSON.enjin = JSON.parse(fs.readFileSync(process.cwd() + '/enjin.json'));
+        pluginJSON = JSON.parse(_.template(JSON.stringify(pluginJSON))(pluginJSON));
+        if (pluginJSON.copy) {
+            queue.push({
+                fn: copy
+            });
+        }
+        if (pluginJSON.render) {
+            queue.push({
+                fn: render
+            });
+        }
+        if (pluginJSON.modify) {
+            queue.push({
+                fn: modify
+            });
+        }
+        if (pluginJSON.merge) {
+            queue.push({
+                fn: configure
+            });
+        }
+        queue.push({
+           fn : finish 
+        });
+    }
+
+    var currentQueued = queue[currentStep];
+    currentStep = currentStep + 1;
+    currentQueued.fn(pluginJSON, callback);
 }
 
 module.exports = function(enjinDir) {

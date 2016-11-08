@@ -1,7 +1,6 @@
-const copydir = require('copy-dir');
 const exec    = require('child_process').exec;
 const _       = require('lodash');
-const fs      = require('fs');
+const fs      = require('fs-extra');
 
 const appName = require('../services/appName');
 

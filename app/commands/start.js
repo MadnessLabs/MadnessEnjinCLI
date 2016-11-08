@@ -1,7 +1,6 @@
-const copydir = require('copy-dir');
 const exec    = require('child_process').exec;
 const _       = require('lodash');
-const fs      = require('fs');
+const fs      = require('fs-extra');
 
 const appName = require('../services/appName');
 
@@ -13,7 +12,7 @@ module.exports = function(enjinDir) {
     var toDir = process.cwd() + '/' + newAppName;
 
     console.log("Copying boilerplate from https://github.com/madnesslabs/madnessionic ...");
-    copydir(fromDir, toDir, function(err){
+    fs.copy(fromDir, toDir, function(err){
         if(err){
             console.log(err);
         } else {

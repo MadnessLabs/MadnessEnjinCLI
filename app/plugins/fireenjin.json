@@ -1,8 +1,31 @@
 {
     "name": "fireenjin",
     "dependencies": ["angularfire"],
-    "install": ["madnesslabs/fireenjin"],
-    "copy": {
-        "node_modules/fireenjin/FireEnjin.ts": "app/ts/service"
-    }
+    "install": ["jssha", "ng-cordova-oauth", "madnesslabs/fireenjin"],
+    "merge": {
+        "enjin.json": {
+            "plugins": [
+                "ngCordovaOauth"
+            ],
+            "js": {
+                "libraries": [
+                    "node_modules/jssha/src/sha.js",
+                    "node_modules/ng-cordova-oauth/dist/ng-cordova-oauth.js"
+                ]
+            }
+        }
+    },
+    "render": {
+        "node_modules/fireenjin/FireEnjin.ts": "app/ts/service/FireEnjin.ts",
+        "node_modules/fireenjin/Rest.ts": "app/ts/service/Rest.ts",
+        "node_modules/fireenjin/Auth.ts": "app/ts/service/Auth.ts",
+        "node_modules/fireenjin/Firebase.ts": "app/ts/service/Firebase.ts"
+    },
+    "modify": [
+        {
+            "regex": "constructor\\(",
+            "replacement": "constructor(\n\t\t\tFireEnjin,",
+            "paths": ["app/ts/run.ts"]
+        }
+    ]
 }
