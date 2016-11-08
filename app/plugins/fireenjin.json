@@ -17,7 +17,6 @@
     },
     "render": {
         "node_modules/fireenjin/FireEnjin.ts": "app/ts/service/FireEnjin.ts",
-        "node_modules/fireenjin/Rest.ts": "app/ts/service/Rest.ts",
         "node_modules/fireenjin/Auth.ts": "app/ts/service/Auth.ts",
         "node_modules/fireenjin/Firebase.ts": "app/ts/service/Firebase.ts"
     },
