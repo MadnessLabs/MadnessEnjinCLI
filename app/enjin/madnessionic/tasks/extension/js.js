@@ -16,12 +16,7 @@ module.exports = function(gulp, callback) {
         })))
         .pipe(gulpif(global.isWatching,  cache('extension:js')))
         .pipe(addsrc('app/typings/index.d.ts'))
-        .pipe(ts({
-            "compilerOptions": {
-                "target": "es5",
-                "sourceMap": false
-            }
-        }));
+        .pipe(ts());
 
         tsResult.dts.pipe(gulp.dest('extension/build'));
         tsResult.js.pipe(gulp.dest('extension/build')).on('end', function() {

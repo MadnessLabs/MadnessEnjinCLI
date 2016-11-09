@@ -19,7 +19,8 @@ module.exports = function(gulp, callback) {
         .pipe(template({
             app: appName,
             routes: appRoutes,
-            defaultRoute: defaultRoute
+            defaultRoute: defaultRoute,
+            typings: '../typings/index.d.ts'
         }))
         .pipe(gulp.dest(jsSrcDir));
 };

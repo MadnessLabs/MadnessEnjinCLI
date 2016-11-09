@@ -1,4 +1,4 @@
-/// <reference path="../typings/index.d.ts"/>
+<%= typings ? '/// <reference path="' + typings + '"/>' : null %>
 ((): void => {
 
     angular.module('<%= app %>', [
