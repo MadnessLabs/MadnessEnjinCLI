@@ -19,7 +19,9 @@ html(lang="en")
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
                 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-                ga('create', `${google.analytics.key}`, 'auto');
+                ga('create', '#{google.analytics.key}', 'auto');
+        if debug && local && !mobile
+            script(src="js/enjin.js")
     body(ng-app=name)
         ion-nav-bar.bar-positive.has-tabs-top
             ion-nav-buttons(side='left')
