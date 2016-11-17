@@ -1,6 +1,6 @@
 {
   "name": "madnessenjin",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "description": "app development assistant",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
