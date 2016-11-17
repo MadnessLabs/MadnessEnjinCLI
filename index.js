@@ -13,7 +13,7 @@ if (process.argv.length > 2) {
         if (index === 2) {
             var modulePath = 'app/commands/' + val;
             try {
-                var command = require('./' + modulePath);
+                var command = require(enjinDir + '/' + modulePath);
                 command(enjinDir);
             } catch (error) {
                 console.log('Sorry ' + val + ' is not an enjin command...yet...?!');
