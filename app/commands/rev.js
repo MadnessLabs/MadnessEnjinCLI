@@ -26,77 +26,144 @@ module.exports = function(enjinDir) {
                     bs.io.sockets.on('connection', function(socket) {
                         socket.on('enjin-add-component', function(data) {
                             console.log(`Adding ${data.name} component ...`);
-                            exec(`gulp add:component -n ${data.name} -a ${data.attrs} -r ${data.resolves}`, process.cwd(), function() {
+                            var command = `gulp add:component -n ${data.name}`;
+                            if (data.attrs) {
+                                command += ` -a ${data.attrs}`;
+                            }
+                            if (data.resolves) {
+                                command += ` -r ${data.resolves}`;
+                            }
+                            console.log('Running Command: ', command);
+                            exec(command, process.cwd(), function() {
                                 console.log(`${data.name} component added successfully! ^_^`);
                             });
                         });
 
                         socket.on('enjin-add-controller', function(data) {
                             console.log(`Adding ${data.name} controller ...`);
-                            exec(`gulp add:controller -n ${data.name} -d ${data.dir}`, process.cwd(), function() {
+                            var command = `gulp add:controller -n ${data.name}`;
+                            if (data.dir) {
+                                command += ` -d ${data.dir}`;
+                            }
+                            console.log('Running Command: ', command);
+                            exec(command, process.cwd(), function() {
                                 console.log(`${data.name} controller added successfully! ^_^`);
                             });
                         });
 
                         socket.on('enjin-add-directive', function(data) {
                             console.log(`Adding ${data.name} directive ...`);
-                            exec(`gulp add:directive -n ${data.name} -a ${data.attrs} -t ${data.template} -r ${data.restrict}`, process.cwd(), function() {
+                            var command = `gulp add:directive -n ${data.name}`;
+                            if (data.attrs) {
+                                command += ` -a ${data.attrs}`;
+                            }
+                            if (data.template) {
+                                command += ` -t ${data.template}`;
+                            }
+                            if (data.restrict) {
+                                command += ` -r ${data.restrict}`;
+                            }
+                            console.log('Running Command: ', command);
+                            exec(command, process.cwd(), function() {
                                 console.log(`${data.name} directive added successfully! ^_^`);
                             });
                         });
 
                         socket.on('enjin-add-filter', function(data) {
                             console.log(`Adding ${data.name} filter ...`);
-                            exec(`gulp add:filter -n ${data.name}`, process.cwd(), function() {
+                            var command = `gulp add:filter -n ${data.name}`;
+                            console.log('Running Command: ', command);
+                            exec(command, process.cwd(), function() {
                                 console.log(`${data.name} filter added successfully! ^_^`);
                             });
                         });
 
                         socket.on('enjin-add-modal', function(data) {
                             console.log(`Adding ${data.name} modal ...`);
-                            exec(`gulp add:modal -n ${data.name}`, process.cwd(), function() {
+                            var command = `gulp add:modal -n ${data.name}`;
+                            console.log('Running Command: ', command);
+                            exec(command, process.cwd(), function() {
                                 console.log(`${data.name} modal added successfully! ^_^`);
                             });
                         });
 
                         socket.on('enjin-add-page', function(data) {
                             console.log(`Adding ${data.name} page ...`);
-                            exec(`gulp add:page -n ${data.name} -r ${data.resolves}`, process.cwd(), function() {
+                            var command = `gulp add:page -n ${data.name}`;
+                            if (data.resolves) {
+                                command += ` -r ${data.resolves}`;
+                            }
+                            console.log('Running Command: ', command);
+                            exec(command, process.cwd(), function() {
                                 console.log(`${data.name} page added successfully! ^_^`);
                             });
                         });
 
                         socket.on('enjin-add-popover', function(data) {
                             console.log(`Adding ${data.name} popover ...`);
-                            exec(`gulp add:popover -n ${data.name}`, process.cwd(), function() {
+                            var command = `gulp add:popover -n ${data.name}`;
+                            console.log('Running Command: ', command);
+                            exec(command, process.cwd(), function() {
                                 console.log(`${data.name} popover added successfully! ^_^`);
                             });
                         });
 
                         socket.on('enjin-add-resolver', function(data) {
                             console.log(`Adding ${data.name} resolver ...`);
-                            exec(`gulp add:resolver -n ${data.name} -r ${data.resolves}`, process.cwd(), function() {
+                            var command = `gulp add:directive -n ${data.name}`;
+                            if (data.resolves) {
+                                command += ` -r ${data.resolves}`;
+                            }
+                            console.log('Running Command: ', command);
+                            exec(commands, process.cwd(), function() {
                                 console.log(`${data.name} resolver added successfully! ^_^`);
                             });
                         });
 
                         socket.on('enjin-add-route', function(data) {
                             console.log(`Adding ${data.name} route ...`);
-                            exec(`gulp add:route -n ${data.name} -u ${data.url} -t ${data.template} -c ${data.controller} -r ${data.resolver}`, process.cwd(), function() {
+                            var command = `gulp add:route -n ${data.name}`;
+                            if (data.url) {
+                                command += ` -u ${data.url}`;
+                            }
+                            if (data.template) {
+                                command += ` -t ${data.template}`;
+                            }
+                            if (data.controller) {
+                                command += ` -c ${data.controller}`;
+                            }
+                            if (data.resolver) {
+                                command += ` -r ${data.resolver}`;
+                            }
+                            console.log('Running Command: ', command);
+                            exec(command, process.cwd(), function() {
                                 console.log(`${data.name} route added successfully! ^_^`);
                             });
                         });
 
                         socket.on('enjin-add-service', function(data) {
                             console.log(`Adding ${data.name} service ...`);
-                            exec(`gulp add:service -n ${data.name} -t ${data.type}`, process.cwd(), function() {
+                            var command = `gulp add:service -n ${data.name}`;
+                            if (data.type) {
+                                command += ` -t ${data.type}`;
+                            }
+                            console.log('Running Command: ', command);
+                            exec(command, process.cwd(), function() {
                                 console.log(`${data.name} service added successfully! ^_^`);
                             });
                         });
 
                         socket.on('enjin-add-state', function(data) {
                             console.log(`Adding ${data.name} state ...`);
-                            exec(`gulp add:state -n ${data.name} -v ${data.view || 'tab'} -r ${data.resolves}`, process.cwd(), function() {
+                            var command = `gulp add:state -n ${data.name}`;
+                            if (data.view) {
+                                command += ` -v ${data.view}`;
+                            }
+                            if (data.resolves) {
+                                command += ` -r ${data.resolves}`;
+                            }
+                            console.log('Running Command: ', command);
+                            exec(command, process.cwd(), function() {
                                 console.log(`${data.name} state added successfully! ^_^`);
                             });
                         });
