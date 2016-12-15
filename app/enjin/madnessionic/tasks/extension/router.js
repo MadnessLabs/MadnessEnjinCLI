@@ -8,7 +8,7 @@ module.exports = function(gulp, callback) {
     for(var i=0; i < configJSON.extension.routes.length; i++){
         var route = configJSON.extension.routes[i];
         var stateName = route.state;
-        delete route.state;
+        //delete route.state;
         if(!defaultRoute){
             defaultRoute = stateName;
         }

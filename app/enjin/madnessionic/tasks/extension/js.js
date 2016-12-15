@@ -7,7 +7,7 @@ const plumber = require('gulp-plumber');
 
 
 module.exports = function(gulp, callback) {
-    var tsResult = gulp.src(['app/extension/**/*.ts'])
+    var tsResult = gulp.src(['app/extension/**/*.ts', 'extension/build/router.ts'])
         .pipe(gulpif(global.isWatching, plumber({
             errorHandler: function(error) {
                 browserSync.notify(error.message, errorTimeout);
