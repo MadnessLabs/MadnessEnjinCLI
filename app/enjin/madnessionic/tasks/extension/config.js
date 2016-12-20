@@ -12,6 +12,7 @@ module.exports = function(gulp, callback) {
             json.permissions = configJSON.extension.permissions ? configJSON.extension.permissions : json.permissions;
             json.browser_action = configJSON.extension.browser_action ? configJSON.extension.browser_action : json.browser_action;
             json.manifest_version = configJSON.extension.manifest_version ? configJSON.extension.manifest_version : json.manifest_version;
+            json.externally_connectable = configJSON.extension.externally_connectable ? configJSON.extension.externally_connectable : [];
             return json; 
         }))
         .pipe(gulp.dest("./extension"));
