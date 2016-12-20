@@ -4,6 +4,9 @@ const jeditor = require('gulp-json-editor');
 module.exports = function(gulp, callback) {
     return gulp.src(tmplDir + 'extension/manifest.json')
         .pipe(jeditor(function(json) {
+            if (configJSON.extension.key) {
+                json.key = configJSON.extension.key;
+            }
             json.name = configJSON.extension.name ? configJSON.extension.name : appName;
             json.description = configJSON.extension.description ? configJSON.extension.description : appDesc;
             json.version = configJSON.extension.version;
