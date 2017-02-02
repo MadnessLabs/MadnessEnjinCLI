@@ -27,7 +27,6 @@ module.exports = function(gulp, callback) {
             if(errorCount === 0 && global.isWatching && global.synced){
                 runSequence('js:compile', 'js:concat', function(){
                     browserSync.reload();
-                    callback();
                 });
             }
         });
