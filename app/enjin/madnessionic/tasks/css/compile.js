@@ -1,6 +1,6 @@
 const sass = require('gulp-sass');
 const plumber = require('gulp-plumber');
-
+const sourcemaps = require('gulp-sourcemaps');
 
 module.exports = function(gulp, callback) {
     return gulp.src(cssWatch)
@@ -11,6 +11,8 @@ module.exports = function(gulp, callback) {
                 this.emit('end');
             }
         }))
+        .pipe(sourcemaps.init())
         .pipe(sass())
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(cssBuildDir));
 };

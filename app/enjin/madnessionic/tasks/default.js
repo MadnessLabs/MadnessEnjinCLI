@@ -11,9 +11,11 @@ module.exports = function(gulp, callback) {
         'css:import', 
         'css:libraries', 
         'css:compile', 
-        'css:concat', 
+        'css:concat',
+        'css:minify', 
         'js:compile', 
         'js:concat', 
+        'js:minify',
         'sync:start', 
         'watch',
         callback

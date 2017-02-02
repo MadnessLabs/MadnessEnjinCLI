@@ -15,6 +15,6 @@ module.exports = function(gulp, callback) {
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(uglify())
+        .pipe(uglify({mangle: false}))
         .pipe(gulp.dest(jsDestDir));
 };
