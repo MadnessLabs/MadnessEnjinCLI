@@ -8,6 +8,6 @@ module.exports = function(gulp, callback) {
     return gulp.src(concatArr)
         .pipe(sourcemaps.init())
         .pipe(concat(jsDestFile))
-        .pipe(sourcemaps.write('.'))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(jsDestDir));
 };

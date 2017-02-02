@@ -17,7 +17,7 @@ module.exports = function(gulp, callback) {
         .pipe(ts());
 
         tsResult.dts.pipe(gulp.dest('build/js'));
-        tsResult.js.pipe(sourcemaps.write('.')).pipe(gulp.dest('build/js')).on('end', function() {
+        tsResult.js.pipe(sourcemaps.write()).pipe(gulp.dest('build/js')).on('end', function() {
             callback();
         });
 };

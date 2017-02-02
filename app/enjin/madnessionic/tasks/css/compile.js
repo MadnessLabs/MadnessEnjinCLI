@@ -13,6 +13,6 @@ module.exports = function(gulp, callback) {
         }))
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(sourcemaps.write('.'))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(cssBuildDir));
 };
