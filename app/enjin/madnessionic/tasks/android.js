@@ -2,7 +2,7 @@ const runSequence = require('run-sequence').use(gulp);
 
 
 module.exports = function(gulp, callback) {
-    runSequence(
+    return runSequence(
         'clean:build', 
         'config:build', 
         'html:template',
