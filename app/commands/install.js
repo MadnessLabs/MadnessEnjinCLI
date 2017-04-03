@@ -11,7 +11,7 @@ module.exports = function(enjinDir) {
         gitClone += 'https://';
         if (enjinModule.indexOf('@') > -1) {
             var credentials = enjinModule.split('@'); 
-            gitClone += credentials[0];
+            gitClone += credentials[0] + '@';
             enjinModule = credentials[1];
         }
         gitClone += 'github.com/';
