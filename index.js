@@ -16,6 +16,7 @@ if (process.argv.length > 2) {
                 var command = require(enjinDir + '/' + modulePath);
                 command(enjinDir);
             } catch (error) {
+                console.log(error);
                 console.log('Sorry ' + val + ' is not an enjin command...yet...?!');
             }
         }
@@ -28,4 +29,5 @@ if (process.argv.length > 2) {
     console.log('start APP_NAME - This will start a new app in the folder APP_NAME');
     console.log('install REPO_LINK [FOLDER_NAME] - This will clone and install an app from a repo link');
     console.log('env [ENVIRONMENT] - This will create a new .env file with an optional name');
+    console.log('android [ENVIRONMENT] [KEYSTORE] [KEYSTORE_PASSWORD] [ALIAS] - This will build an Android APK from your project');
 }
