@@ -1,6 +1,6 @@
 This folder should contain popover templates for your app.  The Enjin can assist in making popovers by using the command below.
 
-```gulp add-popover```
+```gulp add:popover```
 
 This will add the following files to your project:
 ```

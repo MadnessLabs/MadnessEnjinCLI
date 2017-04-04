@@ -90,6 +90,7 @@
             "build/css/directive/**/*.css",
             "build/css/popover/**/*.css",
             "build/css/page/**/*.css",
+            "build/css/state/**/*.css",
             "build/css/modal/**/*.css"
         ],
         "watch": [

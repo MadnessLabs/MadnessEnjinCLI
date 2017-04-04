@@ -1,6 +1,6 @@
 This folder should contain modal templates for your app.  The Enjin can assist in making modals by using the command below.
 
-```gulp add-modal```
+```gulp add:modal```
 
 This will add the following files to your project:
 ```

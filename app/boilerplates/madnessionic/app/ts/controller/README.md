@@ -1,6 +1,6 @@
 This folder should contain page controllers for your app.  The Enjin can assist in making pages by using the command below.
 
-```gulp add-page```
+```gulp add:page```
 
 This will add the following files to your project:
 ```
@@ -19,4 +19,4 @@ SREF: ui-sref="${PAGE_NAME}"
 
 If you just need a controller then you can use the following command.
 
-```gulp add-controller```
+```gulp add:controller```

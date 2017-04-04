@@ -1,6 +1,6 @@
 This folder should contain angular filters for your app.  The Enjin can assist in making filters by using the command below.
 
-```gulp add-filter```
+```gulp add:filter```
 
 This will add the following files to your project:
 ```

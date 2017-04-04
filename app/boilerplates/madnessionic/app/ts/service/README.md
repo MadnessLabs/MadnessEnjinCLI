@@ -1,6 +1,6 @@
 This folder should contain angular services for your app.  The Enjin can assist in making services by using the command below.
 
-```gulp add-service```
+```gulp add:service```
 
 This will add the following files to your project:
 ```

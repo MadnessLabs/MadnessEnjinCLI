@@ -1,6 +1,6 @@
 This folder should contain angular directive (component) styles for your app.  The Enjin can assist in making components by using the command below.
 
-```gulp add-component```
+```gulp add:component```
 
 This will add the following files to your project:
 ```
