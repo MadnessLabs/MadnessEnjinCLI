@@ -60,3 +60,18 @@ Example:
 ```enjin plugin NAME```
 
 ---
+
+## android
+
+- ENVIRONMENT - The environment to build for
+- KEYSTORE - The path to your projects keystore for Android
+- KEYSTORE_PASSWORD - The password for your keystore
+- ALIAS - The alias for the App on the keystore
+
+This will build an Android APK from your project.
+
+Example:
+
+```android [ENVIRONMENT] [KEYSTORE] [KEYSTORE_PASSWORD] [ALIAS]```
+
+---
