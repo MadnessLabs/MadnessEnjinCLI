@@ -49,6 +49,11 @@ module.exports = function(enjinDir) {
                             exec('npm install', {
                                 cwd: toDir
                             }, function(error, stdout, stderr) {
+                                try {
+                                    fs.copySync(toDir + '/.npmignore', toDir + '/.gitignore');
+                                } catch (err) {
+                                    console.error(err);
+                                }
                                 exec(`gulp enjin:reinstall`, {cwd: toDir }, function(error, stdout, stderr){
                                     console.log('Initializing Git Repo...');
                                     exec('git init', {cwd: toDir }, function(error, stdout, stderr){
