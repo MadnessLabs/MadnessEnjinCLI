@@ -91,9 +91,9 @@ enjin install [GITHUB_USERNAME]:[GITHUB_PASSWORD]@[GITHUB_REPO]
 OR OLD FASHIONED WAY
 
 ```
-git clone https://github.com/[GITHUB_REPO].git
+git clone https://github.com/[GITHUB_REPO].git [FOLDER_NAME]
 Password: [GITHUB_PASSWORD]
-cd dexsphere
+cd [FOLDER_NAME]
 npm install
 ``` 
 

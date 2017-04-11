@@ -49,18 +49,20 @@ module.exports = function(enjinDir) {
                             exec('npm install', {
                                 cwd: toDir
                             }, function(error, stdout, stderr) {
-                                console.log('Initializing Git Repo...');
-                                exec('git init', {cwd: toDir }, function(error, stdout, stderr){
-                                    console.log('Creating Initial Commit...');
-                                    exec('git add .', {cwd: toDir }, function(error, stdout, stderr){
-                                        exec('git commit -m "Scaled with MadnessEnjin.net"', {cwd: toDir }, function(error, stdout, stderr){
-                                            console.log('Connecting Repo to Github...');
-                                            exec(`git remote add origin https://${user}:${token}@github.com/${repo}`, {cwd: toDir }, function(error, stdout, stderr){
-                                                console.log('Pushing Project to Github...');
-                                                exec(`git push -u origin master`, {cwd: toDir }, function(error, stdout, stderr){
-                                                    console.log('Cleaning up...');
-                                                    exec(`rimraf .git`, {cwd: toDir }, function(error, stdout, stderr){
-                                                        console.log(`App installed @ http://${newAppName}.MadnessEnjin.net ! ^_^`);
+                                exec(`gulp enjin:reinstall`, {cwd: toDir }, function(error, stdout, stderr){
+                                    console.log('Initializing Git Repo...');
+                                    exec('git init', {cwd: toDir }, function(error, stdout, stderr){
+                                        console.log('Creating Initial Commit...');
+                                        exec('git add .', {cwd: toDir }, function(error, stdout, stderr){
+                                            exec('git commit -m "Scaled with MadnessEnjin.net"', {cwd: toDir }, function(error, stdout, stderr){
+                                                console.log('Connecting Repo to Github...');
+                                                exec(`git remote add origin https://${user}:${token}@github.com/${repo}`, {cwd: toDir }, function(error, stdout, stderr){
+                                                    console.log('Pushing Project to Github...');
+                                                    exec(`git push -u origin master`, {cwd: toDir }, function(error, stdout, stderr){
+                                                        console.log('Cleaning up...');
+                                                        exec(`rimraf .git`, {cwd: toDir }, function(error, stdout, stderr){
+                                                            console.log(`App installed @ http://${newAppName}.MadnessEnjin.net ! ^_^`);
+                                                        });
                                                     });
                                                 });
                                             });
