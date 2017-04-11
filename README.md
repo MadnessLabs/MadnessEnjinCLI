@@ -7,7 +7,7 @@ The Enjin is an application development assistant to make cross platform coding 
 
 Sorry for the long list of global components, we hope to solve this on a future update.
 
-```npm install -g madnessenjin cordova ionic browser-sync gulp jade typescript typings jadelint sass-lint```
+```npm install -g madnessenjin cordova ionic browser-sync gulp jade typescript typings jadelint sass-lint rimraf```
 
 ---
 

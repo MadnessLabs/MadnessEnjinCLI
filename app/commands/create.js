@@ -22,6 +22,7 @@ module.exports = function(enjinDir) {
             var packagePath = toDir + '/package.json';
             var packageJSON = JSON.parse(fs.readFileSync(packagePath));
             packageJSON.name = newAppName.toLowerCase();
+            packageJSON.scripts.postinstall = 'gulp enjin:reinstall';
             fs.writeFile(packagePath, JSON.stringify(packageJSON), function(err) {
                 if(err) {
                     return console.log(err);
@@ -57,7 +58,10 @@ module.exports = function(enjinDir) {
                                             exec(`git remote add origin https://${user}:${token}@github.com/${repo}`, {cwd: toDir }, function(error, stdout, stderr){
                                                 console.log('Pushing Project to Github...');
                                                 exec(`git push -u origin master`, {cwd: toDir }, function(error, stdout, stderr){
-                                                    console.log(`App installed @ http://${newAppName}.MadnessEnjin.net ! ^_^`);
+                                                    console.log('Cleaning up...');
+                                                    exec(`rimraf .git`, {cwd: toDir }, function(error, stdout, stderr){
+                                                        console.log(`App installed @ http://${newAppName}.MadnessEnjin.net ! ^_^`);
+                                                    });
                                                 });
                                             });
                                         });
