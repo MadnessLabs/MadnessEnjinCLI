@@ -8,7 +8,6 @@ module.exports = function(gulp, callback) {
     }
 
     runSequence(
-        'clean:build',
         'js:app',
         'config:platform',
         'config:run',
