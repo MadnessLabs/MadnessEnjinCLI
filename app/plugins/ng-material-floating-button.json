@@ -1,0 +1,21 @@
+{
+    "name": "ng-material-floating-button",
+    "install": ["ng-material-floating-button"],
+    "merge": {
+        "enjin.json": {
+            "plugins": [
+                "ng-mfb"
+            ],
+            "css": {
+                "libraries": [
+                    "node_modules/ng-material-floating-button/mfb/src/mfb.scss"
+                ]
+            },
+            "js": {
+                "libraries": [
+                    "node_modules/ng-material-floating-button/src/mfb-directive.js"
+                ]
+            }
+        }
+    }
+}
