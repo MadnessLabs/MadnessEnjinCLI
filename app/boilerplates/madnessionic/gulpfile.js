@@ -3,7 +3,7 @@
 fs           = require('fs');
 gulp         = require('gulp');
 env          = JSON.parse(fs.readFileSync('.env'));
-startEnjin   = require(env.enjinPath + '/app/enjin/' + env.type);
+startEnjin   = require(env.enjinPath + 'app/enjin/' + env.stack);
 
  /////////////////////////////////////
 // ON LOAD
