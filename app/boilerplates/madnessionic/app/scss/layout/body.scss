@@ -6,12 +6,6 @@ body {
     width: 100%;
 }
 
-.hide-sidebar{
-    transform: none !important;
-    width: auto !important;
-}
-
-
 .loading {
     border-radius: 100% !important;
     padding: 15px !important;
@@ -45,34 +39,4 @@ body {
 
 .theme-dark-gray {
     background-color: $theme-dark-gray;
-}
-
-.nav-bar-block{
-    ion-header-bar {
-        .title, .title-left {
-            text-align: center !important;
-            text-indent: 0;
-            left: 0 !important;
-            right: 0 !important;
-        }
-        @media (min-width: $screen-sm) {
-            .title {
-                text-indent: 275px;
-            }
-        }
-
-        .ion-android-search {
-            transform: rotateY(180deg);
-        }
-    }
-}
-
-.buttons-left.header-item{
-    display: block;
-}
-
-@media (min-width: $screen-sm) {
-    .buttons-left.header-item{
-        display: none;
-    }
 }

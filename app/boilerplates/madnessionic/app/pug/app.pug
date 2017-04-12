@@ -24,18 +24,5 @@ html(lang="en")
             script(src="js/enjin.js")
     body(ng-app=name)
         ion-nav-bar.bar-positive.has-tabs-top
-            ion-nav-buttons(side='left')
-                button.button.button-icon.icon.ion-navicon(ng-click="$root.toggleMenu()")
-            // Run 'gulp add-page --n=search' and uncomment the line below
-            //ion-nav-buttons(side="right")
-                a.button.button-icon.icon.ion-android-search(ui-sref="search")
-        ion-side-menus
-            ion-side-menu(side="left" expose-aside-when="large" ng-show="$root.showSidebar")
-                ion-content(scroll="false").has-header
-                    ion-list
-                        ion-item.item-icon-right.menu-toggle(ui-sref="home")
-                            i.icon.ion-home
-                            | Home
-            ion-side-menu-content(ng-class="{'hide-sidebar': !$root.showSidebar}")            
-                ion-nav-view
+        ion-nav-view
         
