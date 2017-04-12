@@ -16,10 +16,10 @@ module.exports = function(enjinDir) {
     var enjin = merge(enjinJSON, envJSON);
     var name = appName(enjin.name);
     var hooksDir = `/var/repo/test/${name}/hooks`;
+    var postReceiveTemplate = `${enjinDir}/app/enjin/${enjin.stack ? enjin.stack : enjin.type ? enjin.type : 'madnessionic'}/templates/bin/post-receive`;
 
     if (action === 'server') {
         console.log('Creating deploy hook scripts...');
-        var postReceiveTemplate = `${enjinDir}/enjin/${enjin.stack ? enjin.stack : enjin.type ? enjin.type : 'madnessionic'}/templates/bin/post-receive`;
         fs.readFile(postReceiveTemplate, 'utf8', (err, postReceiveFile) => {
             var postReceive = _.template(postReceiveFile)(enjin);
             fs.outputFile(`${hooksDir}/post-receive`, postReceive, (err) => {
