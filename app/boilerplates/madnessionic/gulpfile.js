@@ -13,7 +13,7 @@ taskDir = configJSON.taskDir ? process.cwd() + '/' + configJSON.taskDir : proces
  /////////////////////////////////////
 // TASKS
 require('gulp-require-tasks')({
-    path: env.enjinPath + 'app/enjin/' + env.type + '/tasks',
+    path: env.enjinPath + 'app/enjin/' + env.stack + '/tasks',
     gulp: gulp
 });
 

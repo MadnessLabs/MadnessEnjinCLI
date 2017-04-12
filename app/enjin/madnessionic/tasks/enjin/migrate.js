@@ -9,7 +9,7 @@ const cleanString = require('../../services/cleanString');
 const removeFolder = require('../../services/removeFolder');
 
 module.exports = function(gulp, callback) {
-    var boilerplatePath = global.enjin.path + '/app/boilerplates/' + global.enjin.type + '/';
+    var boilerplatePath = global.enjin.path + '/app/boilerplates/' + global.enjin.stack + '/';
     // Move everything from src to app
     gulp.src('./src/**/*.*')
         .pipe(gulp.dest('./app'))
@@ -57,7 +57,7 @@ module.exports = function(gulp, callback) {
             // Update enjin file
             gulp.src('./enjin.json')
                 .pipe(jeditor(function(json) {
-                    json.type = 'madnessionic';
+                    json.stack = 'madnessionic';
                     if (json.js.build.indexOf('build/js/page/**/*.js') === -1) {
                         json.js.build.push('build/js/page/**/*.js');
                     }

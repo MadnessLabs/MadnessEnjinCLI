@@ -19,7 +19,7 @@ module.exports = function(callback) {
     if (configJSON.extension && !configJSON.extension.routes) {
         configJSON.extension.routes = configJSON.routes;
     }
-    global.enjin.type = configJSON.type;
+    global.enjin.stack = configJSON.stack;
     // APP
     appName      = configJSON.name;
     appDebug     = configJSON.debug;
@@ -73,7 +73,7 @@ module.exports = function(callback) {
     jsLib        = configJSON.js.libraries;
     jsWatch      = configJSON.js.watch;
     // TEMPLATES
-    tmplDir      =  global.enjin.path  + '/app/enjin/' + global.enjin.type + '/templates/';
+    tmplDir      =  global.enjin.path  + '/app/enjin/' + global.enjin.stack + '/templates/';
 
     if (callback && typeof callback === "function") {
         callback();

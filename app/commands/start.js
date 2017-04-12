@@ -6,9 +6,9 @@ const appName = require('../services/appName');
 
 
 module.exports = function(enjinDir) {
-    var enjinType = 'madnessionic';
+    var stack = 'madnessionic';
     var newAppName = appName(process.argv[3]) || 'EnjinApp';
-    var fromDir = enjinDir + '/app/boilerplates/' + enjinType;
+    var fromDir = enjinDir + '/app/boilerplates/' + stack;
     var toDir = process.cwd() + '/' + newAppName;
 
     console.log("Copying boilerplate from https://github.com/madnesslabs/madnessionic ...");
@@ -33,7 +33,7 @@ module.exports = function(enjinDir) {
                     var envPath = toDir + '/.env-sample';
                     var envJSON = JSON.parse(fs.readFileSync(envPath));
                     envJSON.enjinPath = enjinDir + '/';
-                    envJSON.type = enjinJSON.type;
+                    envJSON.stack = enjinJSON.stack;
                     fs.writeFile(toDir + '/.env', JSON.stringify(envJSON, null, 4), function(err) {
                         if(err) {
                             return console.log(err);

@@ -11,7 +11,7 @@ module.exports = function(enjinDir) {
             var compiled = _.template(contents);
             var gulpfile = compiled({ 
                 enjinDir: enjinDir, 
-                enjinType: 'madnessionic'
+                stack: 'madnessionic'
             });
             fs.writeFile(process.cwd() + '/gulpfile.js', gulpfile, function(err) {
                 if(err) {

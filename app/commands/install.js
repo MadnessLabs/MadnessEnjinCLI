@@ -34,7 +34,7 @@ module.exports = function(enjinDir) {
         var envJSON = JSON.parse(fs.readFileSync(envPath));
         var enjinJSON = JSON.parse(fs.readFileSync(folderPath + '/enjin.json'));
         envJSON.enjinPath = enjinDir + '/';
-        envJSON.type = enjinJSON.type;
+        envJSON.stack = enjinJSON.stack;
         fs.writeFile(folderPath + '/.env', JSON.stringify(envJSON), function(err) {
             if(err) {
                 return console.log(err);

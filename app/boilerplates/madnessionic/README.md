@@ -33,7 +33,7 @@ This project is being built with the [Madness Enjin](https://github.com/MadnessL
     "local": false,
     "debug": true,
     "enjinPath": "C:/xampp/htdocs/EnjinCLI/",
-    "type": "madnessionic",
+    "stack": "madnessionic",
     "android": {
         "keystorePassword": "YOUR ANDROID KEYSTORE PASSWORD"
     }
