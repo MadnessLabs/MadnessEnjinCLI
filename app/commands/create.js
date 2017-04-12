@@ -13,7 +13,7 @@ module.exports = function(enjinDir) {
     var user = process.argv[5];
     var token = process.argv[6];
     var repo = process.argv[7];
-    var repoDir = '/var/repo';
+    var repoDir = '/var/repo/test';
 
     console.log(`Copying boilerplate from https://github.com/madnesslabs/${stack} ...`);
     fs.copy(fromDir, toDir, function(err){
