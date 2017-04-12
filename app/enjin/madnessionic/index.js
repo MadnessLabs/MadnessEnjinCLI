@@ -9,7 +9,7 @@ const path    = require('path');
 module.exports = function(){
     global.enjin = {
         path: slash(path.join(__dirname, '..', '..', '..')),
-        type: 'madnessionic'
+        stack: 'madnessionic'
     };
     global.env = environment = argv.e ? argv.e : false;
     global.isWatching = false;
