@@ -68,7 +68,7 @@ module.exports = function(enjinDir) {
                                                         console.log('Cleaning up...');
                                                         exec(`rimraf .git`, {cwd: toDir }, function(error, stdout, stderr){
                                                             console.log('Setting up Testing server...');
-                                                            exec(`git clone https://${user}:${token}@github.com/${repo} --bare`, {cwd: repoDir }, function(error, stdout, stderr){
+                                                            exec(`git clone https://${user}:${token}@github.com/${repo} ${name} --bare`, {cwd: repoDir }, function(error, stdout, stderr){
                                                                 exec(`enjin deploy server`, {cwd: toDir }, function(error, stdout, stderr){
                                                                     console.log(`App installed @ http://${newAppName}.MadnessEnjin.net ! ^_^`);
                                                                 });
