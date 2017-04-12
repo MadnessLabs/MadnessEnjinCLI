@@ -22,12 +22,18 @@ if (process.argv.length > 2) {
         }
     });
 } else {
-    console.log('Madness Enjin - It\'s the Alfred to your Batman');
-    console.log('Version: ' + packageJSON.version);
-    console.log('\n');
+    console.log('Madness Enjin - App building assistant by Madness Labs');
+    console.log('If you like our command line tool then check out our new app building app @ MadnessEnjin.net.\nIt makes the process even easier and the best part it\'s FREE for Open Source! ^_^');
+    console.log('Version: ' + packageJSON.version + '\n');
     console.log('--- CURRENT COMMANDS ---');
-    console.log('start APP_NAME - This will start a new app in the folder APP_NAME');
-    console.log('install REPO_LINK [FOLDER_NAME] - This will clone and install an app from a repo link');
-    console.log('env [ENVIRONMENT] - This will create a new .env file with an optional name');
-    console.log('android [ENVIRONMENT] [KEYSTORE] [KEYSTORE_PASSWORD] [ALIAS] - This will build an Android APK from your project');
+    console.log('start APP_NAME\nThis will start a new app in the folder APP_NAME\n\r');
+    console.log('install REPO_LINK [FOLDER_NAME]\nThis will clone and install an app from a repo link\n\r');
+    console.log('env [ENVIRONMENT]\nThis will create a new .env file with an optional name\n\r');
+    console.log('android [ACTION] [ENVIRONMENT]');
+    console.log('    [ACTION] = release - This will build Android APK release from your project.');
+    console.log('    [ACTION] = run - This will build a debug Android APK from your project and run on emulator or connected device.');
+    console.log('    [ENVIRONMENT] - This controls which .env file to use to build your app.');
+    console.log('    -k --keystore = The path to your android keystore (Default: enjin.android.keystore)');
+    console.log('    -p --password = The keystore password (Default: enjin.android.keystorePassword)');
+    console.log('    -a --alias = The app alias for android (Default: alias_name)');
 }
