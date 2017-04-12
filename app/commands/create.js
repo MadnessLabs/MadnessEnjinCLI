@@ -13,6 +13,7 @@ module.exports = function(enjinDir) {
     var user = process.argv[5];
     var token = process.argv[6];
     var repo = process.argv[7];
+    var repoDir = '/var/repo';
 
     console.log(`Copying boilerplate from https://github.com/madnesslabs/${stack} ...`);
     fs.copy(fromDir, toDir, function(err){
@@ -66,7 +67,12 @@ module.exports = function(enjinDir) {
                                                     exec(`git push -u origin master`, {cwd: toDir }, function(error, stdout, stderr){
                                                         console.log('Cleaning up...');
                                                         exec(`rimraf .git`, {cwd: toDir }, function(error, stdout, stderr){
-                                                            console.log(`App installed @ http://${newAppName}.MadnessEnjin.net ! ^_^`);
+                                                            console.log('Setting up Testing server...');
+                                                            exec(`git clone https://${user}:${token}@github.com/${repo} --bare`, {cwd: repoDir }, function(error, stdout, stderr){
+                                                                exec(`enjin deploy server`, {cwd: toDir }, function(error, stdout, stderr){
+                                                                    console.log(`App installed @ http://${newAppName}.MadnessEnjin.net ! ^_^`);
+                                                                });
+                                                            });
                                                         });
                                                     });
                                                 });

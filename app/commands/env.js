@@ -5,7 +5,7 @@ module.exports = function(enjinDir) {
     var enjinJSON = JSON.parse(fs.readFileSync(process.cwd() + '/enjin.json'));
     var envJSON = {
         'enjinPath': enjinDir + '/',
-        'type': enjinJSON.type,
+        'stack': enjinJSON.stack,
         'mobile': enjinJSON.mobile,
         'local': enjinJSON.local,
         'debug': enjinJSON.debug

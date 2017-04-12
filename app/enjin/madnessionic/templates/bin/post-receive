@@ -1,0 +1,5 @@
+#!/bin/sh
+git --work-tree=/var/www/test/<%= folder %> --git-dir=/var/repo/test/<%= folder %> checkout -f
+cd /var/www/test/<%= folder %>
+npm install
+gulp build
