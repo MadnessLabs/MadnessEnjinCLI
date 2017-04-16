@@ -1,0 +1,18 @@
+{
+    "name": "clipboard",
+    "install": ["clipboard", "@types/clipboard"],
+    "merge": {
+        "enjin.json": {
+            "js": {
+                "libraries": [
+                    "node_modules/clipboard/dist/clipboard.js"
+                ]
+            } 
+        },
+        "typings.json": {
+            "dependencies": {
+                "clipboard": "file:node_modules/@types/clipboard/index.d.ts"
+            }
+        }
+    }
+}
