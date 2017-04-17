@@ -1,57 +1,50 @@
-const exec    = require('child_process').exec;
-const fs      = require('fs');
+const nconf   = require('nconf');
+var inquirer  = require('inquirer');
+
+const API = require('../services/API');
+const cloneRepo = require('../services/cloneRepo');
 
 
 module.exports = function(enjinDir) {
-    var enjinModule = process.argv[3];
-    var gitClone = 'git clone ';
-    var folderName = '';
+    var enjinProject = process.argv[3];
+    const configFile = `${enjinDir}/enjin.json`;
+    nconf.argv()
+        .env()
+        .file({ file: configFile });
 
-    if (enjinModule.indexOf('://') === -1) {
-        gitClone += 'https://';
-        if (enjinModule.indexOf('@') > -1) {
-            var credentials = enjinModule.split('@'); 
-            gitClone += credentials[0] + '@';
-            enjinModule = credentials[1];
-        }
-        gitClone += 'github.com/';
-    }
-    
-    if (process.argv[4]) {
-        folderName = process.argv[4];
-        enjinModule += ' ' + filderName;
-    } else {
-        folderName = enjinModule.split('/')[1];
-    }
-    var folderPath = process.cwd() + '/' + folderName;
-    
-    gitClone += enjinModule;
+    var currentUser = nconf.get('user');
 
-    console.log('Cloning ' + enjinModule + ' into ' + folderName + ' ...');
-    exec(gitClone, function(error, stdout, stderr) {
-        console.log('Setting up environments ...');
-        var envPath = folderPath + '/enjin.sample.json';
-        var envJSON = JSON.parse(fs.readFileSync(envPath));
-        var enjinJSON = JSON.parse(fs.readFileSync(folderPath + '/enjin.json'));
-        envJSON.enjinPath = enjinDir + '/';
-        envJSON.stack = enjinJSON.stack;
-        fs.writeFile(folderPath + '/enjin.local.json', JSON.stringify(envJSON), function(err) {
-            if(err) {
-                return console.log(err);
-            }
-            envJSON.mobile = true;
-            envJSON.local = false;
-            fs.writeFile(folderPath + '/enjin.app.json', JSON.stringify(envJSON, null, 4), function(err) {
-                var packagePath = folderPath + '/package.json';
-                var packageJSON = JSON.parse(fs.readFileSync(packagePath));
-                packageJSON.scripts.postinstall = 'gulp enjin:reinstall';
-                fs.writeFile(packagePath, JSON.stringify(packageJSON, null, 4), function(err) {
-                    console.log('Now installing ...');
-                    exec('npm install', {cwd: folderPath}, function(error, stdout, stderr){
-                        console.log('App installed! ^_^');
+    if (currentUser) {
+        if (enjinProject) {
+            cloneRepo(enjinProject, process.argv[4]);
+        } else {
+            new API('get', 'project', {}, (data) => {
+                var choices = [];
+                data.forEach(function(project, index) {
+                    choices.push({
+                        name: project.name,
+                        value: project.github
                     });
+                    if (index === data.length - 1) {
+                        inquirer.prompt([
+                            {
+                                type: 'list',
+                                name: 'repo',
+                                message: 'Which project you would like to install?',
+                                choices: choices
+                            }
+                        ], (answers) => {
+                            cloneRepo(`${currentUser.github_login}:${currentUser.github_token}@${answers.repo}`);
+                        });
+                    }
                 });
             });
-        });
-    });
+        }
+    } else {
+        if (!enjinProject) {
+            console.log('Github repo link required...');
+            return false;
+        }
+        cloneRepo(enjinProject, process.argv[4]);
+    }
 };

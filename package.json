@@ -52,6 +52,7 @@
     "inline-sourcemap-concat": "^0.2.0",
     "inquirer": "^0.11.0",
     "lodash": "^4.16.4",
+    "nconf": "^0.8.4",
     "ng-cordova": "^0.1.27-alpha",
     "node-sass": "^3.8.0",
     "path": "^0.12.7",
@@ -59,6 +60,7 @@
     "replace": "^0.3.0",
     "run-sequence": "^1.1.4",
     "slash": "^1.0.0",
+    "unirest": "^0.5.1",
     "yargs": "^4.4.0"
   }
 }
