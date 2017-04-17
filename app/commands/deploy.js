@@ -37,7 +37,7 @@ module.exports = function(enjinDir) {
                     console.log('Enabling hooks...');
                     exec(`chmod +x post-receive`, {cwd: hooksDir}, function(error, stdout, stderr){
                         exec(`id -u ${user}`, {cwd: hooksDir}, function(error, stdout, stderr){
-                            console.log(stdout);
+                            console.log(stdout, error, stderr);
                             if (Number.isNaN(Number(stdout))) {
                                 exec(`echo ${token} | passwd ${user} --stdin`, {cwd: hooksDir}, function(error, stdout, stderr){
                                     console.log(`User created to deploy to MadnessEnjin.net...`);
