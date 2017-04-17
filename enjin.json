@@ -1,13 +1,13 @@
 {
   "user": {
-    "id": 2,
+    "id": 1,
     "name": "Bobby Johnson",
     "email": "bobby@madnesslabs.net",
     "avatar": "https://avatars1.githubusercontent.com/u/4184680?v=3",
-    "token": "OqYY5pxi2h0Vo31gZ8JqIW2EOeJoEigKEKVfMfwxR0lWsZUFJOzuwvHmt6aYNZfd",
+    "token": "e9O2LIoApJraCWzHkyfkPye3LBMDDtsKoaIDrIa3rpezkP0cI8Wp19Eo9GviMCjP",
     "github_login": "popcorn245",
-    "github_token": "74e4d00051eb671c59df709e6dc154936291b480",
-    "created_at": "2017-04-08 19:52:38",
-    "updated_at": "2017-04-17 06:11:08"
+    "github_token": "ee4759389d609cc10bd9bb2970573eb5517cb592",
+    "created_at": "2017-04-08 15:24:33",
+    "updated_at": "2017-04-17 06:24:06"
   }
 }

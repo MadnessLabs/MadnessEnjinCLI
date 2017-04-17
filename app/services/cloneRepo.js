@@ -2,7 +2,7 @@ const exec    = require('child_process').exec;
 const fs      = require('fs');
 
 
-module.exports = function(enjinModule, folderPath, callback) {
+module.exports = function(enjinDir, enjinModule, folderPath, callback) {
     var gitClone = 'git clone ';
     var folderName = '';
 

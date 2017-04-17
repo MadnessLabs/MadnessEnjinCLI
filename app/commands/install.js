@@ -16,7 +16,7 @@ module.exports = function(enjinDir) {
 
     if (currentUser) {
         if (enjinProject) {
-            cloneRepo(enjinProject, process.argv[4]);
+            cloneRepo(enjinDir, enjinProject, process.argv[4]);
         } else {
             new API('get', 'project', {}, (data) => {
                 var choices = [];
@@ -34,7 +34,7 @@ module.exports = function(enjinDir) {
                                 choices: choices
                             }
                         ], (answers) => {
-                            cloneRepo(`${currentUser.github_login}:${currentUser.github_token}@${answers.repo}`);
+                            cloneRepo(enjinDir, `${currentUser.github_login}:${currentUser.github_token}@${answers.repo}`);
                         });
                     }
                 });
@@ -45,6 +45,6 @@ module.exports = function(enjinDir) {
             console.log('Github repo link required...');
             return false;
         }
-        cloneRepo(enjinProject, process.argv[4]);
+        cloneRepo(enjinDir, enjinProject, process.argv[4]);
     }
 };
