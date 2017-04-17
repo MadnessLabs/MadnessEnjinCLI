@@ -40,6 +40,7 @@ module.exports = function(enjinDir) {
                             console.log(stdout, error, stderr);
                             if (Number.isNaN(Number(stdout))) {
                                 exec(`echo ${token} | passwd ${user} --stdin`, {cwd: hooksDir}, function(error, stdout, stderr){
+                                    console.log(stdout, error, stderr);
                                     console.log(`User created to deploy to MadnessEnjin.net...`);
                                     grantRights(user, repoDir, () => {
                                         console.log('Successfully setup deploy on server! ^_^');
