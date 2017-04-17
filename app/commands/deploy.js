@@ -37,16 +37,18 @@ module.exports = function(enjinDir) {
                     console.log('Enabling hooks...');
                     exec(`chmod +x post-receive`, {cwd: hooksDir}, function(error, stdout, stderr){
                         exec(`id -u ${user}`, {cwd: hooksDir}, function(error, stdout, stderr){
-                            if (!stderr && Number.isNaN(Number(stdout))) {
+                            if (stderr) {
                                 exec(`echo ${token} | passwd ${user} --stdin`, {cwd: hooksDir}, function(error, stdout, stderr){
                                     console.log(stdout, stderr);
                                     console.log(`User created to deploy to MadnessEnjin.net...`);
-                                    grantRights(user, repoDir, () => {
+                                    grantRights(user, repoDir, (stdout, stderr) => {
+                                        console.log(stdout, stderr);
                                         console.log('Successfully setup deploy on server! ^_^');
                                     });
                                 });
                             } else {
-                                grantRights(user, repoDir, () => {
+                                grantRights(user, repoDir, (stdout, stderr) => {
+                                    console.log(stdout, stderr);
                                     console.log('Successfully setup deploy on server! ^_^');
                                 });
                             }
