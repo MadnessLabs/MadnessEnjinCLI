@@ -9,7 +9,7 @@ module.exports = function(enjinDir) {
     var environment = process.argv[4] ? process.argv[4] : 'app';
     console.log('Setting Variables from enjin.json...');
     try {
-        env = JSON.parse(fs.readFileSync(`.env-${environment}`));
+        env = JSON.parse(fs.readFileSync(`enjin.${environment}.json`));
     } catch(e) {
         env = {};
         console.log(e);
@@ -23,7 +23,7 @@ module.exports = function(enjinDir) {
     var env = {};
     
     if (!keystorePassword && action === 'release') {
-        console.log('Error: Keystore password is required in either .env or as a parameter');
+        console.log('Error: Keystore password is required in either enjin.[Environment].json or as a parameter');
         return false;
     }
 

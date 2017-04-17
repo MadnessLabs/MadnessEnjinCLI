@@ -3,7 +3,7 @@ const fs    = require('fs');
 
 module.exports = function(callback) {
     console.log('Setting Variables from enjin.json...');
-    envFile      = '.env';
+    envFile      = 'enjin.local.json';
     if (environment) {
         envFile = envFile + '-' + environment;
     }

@@ -7,8 +7,8 @@ logs/
 *.sublime-workspace
 *.log
 .deploy
-.env
-.env-app
+enjin.*.json
+!enjin.sample.json
 .history
 .vscode/settings.json
 www/js/

@@ -30,18 +30,18 @@ module.exports = function(enjinDir) {
     console.log('Cloning ' + enjinModule + ' into ' + folderName + ' ...');
     exec(gitClone, function(error, stdout, stderr) {
         console.log('Setting up environments ...');
-        var envPath = folderPath + '/.env-sample';
+        var envPath = folderPath + '/enjin.sample.json';
         var envJSON = JSON.parse(fs.readFileSync(envPath));
         var enjinJSON = JSON.parse(fs.readFileSync(folderPath + '/enjin.json'));
         envJSON.enjinPath = enjinDir + '/';
         envJSON.stack = enjinJSON.stack;
-        fs.writeFile(folderPath + '/.env', JSON.stringify(envJSON), function(err) {
+        fs.writeFile(folderPath + '/enjin.local.json', JSON.stringify(envJSON), function(err) {
             if(err) {
                 return console.log(err);
             }
             envJSON.mobile = true;
             envJSON.local = false;
-            fs.writeFile(folderPath + '/.env-app', JSON.stringify(envJSON, null, 4), function(err) {
+            fs.writeFile(folderPath + '/enjin.app.json', JSON.stringify(envJSON, null, 4), function(err) {
                 var packagePath = folderPath + '/package.json';
                 var packageJSON = JSON.parse(fs.readFileSync(packagePath));
                 packageJSON.scripts.postinstall = 'gulp enjin:reinstall';

@@ -10,7 +10,7 @@ module.exports = function(enjinDir) {
         'local': enjinJSON.local,
         'debug': enjinJSON.debug
     };
-    var envPath = process.cwd() + '/.env';
+    var envPath = process.cwd() + '/enjin.local.json';
 
     if (process.argv[3]) {
         envPath += '-' + process.argv[3];

@@ -41,7 +41,7 @@ Example:
 
 - [NAME] - The name of the environment
 
-This will create an environment (.env) file in the directory.
+This will create an environment (enjin.[NAME].json) file in the directory.
 
 Example:
 

@@ -23,9 +23,9 @@
 
 # <a name="welcome"></a> Welcome
 
-This project is being built with the [Madness Enjin](https://github.com/MadnessLabs/MadnessEnjinCLI), so it helps to understand some basic concepts of the tool.  All of the variables for your application are stored in ```enjin.json``` file.  You also have a ```.env``` files to overwrite variables set in enjin.json or add new values per environment.  Then all the commands accept a ```-e``` flag that you can use to set the environment.  So an example would be I create the following file in the root or run ```enjin env app``` to have it created for you.
+This project is being built with the [Madness Enjin](https://github.com/MadnessLabs/MadnessEnjinCLI), so it helps to understand some basic concepts of the tool.  All of the variables for your application are stored in ```enjin.json``` file.  You also have a ```enjin.[Environment].json``` files to overwrite variables set in enjin.json or add new values per environment.  Then all the commands accept a ```-e``` flag that you can use to set the environment.  So an example would be I create the following file in the root or run ```enjin env app``` to have it created for you.
 
-### .env-app
+### enjin.app.json
 
 ```
 {
@@ -40,7 +40,7 @@ This project is being built with the [Madness Enjin](https://github.com/MadnessL
 }
 ```
 
-Now you can run ```gulp android -e app``` to run a build on android using the ```.env-app``` file you created.  This is a very powerful concept that could make any variable change per environment.  You could have colors set to signify each environment, pages that are environment exclusive, or it's also a great place to store sensitive information as shown above with the Android keystore password because it shouldn't be synced with the repo.
+Now you can run ```gulp android -e app``` to run a build on android using the ```enjin.app.json``` file you created.  This is a very powerful concept that could make any variable change per environment.  You could have colors set to signify each environment, pages that are environment exclusive, or it's also a great place to store sensitive information as shown above with the Android keystore password because it shouldn't be synced with the repo.
 
 The other huge part of the Enjin is the [Commands](#commands) that allow you to generate code, automate dumb tasks, and maintain code quality.  This README should serve as a guide on how to use all of these wonderful tools.  Enjoy and if we have helped you out in any way then please [Support us on Patreon](https://www.patreon.com/madnesslabs) so we can continue to development on Madness Enjin.
 
@@ -306,7 +306,7 @@ Creates Sublime Text project file based off of the enjin.json file
 
 # <a name="css-commands"></a> CSS Commands
 
-These commands control the CSS build process.  The only flag is the ```-e [Environment]``` to control which .env file you are using to overwrite enjin.json variables. These will almost never be used as the general commands run these for you, but they are here if needed.
+These commands control the CSS build process.  The only flag is the ```-e [Environment]``` to control which ```enjin.[Environment].json``` file you are using to overwrite enjin.json variables. These will almost never be used as the general commands run these for you, but they are here if needed.
 
 ### **gulp css:build**
 
@@ -350,7 +350,7 @@ Copies all font files specified in enjin.json {```fonts.watch```} into the {```f
 
 # <a name="html-commands"></a> HTML Commands
 
-These commands control the HTML build process.  The only flag is the ```-e [Environment]``` to control which .env file you are using to overwrite enjin.json variables. These will almost never be used as the general commands run these for you, but they are here if needed.
+These commands control the HTML build process.  The only flag is the ```-e [Environment]``` to control which ```enjin.[Environment].json``` file you are using to overwrite enjin.json variables. These will almost never be used as the general commands run these for you, but they are here if needed.
 
 ### **gulp html:build**
 
@@ -382,7 +382,7 @@ Creates favicons and icon file for the application from resources/icon.png file.
 
 # <a name="js-commands"></a> JS Commands
 
-These commands control the JS build process.  The only flag is the ```-e [Environment]``` to control which .env file you are using to overwrite enjin.json variables. These will almost never be used as the general commands run these for you, but they are here if needed.
+These commands control the JS build process.  The only flag is the ```-e [Environment]``` to control which ```enjin.[Environment].json``` file you are using to overwrite enjin.json variables. These will almost never be used as the general commands run these for you, but they are here if needed.
 
 ### **gulp js:app**
 
