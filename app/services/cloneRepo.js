@@ -47,10 +47,12 @@ module.exports = function(enjinDir, enjinModule, folderPath, callback) {
                 fs.writeFile(packagePath, JSON.stringify(packageJSON, null, 4), function(err) {
                     console.log('Now installing ...');
                     exec('npm install', {cwd: folderPath}, function(error, stdout, stderr){
-                        console.log('App installed! ^_^');
-                        if (callback && typeof callback === 'function') {
-                            callback();
-                        }
+                        exec('git config --global credential.helper wincred', {cwd: folderPath}, function(error, stdout, stderr){
+                            console.log('App installed! ^_^');
+                            if (callback && typeof callback === 'function') {
+                                callback();
+                            }
+                        });
                     });
                 });
             });

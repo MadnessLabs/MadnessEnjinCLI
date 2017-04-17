@@ -1,3 +1,4 @@
+const exec    = require('child_process').exec;
 const nconf   = require('nconf');
 var inquirer  = require('inquirer');
 
@@ -34,7 +35,9 @@ module.exports = function(enjinDir) {
                                 choices: choices
                             }
                         ], (answers) => {
-                            cloneRepo(enjinDir, `${currentUser.github_login}:${currentUser.github_token}@${answers.repo}`);
+                            cloneRepo(enjinDir, `${currentUser.github_login}:${currentUser.github_token}@${answers.repo}`, false, () => {
+                                // Setup Pushing to MadnessEnjin.net Test Server
+                            });
                         });
                     }
                 });

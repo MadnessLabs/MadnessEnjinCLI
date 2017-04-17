@@ -11,8 +11,9 @@ module.exports = function(enjinDir) {
     var fromDir = enjinDir + '/app/boilerplates/' + stack;
     var toDir = process.cwd() + '/' + newAppName;
     var user = process.argv[5];
-    var token = process.argv[6];
+    var github_token = process.argv[6];
     var repo = process.argv[7];
+    var token = process.argv[8];
     var repoDir = '/var/repo/test';
 
     console.log(`Copying boilerplate from https://github.com/madnesslabs/${stack} ...`);
@@ -62,14 +63,14 @@ module.exports = function(enjinDir) {
                                         exec('git add .', {cwd: toDir }, function(error, stdout, stderr){
                                             exec('git commit -m "Scaled with MadnessEnjin.net"', {cwd: toDir }, function(error, stdout, stderr){
                                                 console.log('Connecting Repo to Github...');
-                                                exec(`git remote add origin https://${user}:${token}@github.com/${repo}`, {cwd: toDir }, function(error, stdout, stderr){
+                                                exec(`git remote add origin https://${user}:${github_token}@github.com/${repo}`, {cwd: toDir }, function(error, stdout, stderr){
                                                     console.log('Pushing Project to Github...');
                                                     exec(`git push -u origin master`, {cwd: toDir }, function(error, stdout, stderr){
                                                         console.log('Cleaning up...');
                                                         exec(`rimraf .git`, {cwd: toDir }, function(error, stdout, stderr){
                                                             console.log('Setting up Testing server...');
-                                                            exec(`git clone https://${user}:${token}@github.com/${repo} ${newAppName} --bare`, {cwd: repoDir }, function(error, stdout, stderr){
-                                                                exec(`enjin deploy server`, {cwd: toDir }, function(error, stdout, stderr){
+                                                            exec(`git clone https://${user}:${github_token}@github.com/${repo} ${newAppName} --bare`, {cwd: repoDir }, function(error, stdout, stderr){
+                                                                exec(`enjin deploy server ${user} ${token}`, {cwd: toDir }, function(error, stdout, stderr){
                                                                     console.log(`App installed @ http://${newAppName}.MadnessEnjin.net ! ^_^`);
                                                                 });
                                                             });
