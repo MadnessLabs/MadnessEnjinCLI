@@ -9,7 +9,6 @@ logs/
 .deploy
 enjin.*.json
 !enjin.sample.json
-!enjin.json
 .history
 .vscode/settings.json
 www/js/
