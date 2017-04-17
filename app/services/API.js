@@ -22,7 +22,7 @@ module.exports = function(method, endpoint, data = {}, callback, token) {
         "Authorization": token ? token : currentUser.token
     };
 
-    var restUrl = `http://api.madnessenjin.dev/v1/${endpoint}`;
+    var restUrl = `http://api.madnessenjin.net/v1/${endpoint}`;
 
     unirest[method.toLowerCase()](restUrl).headers(headers).send(data).end(function(response) {
         if (callback && typeof callback === 'function') {
