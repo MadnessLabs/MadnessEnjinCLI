@@ -58,7 +58,6 @@ module.exports = function(enjinDir) {
                                     console.error(err);
                                 }
                                 exec(`gulp enjin:reinstall`, {cwd: toDir }, function(error, stdout, stderr){
-                                    console.log(github_link);
                                     console.log('Initializing Git Repo...');
                                     exec('git init', {cwd: toDir }, function(error, stdout, stderr){
                                         console.log('Creating Initial Commit...');
