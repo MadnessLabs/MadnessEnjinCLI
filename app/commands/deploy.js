@@ -38,7 +38,7 @@ module.exports = function(enjinDir) {
                     exec(`chmod +x post-receive`, {cwd: hooksDir}, function(error, stdout, stderr){
                         exec(`id -u ${user}`, {cwd: hooksDir}, function(error, stdout, stderr){
                             if (stderr) {
-                                exec(`useradd -s /bin/bash -p $(echo ${token} | openssl passwd -1 -stdin) ${user}`, {cwd: hooksDir}, function(error, stdout, stderr){
+                                exec(`useradd -g enjineers -s /bin/bash -p $(echo ${token} | openssl passwd -1 -stdin) ${user}`, {cwd: hooksDir}, function(error, stdout, stderr){
                                     console.log(`User created to deploy to MadnessEnjin.net...`);
                                     grantRights(user, repoDir, (stdout, stderr) => {
                                         console.log('Successfully setup deploy on server! ^_^');
