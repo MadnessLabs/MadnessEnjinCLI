@@ -18,6 +18,7 @@ module.exports = function(enjinDir) {
     var name = appName(enjin.name);
     var repoDir = `/var/repo/test/${name}`;
     var hooksDir = `${repoDir}/hooks`;
+    var testDir = `/var/www/test/${name}`;
     var postReceiveTemplate = `${enjinDir}/app/enjin/${enjin.stack}/templates/bin/post-receive`;
 
     if (action === 'server') {
@@ -41,12 +42,16 @@ module.exports = function(enjinDir) {
                                 exec(`useradd -m -g enjineers -p $(echo ${token} | openssl passwd -1 -stdin) ${user}`, {cwd: hooksDir}, function(error, stdout, stderr){
                                     console.log(`User created to deploy to MadnessEnjin.net...`);
                                     grantRights(user, repoDir, (stdout, stderr) => {
-                                        console.log('Successfully setup deploy on server! ^_^');
+                                        grantRights(user, testDir, (stdout, stderr) => {
+                                            console.log('Successfully setup deploy on server! ^_^');
+                                        });
                                     });
                                 });
                             } else {
                                 grantRights(user, repoDir, (stdout, stderr) => {
-                                    console.log('Successfully setup deploy on server! ^_^');
+                                    grantRights(user, testDir, (stdout, stderr) => {
+                                        console.log('Successfully setup deploy on server! ^_^');
+                                    });
                                 });
                             }
                         });
