@@ -3,9 +3,11 @@ const fs    = require('fs');
 
 module.exports = function(callback) {
     console.log('Setting Variables from enjin.json...');
-    envFile      = 'enjin.local.json';
+    
     if (environment) {
-        envFile = envFile + '-' + environment;
+        envFile = `enjin.${environment}.json`;
+    } else {
+        envFile = 'enjin.local.json';
     }
     try {
         env = JSON.parse(fs.readFileSync(envFile));
