@@ -38,7 +38,9 @@ module.exports = function(enjinDir) {
                         ], (answers) => {
                             cloneRepo(enjinDir, `${currentUser.github_login}:${currentUser.github_token}@${answers.repo}`, false, () => {
                                 console.log('Setting up connection to test server...');
-                                exec(`git remote add test ssh://${currentUser.github_login}@104.131.212.234/var/repo/test/${projectFolder}`, {cwd: process.cwd() + '/' + answers.repo.split('/')[1]}, function(error, stdout, stderr){
+                                projectFolder = answers.repo.split('/')[1];
+                                var projectDir = process.cwd() + '/' + projectFolder;
+                                exec(`git remote add test ssh://${currentUser.github_login}@104.131.212.234/var/repo/test/${projectFolder}`, {cwd: projectDir}, function(error, stdout, stderr){
                                     exec(`git push test master`, {cwd: projectDir}, function(error, stdout, stderr){
                                         console.log('Project setup and ready to deploy! ^_^');    
                                     });
