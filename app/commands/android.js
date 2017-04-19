@@ -16,10 +16,10 @@ module.exports = function(enjinDir) {
     }
     var enjin  = JSON.parse(fs.readFileSync('enjin.json'));
     enjin = merge(enjin, env);
-    var keystore = argv.keystore ? argv.keystore : argv.k ? argv.k : enjin.android.keystore ? enjin.android.keystore : 'my-release-key.keystore';
-    var keystorePassword = argv.password ? argv.password : argv.p ? argv.p : enjin.android.keystorePassword ? enjin.android.keystorePassword : '';
+    var keystore = argv.keystore ? argv.keystore : argv.k ? argv.k : enjin.android && enjin.android.keystore ? enjin.android.keystore : 'my-release-key.keystore';
+    var keystorePassword = argv.password ? argv.password : argv.p ? argv.p : enjin.android && enjin.android.keystorePassword ? enjin.android.keystorePassword : '';
     var apkPath = argv.output ? argv.output : argv.o ? argv.o : './platforms/android/build/outputs/apk/';
-    var alias = argv.alias ? argv.alias : argv.a ? argv.a : enjin.android.alias ? enjin.android.alias : 'alias_name' ;
+    var alias = argv.alias ? argv.alias : argv.a ? argv.a : enjijn.android && enjin.android.alias ? enjin.android.alias : 'alias_name' ;
     var env = {};
     
     if (!keystorePassword && action === 'release') {
