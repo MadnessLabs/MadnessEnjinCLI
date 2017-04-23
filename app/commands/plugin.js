@@ -4,6 +4,7 @@ const fs      = require('fs-extra');
 var inquirer  = require('inquirer');
 const replace = require('replace');
 
+const API = require('../services/API');
 const merge   = require('../services/merge');
 const dependencyMerge = require('../services/dependencyMerge');
 var queue = [];
@@ -49,9 +50,9 @@ function configure(pluginJSON, callback) {
 }
 
 function copy(pluginJSON, callback) {
-    console.log('Copying files ...');
     Object.keys(pluginJSON.copy).forEach(function(from, index, arr) {
         var to = pluginJSON.copy[from];
+        console.log(`Copying files from ${from} to ${to} ...`);
         fs.copy(process.cwd() + '/' + from, process.cwd() + '/' + to, function (err) {
             if (index + 1 === arr.length) {
                 next(pluginJSON, callback);
@@ -85,16 +86,18 @@ function preInstall(pluginJSON, callback) {
     }
 }
 
-function checkDependencies(pluginDir, pluginJSON, callback) {
+function checkDependencies(plugins, pluginJSON, callback) {
     if (pluginJSON.dependencies && pluginJSON.dependencies.length > 0) {
         pluginJSON.dependencies.forEach(function(dependency, index, arr) {
-            var dependencyJSON = JSON.parse(fs.readFileSync(pluginDir + dependency + '.json'));
-            pluginJSON = dependencyMerge(dependencyJSON, pluginJSON);
-            if (pluginJSON.dependencies.length > arr.length) {
-                checkDependencies(pluginDir, pluginJSON, callback)
-            } else {
-                if (index + 1 === arr.length) {
-                    preInstall(pluginJSON, callback);
+            var dependencyPlugin = _.filter(plugins, {name: dependency});
+            if (dependencyPlugin.length) { 
+                pluginJSON = dependencyMerge(JSON.parse(dependencyPlugin[0].json), pluginJSON);
+                if (pluginJSON.dependencies.length > arr.length) {
+                    checkDependencies(plugins, pluginJSON, callback)
+                } else {
+                    if (index + 1 === arr.length) {
+                        preInstall(pluginJSON, callback);
+                    }
                 }
             }
         });
@@ -154,15 +157,47 @@ function next(pluginJSON, callback) {
     currentQueued.fn(pluginJSON, callback);
 }
 
+function viewPluginList(plugins, callback) {
+    var choices = [];
+    _.forEach(plugins, function(plugin, index) {
+        choices.push({
+            name: plugin.name,
+            value: plugin
+        });
+        if (index == plugins.length - 1) {
+            inquirer.prompt([
+                {
+                    type: 'list',
+                    name: 'plugin',
+                    message: 'Which plugin you would like to install?',
+                    choices: choices
+                }
+            ], function(answers) {
+                if (callback && typeof callback === 'function') {
+                    callback(answers.plugin);
+                } 
+            });
+        }
+    });
+}
+
 module.exports = function(enjinDir) {
-    var pluginDir = enjinDir + '/app/plugins/';
-    var pluginName = process.argv[3].toLocaleLowerCase();
-    var pluginPath = pluginDir + pluginName + '.json';
-    if (fs.existsSync(pluginPath)) {
-        var pluginJSON = JSON.parse(fs.readFileSync(pluginPath));
-        console.log('Checking for dependencies ...');
-        checkDependencies(pluginDir, pluginJSON);
-    } else {
-        console.log('That plugin doesn\'t exist yet ...');
-    }
+    var pluginName = process.argv[3] ? process.argv[3].toLocaleLowerCase() : false;
+    new API('get', 'plugin', {}, (plugins) => {
+        if (pluginName) {
+            _.forEach(plugins, (plugin, index) => {
+                if (plugin.name === pluginName) {
+                    checkDependencies(plugins, JSON.parse(plugin.json));
+                    return false;   
+                }
+                if (index === plugins.length - 1 && plugin.name !== plugin.name) {
+                    console.log(`Could not find ${pluginName} plugin ...`);
+                }
+            });      
+        } else {
+            viewPluginList(plugins, function(plugin) {
+                checkDependencies(plugins, JSON.parse(plugin.json));
+            });
+        }
+    });
 };
