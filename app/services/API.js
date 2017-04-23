@@ -19,7 +19,7 @@ module.exports = function(method, endpoint, data = {}, callback, token) {
 
     var headers = {
         "Content-Type": "application/json",
-        "Authorization": token ? token : currentUser.token
+        "Authorization": token ? token : currentUser ? currentUser.token : null 
     };
 
     var restUrl = `http://api.madnessenjin.net/v1/${endpoint}`;

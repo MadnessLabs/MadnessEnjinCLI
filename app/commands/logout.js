@@ -8,7 +8,7 @@ module.exports = function(enjinDir) {
         .env()
         .file({ file: configFile });
     
-    nconf.clear('token');
+    nconf.clear('user');
     nconf.save(function() {
         console.log('You have been successfully logged out! ^_^');
     });
