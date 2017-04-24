@@ -17,6 +17,7 @@ module.exports = function(gulp, callback) {
         'config:cordova', 
         'config:node', 
         'config:sublime',
+        'typings',
         'font:copy',
         'img:icon:favorite',
         'img:icon:copy', 
