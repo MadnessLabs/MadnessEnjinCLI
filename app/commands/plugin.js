@@ -91,7 +91,7 @@ function checkDependencies(plugins, pluginJSON, callback) {
         pluginJSON.dependencies.forEach(function(dependency, index, arr) {
             var dependencyPlugin = _.filter(plugins, {name: dependency});
             if (dependencyPlugin.length) { 
-                pluginJSON = dependencyMerge(JSON.parse(dependencyPlugin[0].json), pluginJSON);
+                pluginJSON = dependencyMerge(dependencyPlugin[0].json, pluginJSON);
                 if (pluginJSON.dependencies.length > arr.length) {
                     checkDependencies(plugins, pluginJSON, callback)
                 } else {
@@ -187,7 +187,7 @@ module.exports = function(enjinDir) {
         if (pluginName) {
             _.forEach(plugins, (plugin, index) => {
                 if (plugin.name === pluginName) {
-                    checkDependencies(plugins, JSON.parse(plugin.json));
+                    checkDependencies(plugins, plugin.json);
                     return false;   
                 }
                 if (index === plugins.length - 1 && plugin.name !== plugin.name) {
@@ -196,7 +196,7 @@ module.exports = function(enjinDir) {
             });      
         } else {
             viewPluginList(plugins, function(plugin) {
-                checkDependencies(plugins, JSON.parse(plugin.json));
+                checkDependencies(plugins, plugin.json);
             });
         }
     });
