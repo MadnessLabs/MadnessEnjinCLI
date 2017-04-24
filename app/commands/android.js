@@ -55,7 +55,24 @@ module.exports = function(enjinDir) {
             exec(`ionic run android`, {
                 cwd: process.cwd()
             }, function(error, stdout, stderr) {
-                console.log('App successfully deployed on device or simulator! ^_^');
+                if (stderr && stderr.indexOf('cordova platform add') >= 0) {
+                    console.log('Adding Android platform to project...');
+                        exec(`cordova platform add android`, {
+                            cwd: process.cwd()
+                        }, function(error, stdout, stderr) {
+                            exec(`ionic state restore`, {
+                                cwd: process.cwd()
+                            }, function(error, stdout, stderr) {
+                                exec(`ionic run android`, {
+                                    cwd: process.cwd()
+                                }, function(error, stdout, stderr) {
+                                    console.log('App successfully deployed on device or simulator! ^_^');   
+                                });
+                            });
+                        });
+                } else {
+                    console.log('App successfully deployed on device or simulator! ^_^');   
+                }
             });
         }
     });
