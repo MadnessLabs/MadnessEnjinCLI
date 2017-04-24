@@ -29,6 +29,7 @@ module.exports = function(gulp, callback) {
         'css:concat',  
         'js:compile', 
         'js:concat',
+        'clean:git',
         callback
     );
 };
