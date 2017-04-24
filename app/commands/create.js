@@ -75,7 +75,7 @@ module.exports = function(enjinDir) {
                                                         exec(`git push -u origin master`, {cwd: toDir }, function(error, stdout, stderr){
                                                             console.log('Cleaning up...');
                                                             exec(`rimraf .git`, {cwd: toDir }, function(error, stdout, stderr){
-                                                                console.log('Setting up Testing server...');
+                                                                console.log(`Setting up Testing server on ${subdomain}...`);
                                                                 exec(`git clone ${github_link} ${subdomain} --bare`, {cwd: repoDir }, function(error, stdout, stderr){
                                                                     exec(`enjin deploy server ${user} ${token}`, {cwd: toDir }, function(error, stdout, stderr){
                                                                         console.log(stdout);
