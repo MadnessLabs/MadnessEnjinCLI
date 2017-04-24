@@ -35,12 +35,6 @@ function configure(pluginJSON, callback) {
                 errors.push(err);
                 return console.log(err);
             } else {
-                if (fileName === 'typings.json') {
-                    console.log('Installing typings ...');
-                    exec('typings install', {
-                        cwd: process.cwd()
-                    });
-                }
                 if (index + 1 === arr.length && errors.length === 0) {
                     next(pluginJSON, callback);
                 }
@@ -107,6 +101,10 @@ function checkDependencies(plugins, pluginJSON, callback) {
 }
 
 function finish(pluginJSON, callback) {
+    console.log('Installing typings ...');
+    exec('typings install', {
+        cwd: process.cwd()
+    });
     if (callback && typeof callback === 'function') {
         callback(pluginJSON);
     }
