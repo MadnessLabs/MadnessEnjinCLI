@@ -9,12 +9,13 @@ module.exports = function(enjinDir) {
     var stack = process.argv[4] || 'madnessionic';
     var rawAppName = process.argv[3];
     var newAppName = appName(rawAppName);
-    var fromDir = enjinDir + '/app/boilerplates/' + stack;
-    var toDir = process.cwd() + '/' + newAppName;
     var user = process.argv[5];
     var github_token = process.argv[6];
     var repo = process.argv[7];
     var token = process.argv[8];
+    var subdomain = process.argv[9] ? process.argv[9] : newAppName.toLowerCase();
+    var fromDir = enjinDir + '/app/boilerplates/' + stack;
+    var toDir = process.cwd() + '/' + subdomain;
     var repoDir = '/var/repo/test';
     var github_link = `https://${user}:${github_token}@github.com/${repo}`;
 
@@ -34,6 +35,9 @@ module.exports = function(enjinDir) {
                 var enjinPath = toDir + '/enjin.json';
                 var enjinJSON = JSON.parse(fs.readFileSync(enjinPath));
                 enjinJSON.name = newAppName;
+                if (process.argv[9]) {
+                    enjinJSON.subdomain = subdomain;
+                }
                 fs.writeFile(enjinPath, JSON.stringify(enjinJSON), function(err) {
                     if(err) {
                         return console.log(err);
@@ -75,7 +79,7 @@ module.exports = function(enjinDir) {
                                                                 exec(`git clone ${github_link} ${newAppName} --bare`, {cwd: repoDir }, function(error, stdout, stderr){
                                                                     exec(`enjin deploy server ${user} ${token}`, {cwd: toDir }, function(error, stdout, stderr){
                                                                         console.log(stdout);
-                                                                        console.log(`App installed @ http://${newAppName}.MadnessEnjin.net ! ^_^`);
+                                                                        console.log(`App installed @ http://${subdomain}.MadnessEnjin.net ! ^_^`);
                                                                     });
                                                                 });
                                                             });

@@ -15,10 +15,11 @@ module.exports = function(enjinDir) {
     var envPath = currentDir + '/enjin.local.json';
     var envJSON = JSON.parse(fs.readFileSync(envPath));
     var enjin = merge(enjinJSON, envJSON);
-    var name = appName(enjin.name);
-    var repoDir = `/var/repo/test/${name}`;
+    var name = appName(enjin.name).toLowerCase();
+    var subdomain = enjin.subdomain ? enjin.subdomain : name;
+    var repoDir = `/var/repo/test/${subdomain}`;
     var hooksDir = `${repoDir}/hooks`;
-    var testDir = `/var/www/test/${name}`;
+    var testDir = `/var/www/test/${subdomain}`;
     var postReceiveTemplate = `${enjinDir}/app/enjin/${enjin.stack}/templates/bin/post-receive`;
 
     if (action === 'server') {
