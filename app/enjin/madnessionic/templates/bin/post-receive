@@ -1,5 +1,5 @@
 #!/bin/sh
-git --work-tree=/var/www/test/<%= name %> --git-dir=/var/repo/test/<%= name %> checkout -f
-cd /var/www/test/<%= name %>
+git --work-tree=/var/www/test/<%= subdomain %> --git-dir=/var/repo/test/<%= subdomain %> checkout -f
+cd /var/www/test/<%= subdomain %>
 npm install
 gulp build

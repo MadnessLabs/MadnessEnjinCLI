@@ -31,6 +31,9 @@ module.exports = function(enjinDir) {
         }
         console.log('Creating deploy hook scripts...');
         fs.readFile(postReceiveTemplate, 'utf8', (err, postReceiveFile) => {
+            if (!enjin.subdomain) {
+                enjin.subdomain = subdomain;
+            }
             var postReceive = _.template(postReceiveFile)(enjin);
             fs.outputFile(`${hooksDir}/post-receive`, postReceive, (err) => {
                 if (err) {
