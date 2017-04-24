@@ -26,22 +26,23 @@ module.exports = function(enjinDir) {
                 data.forEach(function(project, index) {
                     choices.push({
                         name: project.name,
-                        value: project.github
+                        value: project
                     });
                     if (index === data.length - 1) {
                         inquirer.prompt([
                             {
                                 type: 'list',
-                                name: 'repo',
+                                name: 'project',
                                 message: 'Which project you would like to install?',
                                 choices: choices
                             }
                         ], (answers) => {
-                            cloneRepo(enjinDir, `${currentUser.github_login}:${currentUser.github_token}@${answers.repo}`, false, () => {
+                            cloneRepo(enjinDir, `${currentUser.github_login}:${currentUser.github_token}@${project.github}`, false, () => {
                                 console.log('Setting up connection to test server...');
-                                projectFolder = answers.repo.split('/')[1];
+                                projectFolder = answers.project.gitub.split('/')[1];
                                 var projectDir = process.cwd() + '/' + projectFolder;
-                                exec(`git remote add test ssh://${currentUser.github_login}@104.131.212.234/var/repo/test/${appName(projectFolder)}`, {cwd: projectDir}, function(error, stdout, stderr){
+                                var subdomain = answers.project.subdomain;
+                                exec(`git remote add test ssh://${currentUser.github_login}@104.131.212.234/var/repo/test/${subdomain ? subdomain : appName(projectFolder)}`, {cwd: projectDir}, function(error, stdout, stderr){
                                     exec(`git push test master`, {cwd: projectDir}, function(error, stdout, stderr){
                                         console.log('Project setup and ready to deploy! ^_^');    
                                     });
