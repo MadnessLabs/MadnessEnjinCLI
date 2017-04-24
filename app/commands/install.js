@@ -39,7 +39,7 @@ module.exports = function(enjinDir) {
                         ], (answers) => {
                             cloneRepo(enjinDir, `${currentUser.github_login}:${currentUser.github_token}@${project.github}`, false, () => {
                                 console.log('Setting up connection to test server...');
-                                projectFolder = answers.project.gitub.split('/')[1];
+                                projectFolder = answers.project.github.split('/')[1];
                                 var projectDir = process.cwd() + '/' + projectFolder;
                                 var subdomain = answers.project.subdomain;
                                 exec(`git remote add test ssh://${currentUser.github_login}@104.131.212.234/var/repo/test/${subdomain ? subdomain : appName(projectFolder)}`, {cwd: projectDir}, function(error, stdout, stderr){
