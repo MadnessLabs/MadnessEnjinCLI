@@ -4,6 +4,7 @@ var inquirer  = require('inquirer');
 
 const API = require('../services/API');
 const cloneRepo = require('../services/cloneRepo');
+const appName = require('../services/appName');
 
 
 module.exports = function(enjinDir) {
@@ -40,7 +41,7 @@ module.exports = function(enjinDir) {
                                 console.log('Setting up connection to test server...');
                                 projectFolder = answers.repo.split('/')[1];
                                 var projectDir = process.cwd() + '/' + projectFolder;
-                                exec(`git remote add test ssh://${currentUser.github_login}@104.131.212.234/var/repo/test/${projectFolder}`, {cwd: projectDir}, function(error, stdout, stderr){
+                                exec(`git remote add test ssh://${currentUser.github_login}@104.131.212.234/var/repo/test/${appName(projectFolder)}`, {cwd: projectDir}, function(error, stdout, stderr){
                                     exec(`git push test master`, {cwd: projectDir}, function(error, stdout, stderr){
                                         console.log('Project setup and ready to deploy! ^_^');    
                                     });
