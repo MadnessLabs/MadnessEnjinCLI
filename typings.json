@@ -1,0 +1,5 @@
+{
+  "globalDependencies": {
+    "assert": "registry:dt/assert#0.0.0+20161116022913"
+  }
+}

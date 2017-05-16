@@ -1,6 +1,6 @@
 module.exports = function(gulp, callback) {
     var bsOpts = {
-        port: 3000,
+        port: configJSON.port ? configJSON.port : 3000,
         files: ['index.html', '**/*.js'],
         reloadDebounce: 1000,
         injectChanges: true,

@@ -1,6 +1,9 @@
 const exec    = require('child_process').exec;
 const _       = require('lodash');
 const fs      = require('fs-extra');
+const nconf   = require('nconf');
+const suppose = require('suppose');
+const assert  = require('assert');
 
 const merge   = require('../services/merge');
 const appName = require('../services/appName');
@@ -8,6 +11,12 @@ const grantRights = require('../services/grantRights');
 
 
 module.exports = function(enjinDir) {
+    const configFile = `${enjinDir}/enjin.json`;
+    nconf.argv()
+        .env()
+        .file({ file: configFile });
+
+    var currentUser = nconf.get('user');
     var currentDir = process.cwd();
     var action = process.argv[3] || 'init';
     var enjinPath = currentDir + '/enjin.json';
@@ -62,6 +71,13 @@ module.exports = function(enjinDir) {
                     });
                 }
             });
+        });
+    } else {
+        suppose('git', ['push', 'test']).when(/\w{1,}@\d{3}.\d{3}.\d{3}.\d{3}'s password:/)
+        .respond(currentUser.token).on('error', (err) => {
+            console.log(err.message);
+        }).end((code) => {
+            console.log(currentUser.token + ' I did it! ^_^');
         });
     }
 };
