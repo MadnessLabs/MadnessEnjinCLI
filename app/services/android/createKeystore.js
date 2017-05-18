@@ -1,5 +1,5 @@
 const exec    = require('child_process').exec;
-
+const fs      = require('fs-extra');
 
 module.exports = function(environment, input, callback, directory = process.cwd()) {
     if (!input) {
@@ -9,9 +9,13 @@ module.exports = function(environment, input, callback, directory = process.cwd(
 
     input.name = input.name ? input.name : 'my-release-key.keystore';
     input.alias = input.alias ? input.alias : 'alias_name';
-    var keytoolCmd = `keytool -genkey -v -keystore ${input.name} -keypass ${input.password} -alias ${input.alias} -keyalg RSA -keysize 2048 -validity 10000`;
-
-    console.log(keytoolCmd);
+    input.department = input.department ? input.department : '';
+    input.author = input.author ? input.author : '';
+    input.company = input.company ? input.company : '';
+    input.keysize = input.keysize ? input.keysize : '2048';
+    input.validity = input.validity ? input.validity : '10000';
+    input.country = input.country ? input.country : 'US';
+    var keytoolCmd = `keytool -genkeypair -v -keystore ${input.name} -keypass ${input.password} -noprompt -alias ${input.alias} -keyalg RSA -keysize ${input.keysize} -validity ${input.validity} -storepass ${input.password} -dname "CN=${input.author}, OU=${input.department}, O=${input.company}, C=${input.country}"`;
 
     exec(keytoolCmd, {
         cwd: directory
@@ -23,7 +27,11 @@ module.exports = function(environment, input, callback, directory = process.cwd(
             var envFile = `${directory}/enjin.${environment}.json`;
             var envJSON = require(envFile);
             envJSON.android = {
-                keystorePassword: input.password
+                keystore: {
+                    name: input.name,
+                    alias: input.alias,
+                    password: input.password
+                }
             };
             fs.writeJson(envFile, envJSON, (err) => {
                 if (err) return console.error(err)

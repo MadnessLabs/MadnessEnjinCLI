@@ -35,7 +35,9 @@ This project is being built with the [Madness Enjin](https://github.com/MadnessL
     "enjinPath": "C:/xampp/htdocs/EnjinCLI/",
     "stack": "madnessionic",
     "android": {
-        "keystorePassword": "YOUR ANDROID KEYSTORE PASSWORD"
+        "keystore": {
+            "password": "YOUR ANDROID KEYSTORE PASSWORD"
+        } 
     }
 }
 ```

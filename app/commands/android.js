@@ -16,8 +16,8 @@ module.exports = function(enjinDir) {
     var environment = process.argv[4] ? process.argv[4] : 'app';
     
     function androidCommand(action, environment, enjin) {
-        var keystore = argv.keystore ? argv.keystore : argv.k ? argv.k : enjin.android && enjin.android.keystore ? enjin.android.keystore : 'my-release-key.keystore';
-        var keystorePassword = argv.password ? argv.password : argv.p ? argv.p : enjin.android && enjin.android.keystorePassword ? enjin.android.keystorePassword : '';
+        var keystore = argv.keystore ? argv.keystore : argv.k ? argv.k : enjin.android && enjin.android.keystore && enjin.android.keystore.name ? enjin.android.keystore.name : 'my-release-key.keystore';
+        var keystorePassword = argv.password ? argv.password : argv.p ? argv.p : enjin.android && enjin.android.keystore && enjin.android.keystore.password ? enjin.android.keystore.password : '';
         var apkPath = argv.output ? argv.output : argv.o ? argv.o : './platforms/android/build/outputs/apk/';
         var alias = argv.alias ? argv.alias : argv.a ? argv.a : enjin.android && enjin.android.alias ? enjin.android.alias : 'alias_name' ;
         
@@ -28,6 +28,46 @@ module.exports = function(enjinDir) {
                     type: 'input',
                     message: 'What is the password you would like to use for your keystore?',
                     name: 'password'
+                }, {
+                    type: 'input',
+                    message: 'What would you like to name this keystore file?',
+                    name: 'name',
+                    default: 'my-release-key.keystore'
+                }, {
+                    type: 'input',
+                    message: 'What is the alias you would like to use for this keystore?',
+                    name: 'alias',
+                    default: 'alias_name'
+                }, {
+                    type: 'input',
+                    message: 'Who is the author of this application?',
+                    name: 'author',
+                    default: enjin.author.name
+                }, {
+                    type: 'input',
+                    message: 'What is the company creating this application?',
+                    name: 'company',
+                    default: enjin.author.name
+                }, {
+                    type: 'input',
+                    message: 'What department is creating this application?',
+                    name: 'department',
+                    default: enjin.author.name
+                }, {
+                    type: 'input',
+                    message: 'What country was this app developed in?',
+                    name: 'country',
+                    default: 'US'
+                }, {
+                    type: 'input',
+                    message: 'What keysize you would like to use for this keystore?',
+                    name: 'keysize',
+                    default: '2048'
+                }, {
+                    type: 'input',
+                    message: 'What validity you would like to use for this keystore?',
+                    name: 'validity',
+                    default: '10000'
                 }
             ], (answers) => {
                 createKeystore(environment, answers, () => {
