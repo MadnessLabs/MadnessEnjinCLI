@@ -25,4 +25,9 @@ module.exports = function(gulp, callback) {
     watch(imgWatch, function(){
         runSequence('img:icon');
     });
+    watch(['./components/src/**/*'], function() {
+        runSequence('components:build', 'components:copy', 'js:compile', 'js:concat', function(){
+            browserSync.reload();
+        });
+    });
 };
