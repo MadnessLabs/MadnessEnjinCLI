@@ -13,8 +13,7 @@
   "license": "MIT",
   "preferGlobal": true,
   "bin": {
-    "enjin": "index.js",
-    "njn": "index.js"
+    "enjin": "index.js"
   },
   "dependencies": {
     "assert": "^1.4.1",
