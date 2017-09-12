@@ -8,8 +8,6 @@ module.exports = function(gulp, callback) {
         'html:template', 
         'html:build', 
         'css:build', 
-        'components:build',
-        'components:copy',
         'js:build', 
         'minify',
         callback

@@ -13,8 +13,6 @@ module.exports = function(gulp, callback) {
         'css:compile', 
         'css:concat',
         'css:minify',
-        'components:build',
-        'components:copy',
         'js:compile', 
         'js:concat', 
         'js:minify',

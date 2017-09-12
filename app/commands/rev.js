@@ -21,7 +21,16 @@ module.exports = function(enjinDir) {
             } else {
                 bs.init({
                     server: enjinDir + '/node_modules/enjinrev/www',
-                    port: 5227
+                    port: 5227,
+                    snippetOptions: {            
+                        // Provide a custom Regex for inserting the snippet.
+                        rule: {
+                            match: /<\/body>/i,
+                            fn: function (snippet, match) {
+                                return snippet + '<script>var ENJIN_JSON = ' + JSON.stringify(enjinJSON) + ';</script>' + match;
+                            }
+                        }
+                    }      
                 }, function(err, bs) {
                     bs.io.sockets.on('connection', function(socket) {
                         socket.on('enjin-add-component', function(data) {

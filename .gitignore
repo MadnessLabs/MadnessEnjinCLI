@@ -1,3 +1,4 @@
 node_modules
 enjin.json
 !app/**/enjin.json
+components/src/components

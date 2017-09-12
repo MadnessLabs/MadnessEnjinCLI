@@ -13,13 +13,14 @@
   "license": "MIT",
   "preferGlobal": true,
   "bin": {
-    "enjin": "index.js"
+    "enjin": "index.js",
+    "njn": "index.js"
   },
   "dependencies": {
     "assert": "^1.4.1",
-    "browser-sync": "^2.10.0",
+    "browser-sync": "^2.18.13",
     "copy-paste": "^1.3.0",
-    "enjinrev": "^1.0.3",
+    "enjinrev": "^1.0.24",
     "favicons": "^4.8.3",
     "fs-extra": "^1.0.0",
     "gulp": "^3.9.0",
