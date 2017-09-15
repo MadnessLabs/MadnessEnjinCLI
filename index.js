@@ -36,4 +36,5 @@ if (process.argv.length > 2) {
     console.log('    -k --keystore = The path to your android keystore (Default: enjin.android.keystore)');
     console.log('    -p --password = The keystore password (Default: enjin.android.keystorePassword)');
     console.log('    -a --alias = The app alias for android (Default: alias_name)');
+    console.log('go [ENVIRONMENT]\n This will run the apps build process and open up the local Enjin Dev Tool');
 }

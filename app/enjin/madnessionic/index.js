@@ -22,5 +22,6 @@ module.exports = function(){
         note: argv.n ? argv.n : Now.toLocaleDateString() + ' ' + Now.toLocaleTimeString(),
         branch: deployEnv == 'app' ? 'dev' : 'production'
     };
+    global.skipBrowserOpen = argv.b ? argv.b : false;
     setVars();
 };

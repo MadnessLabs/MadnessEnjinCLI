@@ -20,6 +20,8 @@ module.exports = function(enjinDir) {
                 console.log(err);
             } else {
                 bs.init({
+                    ghostMode: false,
+                    ui: false,
                     server: enjinDir + '/node_modules/enjinrev/www',
                     port: 5227,
                     snippetOptions: {            
