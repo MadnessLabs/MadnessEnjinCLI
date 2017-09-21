@@ -2,7 +2,7 @@ const exec    = require('child_process').exec;
 
 
 module.exports = function(callback, directory = process.cwd()) {
-    exec(`ionic run android`, {
+    exec(`ionic cordova run android`, {
         cwd: directory
     }, function(error, stdout, stderr) {
         if (!stderr) {
