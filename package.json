@@ -63,6 +63,7 @@
     "slash": "^1.0.0",
     "suppose": "^0.6.1",
     "unirest": "^0.5.1",
+    "workbox-build": "^2.0.2-rc1",
     "yargs": "^4.4.0"
   }
 }

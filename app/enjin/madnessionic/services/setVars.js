@@ -76,6 +76,10 @@ module.exports = function(callback) {
     jsWatch      = configJSON.js.watch;
     // TEMPLATES
     tmplDir      =  global.enjin.path  + '/app/enjin/' + global.enjin.stack + '/templates/';
+    workboxConfig = configJSON.workboxjs;
+    workboxDest = configJSON.workboxjsDest;
+    workboxPatterns = configJSON.workboxjsPatterns;
+    workboxIgnores = configJSON.workboxjsIgnores;
 
     if (callback && typeof callback === "function") {
         callback();

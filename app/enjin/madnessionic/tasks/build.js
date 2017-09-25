@@ -10,6 +10,7 @@ module.exports = function(gulp, callback) {
         'css:build', 
         'js:build', 
         'minify',
+        'workbox',
         callback
     );
 };

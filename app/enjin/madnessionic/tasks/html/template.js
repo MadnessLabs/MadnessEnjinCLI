@@ -8,8 +8,5 @@ module.exports = function(gulp, callback) {
             pretty: true
         }))        
         .pipe(rename('index.html'))
-        .pipe(gulp.dest(appDir))
-        .on('end', function(){
-            if(global.isWatching){ browserSync.reload(); }
-        });
+        .pipe(gulp.dest(appDir));
 };

@@ -25,4 +25,7 @@ module.exports = function(gulp, callback) {
     watch(imgWatch, function(){
         runSequence('img:icon');
     });
+    watch([appDir + '**', '!' + cssDestDir + '**'], function() {
+        runSequence('sync:reload');
+    });
 };

@@ -90,7 +90,8 @@ module.exports = function(gulp, callback) {
                 'css:concat',  
                 'js:compile', 
                 'js:concat', 
-                'sync:start', 
+                'sync:start',
+                'workbox', 
                 'watch',
                 callback
             );
