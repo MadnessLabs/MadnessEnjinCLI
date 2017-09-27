@@ -15,8 +15,8 @@ module.exports = function(callback) {
         env = {};
     }
     configFile   = 'enjin.json';
-    configJSON   = JSON.parse(fs.readFileSync(configFile));
-    configJSON   = merge(configJSON, env);
+    enjinJSON    = JSON.parse(fs.readFileSync(configFile));
+    configJSON   = merge(enjinJSON, env);
     // ENJIN
     if (configJSON.extension && !configJSON.extension.routes) {
         configJSON.extension.routes = configJSON.routes;
@@ -80,6 +80,8 @@ module.exports = function(callback) {
     workboxDest = configJSON.workboxjsDest;
     workboxPatterns = configJSON.workboxjsPatterns;
     workboxIgnores = configJSON.workboxjsIgnores;
+    // STENCILJS
+    stenciljsConfig = configJSON.stenciljs;
 
     if (callback && typeof callback === "function") {
         callback();

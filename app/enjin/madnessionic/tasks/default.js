@@ -16,8 +16,9 @@ module.exports = function(gulp, callback) {
         'js:compile', 
         'js:concat', 
         'js:minify',
-        'sync:start', 
+        'stencil:build',
         'workbox',
+        'sync:start', 
         'watch',
         callback
     );

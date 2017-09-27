@@ -1,26 +1,38 @@
 const inquirer = require('inquirer');
 const argv     = require('yargs').argv;
 
-const addComponent = require('../../services/addComponent');
-
+const createComponent = require('../../../../services/component/create');
 
 module.exports = function(gulp, callback) {
     if (argv.n) {
-        addComponent(argv.n, argv.a, argv.r);
-        callback();
+        createComponent(argv.n, argv.p, (res) => {
+            if (res.error) {
+                console.error(res.message);
+            } else {
+                console.log(`${argv.n} component created successfully!`);
+            }
+            callback();
+        });
+        
     } else {
         inquirer.prompt([{
             type: 'input',
-            message: 'What is the name of the component?',
+            message: 'What is the name of the component? (Must have a - in the name)',
             name: 'name'
         }, {
             type: 'input',
-            message: 'What attributes will you be binding? (Comma separated)',
-            name: 'attrs',
+            message: 'What props will you have? (Comma separated)',
+            name: 'props',
             default: false
         }], function(res) {
-            addComponent(res.name, res.attrs);
-            callback();
+            createComponent(res.name, res.props, (res) => {
+                if (res.error) {
+                    console.error(res.message);
+                } else {
+                    console.log(`${res.name} component created successfully!`);
+                }
+                callback();
+            });
         });
     }    
 };

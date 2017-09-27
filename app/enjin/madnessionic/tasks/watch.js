@@ -25,6 +25,9 @@ module.exports = function(gulp, callback) {
     watch(imgWatch, function(){
         runSequence('img:icon');
     });
+    watch([stenciljsConfig.srcDir + '/**'], function() {
+        runSequence('stencil:build');
+    });
     watch([appDir + '**', '!' + cssDestDir + '**'], function() {
         runSequence('sync:reload');
     });
