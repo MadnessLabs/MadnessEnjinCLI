@@ -16,7 +16,7 @@ module.exports = function(enjinDir) {
             return console.log(err);
         }
 
-        var buildProcess = spawn(`gulp`, [`-e ${envType}`, '-b false'], {cwd: process.cwd(), shell: true});
+        var buildProcess = spawn(`npm start`, [`-- -e ${envType}`, '-b false'], {cwd: process.cwd(), shell: true});
 
         buildProcess.stdout.on('data', function(data) {
             var message = data.toString();

@@ -39,10 +39,7 @@ module.exports = function(enjinDir) {
                             console.log(`Adding ${data.name} component ...`);
                             var command = `gulp add:component -n ${data.name}`;
                             if (data.attrs) {
-                                command += ` -a ${data.attrs}`;
-                            }
-                            if (data.resolves) {
-                                command += ` -r ${data.resolves}`;
+                                command += ` -p ${data.props}`;
                             }
                             console.log('Running Command: ', command);
                             exec(command, process.cwd(), function() {

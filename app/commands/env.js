@@ -2,10 +2,15 @@ const fs      = require('fs');
 
 
 module.exports = function(enjinDir) {
-    var enjinJSON = JSON.parse(fs.readFileSync(process.cwd() + '/enjin.json'));
+    try {
+        var enjinJSON = JSON.parse(fs.readFileSync(process.cwd() + '/enjin.json'));
+    } catch(e) {
+        console.log('No enjin.json file found in the current directory!');
+        return false;
+    }
+
     var envType  = process.argv[3] ? process.argv[3] : 'local'; 
     var envJSON = {
-        'enjinPath': enjinDir + '/',
         'stack': enjinJSON.stack,
         'mobile': enjinJSON.mobile,
         'local': enjinJSON.local,

@@ -15,9 +15,13 @@ if (process.argv.length > 2) {
             try {
                 var command = require(enjinDir + '/' + modulePath);
                 command(enjinDir);
-            } catch (error) {
-                console.log(error);
-                console.log('Sorry ' + val + ' is not an enjin command...yet...?!');
+            } catch (e) {
+                console.log(e);
+                if (e instanceof Error && e.code === "MODULE_NOT_FOUND") {
+                    console.log('Sorry ' + val + ' is not an enjin command...yet...?!');
+                } else {
+                    console.log(e);
+                }
             }
         }
     });
