@@ -1,4 +1,5 @@
 {
     "typescript.check.workspaceVersion": false,
-    "workbench.colorTheme": "Sublime Material Theme - Dark"
+    "workbench.colorTheme": "Sublime Material Theme - Dark",
+    "files.eol": "\n"
 }
