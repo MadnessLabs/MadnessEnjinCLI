@@ -4,8 +4,9 @@
 
 const slash   = require('slash');
 const enjinDir = slash(__dirname);
-const fs = require('fs');
+const fs = require('fs-extra');
 const packageJSON = JSON.parse(fs.readFileSync(enjinDir + '/package.json'));
+const ansimd = require('ansimd');
 
 
 if (process.argv.length > 2) {
@@ -26,19 +27,6 @@ if (process.argv.length > 2) {
         }
     });
 } else {
-    console.log('Madness Enjin - App building assistant by Madness Labs');
-    console.log('If you like our command line tool then check out our new app building app @ MadnessEnjin.net.\nIt makes the process even easier and the best part it\'s FREE for Open Source! ^_^');
-    console.log('Version: ' + packageJSON.version + '\n');
-    console.log('--- CURRENT COMMANDS ---');
-    console.log('start APP_NAME\nThis will start a new app in the folder APP_NAME\n\r');
-    console.log('install REPO_LINK [FOLDER_NAME]\nThis will clone and install an app from a repo link\n\r');
-    console.log('env [ENVIRONMENT]\nThis will create a new enjin.[ENVIRONMENT].json file with an optional name\n\r');
-    console.log('android [ACTION] [ENVIRONMENT]');
-    console.log('    [ACTION] = release - This will build Android APK release from your project.');
-    console.log('    [ACTION] = run - This will build a debug Android APK from your project and run on emulator or connected device.');
-    console.log('    [ENVIRONMENT] - This controls which enjin file to use to build your app.');
-    console.log('    -k --keystore = The path to your android keystore (Default: enjin.android.keystore)');
-    console.log('    -p --password = The keystore password (Default: enjin.android.keystorePassword)');
-    console.log('    -a --alias = The app alias for android (Default: alias_name)');
-    console.log('go [ENVIRONMENT]\n This will run the apps build process and open up the local Enjin Dev Tool');
+    var docs = fs.readFileSync(enjinDir + '/README.md', 'utf8');
+    console.log(ansimd(docs));
 }

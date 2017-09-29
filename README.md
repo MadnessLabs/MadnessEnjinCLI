@@ -1,13 +1,13 @@
-## Madness Enjin CLI
+## Madness Enjin CLI v1.1.0
 
-The Enjin is an application development assistant to make cross platform coding simpler and more fun.
+The Enjin is an application development assistant to make cross platform coding simpler and more fun. The enjin is meant to be completely opt-in, not required but will make your life easier.
 
 ---
 # Install
 
-Sorry for the long list of global components, we hope to solve this on a future update.
+To install the enjin just run the command below in your terminal.  Once you do, you will be able to use the new commands with the enjin command.
 
-```npm install -g madnessenjin cordova ionic browser-sync gulp jade typescript typings jadelint sass-lint rimraf```
+```npm install -g madnessenjin```
 
 ---
 
@@ -15,25 +15,48 @@ Sorry for the long list of global components, we hope to solve this on a future 
 
 ## start
 
+- REPO - Link to git repo you are cloning (If using github you can use user/repo format)
 - NAME - The name of the application / folder
+- EDITOR - (Optional) The code editor to open your project in (code = VS Code, code-insiders = VS Code Insiders)
 
-This will copy the boilerplate from http://github.com/madnesslabs/madnessionic into a folder with the APP_NAME provided and then run the install for you.
+This will clone the repo and then run npm install for you. You can use short links for GitHub, like MadnessLabs/Animadness.  You can also pass in credentials for private repos in the short link style using the convention, user:password@MadnessLabs/Animadness. If you pass in the 4th argument it will open the project in your code editor.
 
 Example:
 
-```enjin start NAME```
+```enjin start <REPO> <NAME> [EDITOR]```
+
+```enjin start ionic-team/stencil-starter MyStencilApp code```
 
 ---
-## install
 
-- REPO - The link to the repo you wish to reinstall
-- [NAME] - The name you wish to give the folder / project
 
-This will clone the repo and then run the install for you. You can use short links for GitHub, like MadnessLabs/Animadness.  You can also pass in credentials for private repos in the short link style using the convention, user:password@MadnessLabs/Animadness.
+## add component (ac - for shorthand)
+
+- NAME - The name of the component (Must contain a -)
+- PROPS - (Optional) The props you wish to use inside your new component (Comma separated and : to set types)
+
+This will create a new component folder with an SCSS and TSX file with props passed.  It will read end edit your stencil.config.js as well.
 
 Example:
 
-```enjin install REPO [NAME]```
+```enjin add component <NAME> [PROPS...]```
+
+```enjin ac your-name first:string,last:string```
+
+---
+
+
+## remove component (rc - for shorthand)
+
+- NAME - The name of the component (Must contain a -)
+
+This will create a new component folder with an SCSS and TSX file with props passed.  It will read end edit your stencil.config.js as well.
+
+Example:
+
+```enjin remove component <NAME>```
+
+```enjin rc your-name```
 
 ---
 
