@@ -44,12 +44,12 @@ module.exports = function(name, props) {
                     return false;
                 } else {
                     renderToFile(
-                        '../../components/template/component.scss',
+                        '../templates/component.scss',
                         data,
                         `${outputDir}/${name}.scss`,
                         (scssFile) => {
                             renderToFile(
-                                '../../components/template/component.tsx',
+                                '../templates/component.tsx',
                                 data,
                                 `${outputDir}/${name}.tsx`,
                                 (tsxFile) => {
