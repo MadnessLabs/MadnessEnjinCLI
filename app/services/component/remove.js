@@ -13,21 +13,29 @@ module.exports = function(name) {
     name = name.toLowerCase();
 
     var stencilPath = process.cwd() + '/stencil.config.js';
-    fs.exists(stencilPath, function(exists) {
-        if (exists) {
-            var stenciljs = require(stencilPath);
-
-            for (var i = 0, len = stenciljs.config.bundles.length; i < len; i++) {
-                var arr = stenciljs.config.bundles[i];
-                var index = arr.components.indexOf(name);
-                if (index >= 0) {
-                    arr.components.splice(index, 1);
+    fs.exists(stencilPath, function(stencilExists) {
+        if (stencilExists) {
+            var componentPath = `${stenciljs.config.srcDir ? stenciljs.config.srcDir : 'src'}/components/${name}`;
+            fs.exists(componentPath, function(componentExists) {
+                if (!componentExists) {
+                    console.log(`${name} component doesn't exist in your project!`);
+                    return false;
                 }
-            }
+                
+                var stenciljs = require(stencilPath);
 
-            rimraf(`${stenciljs.config.srcDir ? stenciljs.config.srcDir : 'src'}/components/${name}`, () => { 
-                editStencilConfig(stencilPath, stenciljs.config, () => {
-                    console.log(`${name} component has been deleted! ^_^`); 
+                for (var i = 0, len = stenciljs.config.bundles.length; i < len; i++) {
+                    var arr = stenciljs.config.bundles[i];
+                    var index = arr.components.indexOf(name);
+                    if (index >= 0) {
+                        arr.components.splice(index, 1);
+                    }
+                }
+
+                rimraf(componentPath, () => { 
+                    editStencilConfig(stencilPath, stenciljs.config, () => {
+                        console.log(`${name} component has been deleted! ^_^`); 
+                    });
                 });
             });
         } else {

@@ -1,4 +1,4 @@
-## Madness Enjin CLI v1.1.0
+## Madness Enjin CLI v1.1.5
 
 The Enjin is an application development assistant to make cross platform coding simpler and more fun. The enjin is meant to be completely opt-in, not required but will make your life easier.
 
@@ -33,7 +33,7 @@ Example:
 ## add component (ac - for shorthand)
 
 - NAME - The name of the component (Must contain a -)
-- PROPS - (Optional) The props you wish to use inside your new component (Comma separated and : to set types)
+- PROPS (Optional) - The props you wish to use inside your new component (Comma separated and : to set types)
 
 This will create a new component folder with an SCSS and TSX file with props passed.  It will read end edit your stencil.config.js as well.
 
@@ -60,6 +60,18 @@ Example:
 
 ---
 
+## init
+
+- WITH [package / prompts] (Optional) - To create your enjin file with package or prompts
+
+This will create an enjin.json in the current directory using either prompts or a package.json file.
+
+Example:
+
+```enjin init [WITH]```
+
+---
+
 ## env
 
 - [NAME] - The name of the environment
@@ -69,32 +81,3 @@ This will create an environment (enjin.[NAME].json) file in the directory.
 Example:
 
 ```enjin env [NAME]```
-
----
-
-## plugin
-
-- NAME - The name of the plugin to install
-
-This will install a plugin and any plugins it depends on into your project.
-
-Example:
-
-```enjin plugin NAME```
-
----
-
-## android
-
-- ENVIRONMENT - The environment to build for
-- KEYSTORE - The path to your projects keystore for Android
-- KEYSTORE_PASSWORD - The password for your keystore
-- ALIAS - The alias for the App on the keystore
-
-This will build an Android APK from your project.
-
-Example:
-
-```android [ENVIRONMENT] [KEYSTORE] [KEYSTORE_PASSWORD] [ALIAS]```
-
----

@@ -1,7 +1,7 @@
 const exec    = require('child_process').exec;
 
 
-module.exports = function(enjinDir, folderPath, callback) {
+module.exports = function(folderPath, callback) {
     console.log('Now installing ...');
     exec('npm install', {cwd: folderPath}, function(error, stdout, stderr){
         if (error) {
