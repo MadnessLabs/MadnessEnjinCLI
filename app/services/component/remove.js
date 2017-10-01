@@ -1,7 +1,7 @@
 const fs = require('fs-extra');
-const rimraf = require('rimraf');
 
 const editStencilConfig = require('../editStencilConfig');
+const deleteComponent = require('./delete');
 
 
 module.exports = function(name) {
@@ -12,34 +12,32 @@ module.exports = function(name) {
 
     name = name.toLowerCase();
 
-    var stencilPath = process.cwd() + '/stencil.config.js';
-    fs.exists(stencilPath, function(stencilExists) {
-        if (stencilExists) {
-            var componentPath = `${stenciljs.config.srcDir ? stenciljs.config.srcDir : 'src'}/components/${name}`;
-            fs.exists(componentPath, function(componentExists) {
-                if (!componentExists) {
-                    console.log(`${name} component doesn't exist in your project!`);
-                    return false;
-                }
-                
+    try {
+        var enjinPath = process.cwd() + '/enjin.json';
+        var enjinJSON = JSON.parse(fs.readFileSync(enjinPath));
+        if (!enjinJSON.stenciljs) {
+            throw 'No stenciljs config in your enjin.json file!';
+        }
+
+        deleteComponent(name, enjinJSON.stenciljs, (newConfig) => {
+            enjinJSON.stenciljs = newConfig;
+            fs.writeJson(enjinPath, enjinJSON, () => {
+                console.log(`${name} component has been deleted! ^_^`);
+            });
+        });
+    } catch(e) {
+        var stencilPath = process.cwd() + '/stencil.config.js';
+        fs.exists(stencilPath, function(stencilExists) {
+            if (stencilExists) {
                 var stenciljs = require(stencilPath);
-
-                for (var i = 0, len = stenciljs.config.bundles.length; i < len; i++) {
-                    var arr = stenciljs.config.bundles[i];
-                    var index = arr.components.indexOf(name);
-                    if (index >= 0) {
-                        arr.components.splice(index, 1);
-                    }
-                }
-
-                rimraf(componentPath, () => { 
-                    editStencilConfig(stencilPath, stenciljs.config, () => {
+                deleteComponent(name, stenciljs.config, (newConfig) => {
+                    editStencilConfig(stencilPath, newConfig, () => {
                         console.log(`${name} component has been deleted! ^_^`); 
                     });
                 });
-            });
-        } else {
-            console.log('To create a component stencil.config.js is required!');
-        }
-    });
+            } else {
+                console.log('To create a component stencil.config.js is required!');
+            }
+        });
+    }
 };

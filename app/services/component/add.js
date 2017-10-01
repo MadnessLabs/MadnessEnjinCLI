@@ -3,9 +3,9 @@ const fs = require('fs-extra');
 const path = require("path");
 
 const editStencilConfig = require('../editStencilConfig');
-const renderToFile = require('../renderToFile');
 const camelize = require('../camelize');
 const capFirstLetter = require('../capFirstLetter');
+const renderComponent = require('./render');
 
 
 module.exports = function(name, props) {
@@ -30,40 +30,36 @@ module.exports = function(name, props) {
         props
     };
 
-    var stencilPath = process.cwd() + '/stencil.config.js';
-    fs.exists(stencilPath, function(exists) {
-        if (exists) {
-            var stenciljs = require(stencilPath);
-            stenciljs.config.bundles[0].components.push(name);
-
-            var outputDir = `${stenciljs.config.srcDir ? stenciljs.config.srcDir : 'src'}/components/${name}`;
-        
-            fs.exists(path.resolve(process.cwd(), outputDir), (exists) => {
-                if (exists) {
-                    console.log(`${name} component already exists!`);
-                    return false;
-                } else {
-                    renderToFile(
-                        '../templates/component.scss',
-                        data,
-                        `${outputDir}/${name}.scss`,
-                        (scssFile) => {
-                            renderToFile(
-                                '../templates/component.tsx',
-                                data,
-                                `${outputDir}/${name}.tsx`,
-                                (tsxFile) => {
-                                    editStencilConfig(stencilPath, stenciljs.config, () => {
-                                        console.log('Component has been created successfully! ^_^');
-                                    });
-                                }
-                            );
-                        }
-                    );
-                }
-            });
-        } else {
-            console.log('To create a component stencil.config.js is required!');
+    try {
+        var enjinPath = process.cwd() + '/enjin.json';
+        var enjinJSON = JSON.parse(fs.readFileSync(enjinPath));
+        if (!enjinJSON.stenciljs) {
+            throw 'No stenciljs config in your enjin.json file!';
         }
-    });
+
+        renderComponent(data, enjinJSON.stenciljs, () => {
+            enjinJSON.stenciljs.bundles[0].components.push(name);
+            fs.writeJson(enjinPath, enjinJSON, () => {
+                console.log(`${name} component has been created successfully! ^_^`);
+            });
+        });
+    } catch(e) {
+        console.log('No enjin.json file found in the current directory, trying stencil.config.js...');
+        var stencilPath = process.cwd() + '/stencil.config.js';
+        fs.exists(stencilPath, function(stencilExists) {
+            if (stencilExists) {
+                var stenciljs = require(stencilPath);
+
+                renderComponent(data, stenciljs.config, () => {
+                    stenciljs.config.bundles[0].components.push(name);
+                    editStencilConfig(stencilPath, stenciljs.config, () => {
+                        console.log(`${name} component has been created successfully! ^_^`);
+                    });
+                });
+            } else {
+                console.log('To create a component stencil.config.js is required!');
+                return false;
+            }
+        });
+    }
 };
