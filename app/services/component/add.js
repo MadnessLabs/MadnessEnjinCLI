@@ -2,6 +2,7 @@ const exec = require('child_process').exec;
 const fs = require('fs-extra');
 const path = require("path");
 
+const getStencilConfig = require('../getStencilConfig');
 const editStencilConfig = require('../editStencilConfig');
 const camelize = require('../camelize');
 const capFirstLetter = require('../capFirstLetter');
@@ -30,36 +31,12 @@ module.exports = function(name, props) {
         props
     };
 
-    try {
-        var enjinPath = process.cwd() + '/enjin.json';
-        var enjinJSON = JSON.parse(fs.readFileSync(enjinPath));
-        if (!enjinJSON.stenciljs) {
-            throw 'No stenciljs config in your enjin.json file!';
-        }
-
-        renderComponent(data, enjinJSON.stenciljs, () => {
-            enjinJSON.stenciljs.bundles[0].components.push(name);
-            fs.writeJson(enjinPath, enjinJSON, () => {
+    getStencilConfig((stencilConfig, stencilPath) => {
+        renderComponent(data, stencilConfig, () => {
+            stencilConfig.bundles[0].components.push(name);
+            editStencilConfig(stencilPath, stencilConfig, () => {
                 console.log(`${name} component has been created successfully! ^_^`);
             });
         });
-    } catch(e) {
-        console.log('No enjin.json file found in the current directory, trying stencil.config.js...');
-        var stencilPath = process.cwd() + '/stencil.config.js';
-        fs.exists(stencilPath, function(stencilExists) {
-            if (stencilExists) {
-                var stenciljs = require(stencilPath);
-
-                renderComponent(data, stenciljs.config, () => {
-                    stenciljs.config.bundles[0].components.push(name);
-                    editStencilConfig(stencilPath, stenciljs.config, () => {
-                        console.log(`${name} component has been created successfully! ^_^`);
-                    });
-                });
-            } else {
-                console.log('To create a component stencil.config.js is required!');
-                return false;
-            }
-        });
-    }
+    });
 };
