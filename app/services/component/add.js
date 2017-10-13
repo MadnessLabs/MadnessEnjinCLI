@@ -28,7 +28,8 @@ module.exports = function(name, props) {
     var data = {
         name,
         className: capFirstLetter(camelize(name.replace('-', ' '))),
-        props
+        props,
+        content: `Your new ${name} component`
     };
 
     getStencilConfig((stencilConfig, stencilPath) => {

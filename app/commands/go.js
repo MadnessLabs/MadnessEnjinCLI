@@ -6,10 +6,11 @@ const bs       = require('browser-sync').create();
 const rev  = require('./rev');
 
 module.exports = function(enjinDir) {
-    var envType = process.argv[3] ? process.argv[3] : 'local';
-    var envPath = process.cwd() + '/enjin.' + envType + '.json';
+    var envType = process.argv[3];
+    var envPath = `${process.cwd()}/enjin${envType ? ('.' + envType) : ''}.json`;
     var envJSON = JSON.parse(fs.readFileSync(envPath));
-    envJSON.enjinPath = enjinDir + '/';
+
+    process.env.ENJIN = JSON.stringify(envJSON);
 
     fs.writeFile(envPath, JSON.stringify(envJSON, null, 4), function(err) {
         if(err) {
@@ -27,6 +28,7 @@ module.exports = function(enjinDir) {
         });
 
         buildProcess.on('error', function(data) {
+            console.log(data);
             process.stdout.write(data.toString());
         });
 

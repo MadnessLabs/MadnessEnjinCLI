@@ -12,7 +12,7 @@ export class <%= className %> {
   render() {
     return (
       <div>
-        Your new <%= name %> component
+        <%= content %>
       </div>
     );
   }

@@ -21,9 +21,16 @@ module.exports = function(data, config = {}, callback = false) {
                         data,
                         `${outputDir}/${data.name}.tsx`,
                         (tsxFile) => {
-                            if (callback && typeof callback === 'function') {
-                                callback();
-                            }
+                            renderToFile(
+                                '../templates/component.spec.ts',
+                                data,
+                                `${outputDir}/${data.name}.spec.ts`,
+                                (specFile) => {
+                                    if (callback && typeof callback === 'function') {
+                                        callback();
+                                    }
+                                }
+                            );
                         }
                     );
                 }

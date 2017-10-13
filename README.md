@@ -1,4 +1,4 @@
-## Madness Enjin CLI v1.1.5
+## Madness Enjin CLI v1.1.6
 
 The Enjin is an application development assistant to make cross platform coding simpler and more fun. The enjin is meant to be completely opt-in, not required but will make your life easier.
 
@@ -17,15 +17,16 @@ To install the enjin just run the command below in your terminal.  Once you do, 
 
 - REPO - Link to git repo you are cloning (If using github you can use user/repo format)
 - NAME - The name of the application / folder
-- EDITOR - (Optional) The code editor to open your project in (code = VS Code, code-insiders = VS Code Insiders)
+- --EDITOR / -e - (Optional) The code editor to open your project in (code = VS Code, code-insiders = VS Code Insiders)
+- --REPO / -r - (Optional) The git remote repo you would like to make the origin
 
-This will clone the repo and then run npm install for you. You can use short links for GitHub, like MadnessLabs/Animadness.  You can also pass in credentials for private repos in the short link style using the convention, user:password@MadnessLabs/Animadness. If you pass in the 4th argument it will open the project in your code editor.
+This will clone the repo and then run npm install for you. You can use short links for GitHub, like MadnessLabs/Animadness.  You can also pass in credentials for private repos in the short link style using the convention, user:password@MadnessLabs/Animadness. The optional flags let you open your favorite code editor and hook your project to a git remote like Github with the same short linking.
 
 Example:
 
-```enjin start <REPO> <NAME> [EDITOR]```
+```enjin start <REPO> <NAME> -e [EDITOR] -r [REPO]```
 
-```enjin start ionic-team/stencil-starter MyStencilApp code```
+```enjin start ionic-team/stencil-starter MyStencilApp -e code -r MyGithub/MyNewApp```
 
 ---
 
