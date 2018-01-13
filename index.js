@@ -2,11 +2,10 @@
 
 'use strict';
 
-const slash   = require('slash');
+const slash = require('slash');
 const enjinDir = slash(__dirname);
 const fs = require('fs-extra');
 const packageJSON = JSON.parse(fs.readFileSync(enjinDir + '/package.json'));
-const ansimd = require('ansimd');
 
 
 if (process.argv.length > 2) {
@@ -28,5 +27,5 @@ if (process.argv.length > 2) {
     });
 } else {
     var docs = fs.readFileSync(enjinDir + '/README.md', 'utf8');
-    console.log(ansimd(docs));
+    console.log(docs);
 }
