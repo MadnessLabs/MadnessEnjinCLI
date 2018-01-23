@@ -12,7 +12,7 @@ const updatePackage = require('../services/updatePackage');
 const expandGitLink = require('../services/expandGitLink');
 
 
-module.exports = function(enjinDir) {
+module.exports = function (enjinDir) {
     var stack = process.argv[3];
     var name = process.argv[4];
     var editor = argv.editor ? argv.editor : argv.e;
@@ -32,28 +32,32 @@ module.exports = function(enjinDir) {
 
     var newAppName = cleanString(name);
     var appDir = process.cwd() + '/' + newAppName;
-    
+
     cloneRepo(enjinDir, stack, newAppName, (err) => {
         if (err) {
             console.log(err);
             return false;
         }
 
-        exec(`git remote rm origin`, {cwd: appDir}, function(error, stdout, stderr){
-            if (error) {
-                console.log('Failed to remove .git origin remote!');
-            } else if (repo) {
-                exec(`git remote add origin ${repo}`, {cwd: appDir}, function(error, stdout, stderr){
-                    if (error) {
-                        console.log(`Failed to add ${repo} origin remote!`);
-                    } else {
-                        console.log(`Added ${repo} as origin remote...`);
-                    }
-                });
-            }
+        rimraf(`${appDir}/.git`, function () {
+            if (err) return console.error(err)
+            exec(`git init`, { cwd: appDir }, function (error, stdout, stderr) {
+                if (error) {
+                    console.error('Failed to remove .git origin remote!');
+                } else if (repo) {
+                    exec(`git remote add origin ${repo}`, { cwd: appDir }, function (error, stdout, stderr) {
+                        if (error) {
+                            console.error(`Failed to add ${repo} origin remote!`);
+                        } else {
+                            console.log(`Added ${repo} as origin remote...`);
+                        }
+                    });
+                }
+            });
         });
-        
-        updatePackage({name: newAppName.toLowerCase()}, false, appDir);
+
+
+        updatePackage({ name: newAppName.toLowerCase() }, false, appDir);
 
         appInstall(appDir, (stdout) => {
             console.log(stdout);
