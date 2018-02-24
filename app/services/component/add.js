@@ -1,7 +1,7 @@
 const exec = require('child_process').exec;
 const fs = require('fs-extra');
 const path = require("path");
-const argv    = require('yargs').argv;
+const argv = require('yargs').argv;
 
 const getStencilConfig = require('../getStencilConfig');
 const editStencilConfig = require('../editStencilConfig');
@@ -10,7 +10,7 @@ const capFirstLetter = require('../capFirstLetter');
 const renderComponent = require('./render');
 
 
-module.exports = function(name, props) {
+module.exports = function (name, props) {
     getStencilConfig((stencilConfig, stencilPath) => {
         var namespace = argv.namespace ? argv.namespace : argv.n ? argv.n : stencilConfig.namespace;
 
@@ -22,9 +22,9 @@ module.exports = function(name, props) {
             console.log('Name must contain a "-" to be a valid custom element!');
             return false;
         }
-    
+
         name = name.toLowerCase();
-    
+
         if (props) {
             if (props.indexOf(',') > 0) {
                 props = props.split(',');
@@ -32,7 +32,7 @@ module.exports = function(name, props) {
                 props = [props];
             }
         }
-    
+
         var data = {
             name,
             className: capFirstLetter(camelize(name.replace(new RegExp('-', 'g'), ' '))),
@@ -41,7 +41,9 @@ module.exports = function(name, props) {
         };
 
         renderComponent(data, stencilConfig, () => {
-            stencilConfig.bundles[0].components.push(name);
+            if (stencilConfig.bundles) {
+                stencilConfig.bundles[0].components.push(name);
+            }
             editStencilConfig(stencilPath, stencilConfig, () => {
                 console.log(`${name} component has been created successfully! ^_^`);
             });
