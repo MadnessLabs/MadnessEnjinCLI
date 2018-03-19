@@ -1,4 +1,4 @@
-## Madness Enjin CLI v1.1.11
+## Madness Enjin CLI v1.1.12
 
 The Enjin is an application development assistant to make cross platform coding simpler and more fun. The enjin is meant to be completely opt-in, not required but will make your life easier.
 
