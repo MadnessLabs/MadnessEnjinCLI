@@ -1,4 +1,4 @@
-## Madness Enjin CLI v1.1.7
+## Madness Enjin CLI v1.1.11
 
 The Enjin is an application development assistant to make cross platform coding simpler and more fun. The enjin is meant to be completely opt-in, not required but will make your life easier.
 
@@ -34,15 +34,15 @@ Example:
 ## add component (ac - for shorthand)
 
 - NAME - The name of the component (Must contain a -)
-- PROPS (Optional) - The props you wish to use inside your new component (Comma separated and : to set types)
+- --PROPS / -p (Optional) - The props you wish to use inside your new component (Comma separated and : to set types)
 - --NAMESPACE / -n (Optional) - The namespace you wish to apply to your component. It defaults to the namespace set in your stencil.config.js or enjin.json.  Pass in an empty -n to not use namespace. 
 This will create a new component folder with an SCSS and TSX file with props passed.  It will read end edit your stencil.config.js as well.
 
 Example:
 
-```enjin add component <NAME> [PROPS...] -n [NAMESPACE]```
+```enjin add component <NAME> -p [PROPS...] -n [NAMESPACE]```
 
-```enjin ac your-name first:string,last:string```
+```enjin ac your-name  -p first:string,last:string```
 
 ---
 

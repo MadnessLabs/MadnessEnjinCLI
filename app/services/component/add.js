@@ -10,9 +10,11 @@ const capFirstLetter = require('../capFirstLetter');
 const renderComponent = require('./render');
 
 
-module.exports = function (name, props) {
+module.exports = function (name) {
     getStencilConfig((stencilConfig, stencilPath) => {
         var namespace = argv.namespace ? argv.namespace : argv.n ? argv.n : stencilConfig.namespace;
+        var props = argv.props ? argv.props : argv.p ? argv.p : null;
+
 
         if (namespace && namespace !== true) {
             name = namespace + '-' + name;
