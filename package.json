@@ -1,9 +1,13 @@
 {
   "name": "madnessenjin",
-  "version": "1.1.12",
+  "version": "2.0.0",
   "description": "app development assistant",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "start": "npm run build:watch",
+    "test": "jest --no-cache",
+    "test:watch": "jest --watch --no-cache"
   },
   "repository": {
     "type": "git",
@@ -13,7 +17,7 @@
   "license": "MIT",
   "preferGlobal": true,
   "bin": {
-    "enjin": "index.js"
+    "enjin": "dist/index.js"
   },
   "dependencies": {
     "assert": "^1.4.1",
@@ -30,5 +34,22 @@
     "suppose": "^0.6.1",
     "unirest": "^0.5.1",
     "yargs": "^4.8.1"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^10.3.0"
   }
 }

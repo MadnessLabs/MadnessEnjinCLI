@@ -1,13 +1,10 @@
 #! /usr/bin/env node
-
 'use strict';
-
-const slash = require('slash');
-const enjinDir = slash(__dirname);
-const fs = require('fs-extra');
+Object.defineProperty(exports, "__esModule", { value: true });
+const slash = require("slash");
+const fs = require("fs-extra");
+const enjinDir = slash(process.cwd());
 const packageJSON = JSON.parse(fs.readFileSync(enjinDir + '/package.json'));
-
-
 if (process.argv.length > 2) {
     process.argv.forEach(function (val, index, array) {
         if (index === 2) {
@@ -15,17 +12,20 @@ if (process.argv.length > 2) {
             try {
                 var command = require(enjinDir + '/' + modulePath);
                 command(enjinDir);
-            } catch (e) {
-                console.log(e);
-                if (e instanceof Error && e.code === "MODULE_NOT_FOUND") {
-                    console.log('Sorry ' + val + ' is not an enjin command...yet...?!');
-                } else {
+            }
+            catch (e) {
+                if (typeof e === 'object' && e.message.indexOf('Cannot find module') >= 0) {
+                    console.log('Sorry that command doesn\'t exist yet!');
+                }
+                else {
                     console.log(e);
                 }
             }
         }
     });
-} else {
+}
+else {
     var docs = fs.readFileSync(enjinDir + '/README.md', 'utf8');
     console.log(docs);
 }
+//# sourceMappingURL=index.js.map
