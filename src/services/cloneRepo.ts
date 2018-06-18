@@ -1,13 +1,12 @@
-const exec    = require('child_process').exec;
-const fs      = require('fs');
+import { exec } from 'child_process';
 
 const expandGitLink = require('./expandGitLink');
 
 
-module.exports = function(enjinDir, stack, folderPath, callback) {
-    stack = expandGitLink(stack);
-    folderPath = folderPath ? folderPath : stack.split('/')[stack.split('/').length - 1];
+export default function cloneRepo(enjinDir: string, stack: string, folderPath: string, callback: any) {
+  stack = expandGitLink(stack);
+  folderPath = folderPath ? folderPath : stack.split('/')[stack.split('/').length - 1];
 
-    console.log('Cloning ' + stack + ' into ' + folderPath + ' ...');
-    exec(`git clone ${stack} ${folderPath}`, callback);
+  console.log('Cloning ' + stack + ' into ' + folderPath + ' ...');
+  exec(`git clone ${stack} ${folderPath}`, callback);
 };

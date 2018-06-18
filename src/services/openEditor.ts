@@ -1,11 +1,11 @@
-const exec    = require('child_process').exec;
+import { exec } from 'child_process';
 
 
-module.exports = function(editor, folderPath) {
-    exec(`${editor} .`, {cwd: folderPath}, function(error, stdout, stderr){
-        if (error) {
-            console.log('Failed to open code editor!');
-            return false;
-        }
-    });
+export default function (editor, folderPath) {
+  exec(`${editor} .`, { cwd: folderPath }, (error, stdout, stderr) => {
+    if (error) {
+      console.log('Failed to open code editor!');
+      return false;
+    }
+  });
 };

@@ -1,3 +1,3 @@
-module.exports = function(string) {
-    return string.replace(/[^A-Za-z0-9-_@]/g, '');
+export default function (string) {
+  return string.replace(/[^A-Za-z0-9-_@]/g, '');
 };
