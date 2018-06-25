@@ -1,22 +1,39 @@
-import * as fs from 'fs-extra';
+import * as fs from "fs-extra";
 
-const merge = require('./merge');
+import { merge } from "./merge";
 
+/**
+ * Update the content of a package.json file
+ * @param packageJSON The JSON object to update package.json with
+ * @param callback A function to run when it has finished updating package.json file
+ * @param packageDir The directory where the pacakge.json lives
+ */
+export function updatePackage(
+  packageJSON,
+  callback: any = false,
+  packageDir = process.cwd()
+) {
+  const packagePath = packageDir + "/package.json";
+  fs.readJson(packagePath, (readError, currentPackage) => {
+    if (readError) {
+      throw new Error(readError.message);
+    }
+    fs.outputJson(
+      packagePath,
+      merge(currentPackage, packageJSON),
+      { spaces: 4 },
+      error => {
+        if (error) {
+          console.log("There was an error updating your package.json file!");
+          throw new Error(error.message);
+        }
 
-export default function (packageJSON, callback: any = false, packageDir = process.cwd()) {
-  var packagePath = packageDir + '/package.json';
-  fs.readJson(packagePath, (err, currentPackage) => {
-    fs.outputJson(packagePath, merge(currentPackage, packageJSON), { spaces: 4 }, (err) => {
-      if (err) {
-        console.log('There was an error updating your package.json file!');
-        return false
+        if (callback && typeof callback === "function") {
+          callback();
+        }
+
+        console.log("Package.json upadted!");
       }
-
-      if (callback && typeof callback === 'function') {
-        callback();
-      }
-
-      console.log('Package.json upadted!');
-    });
+    );
   });
-};
+}

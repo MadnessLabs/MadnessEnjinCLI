@@ -7,13 +7,13 @@ function merge(destinationProp, sourceProp) {
         var prop;
         var toTop = false;
         for (prop in source) {
-            if (prop.indexOf('^') > 0) {
+            if (prop.indexOf("^") > 0) {
                 toTop = true;
                 prop = prop.slice(0, -1);
             }
             if (prop in destination && Array.isArray(destination[prop])) {
                 if (toTop) {
-                    destination[prop] = _.union(source[prop + '^'], destination[prop]);
+                    destination[prop] = _.union(source[prop + "^"], destination[prop]);
                     toTop = false;
                 }
                 else {
@@ -30,6 +30,5 @@ function merge(destinationProp, sourceProp) {
     });
     return destination;
 }
-exports.default = merge;
-;
+exports.merge = merge;
 //# sourceMappingURL=merge.js.map

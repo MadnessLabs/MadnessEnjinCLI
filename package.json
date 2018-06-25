@@ -17,23 +17,14 @@
   "license": "MIT",
   "preferGlobal": true,
   "bin": {
-    "enjin": "dist/index.js"
+    "enjin": "dist/index.js",
+    "njn": "dist/index.js"
   },
   "dependencies": {
-    "assert": "^1.4.1",
-    "browser-sync": "^2.18.13",
-    "enjinrev": "^1.0.24",
-    "fs-extra": "^1.0.0",
-    "inquirer": "^0.11.0",
-    "lodash": "^4.16.4",
-    "nconf": "^0.8.4",
-    "path": "^0.12.7",
-    "replace": "^0.3.0",
+    "fs-extra": "^6.0.1",
+    "lodash": "^4.17.10",
     "rimraf": "^2.6.2",
-    "slash": "^1.0.0",
-    "suppose": "^0.6.1",
-    "unirest": "^0.5.1",
-    "yargs": "^4.8.1"
+    "yargs": "^11.0.0"
   },
   "jest": {
     "transform": {
@@ -50,6 +41,12 @@
     ]
   },
   "devDependencies": {
-    "@types/node": "^10.3.0"
+    "@types/jest": "^23.1.1",
+    "@types/node": "^10.3.0",
+    "jest": "^23.1.0",
+    "ts-jest": "^22.4.6",
+    "tslint": "^5.10.0",
+    "tslint-config-prettier": "^1.13.0",
+    "typescript": "^2.9.2"
   }
 }
