@@ -37,13 +37,13 @@ function appStart(stack, name, editor, repo) {
         }
         const newAppName = cleanString_1.cleanString(name);
         const appDir = process.cwd() + "/" + newAppName;
-        cloneRepo_1.cloneRepo(stack, newAppName, err => {
-            if (err) {
-                throw new Error(err);
+        cloneRepo_1.cloneRepo(stack, newAppName, error => {
+            if (error) {
+                throw new Error(error);
             }
-            rimraf(`${appDir}/.git`, () => {
-                if (err) {
-                    throw new Error(err);
+            rimraf(`${appDir}/.git`, delError => {
+                if (delError) {
+                    throw new Error(delError);
                 }
                 child_process_1.exec(`git init`, { cwd: appDir }, initError => {
                     if (initError) {

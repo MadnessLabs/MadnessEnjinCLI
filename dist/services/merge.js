@@ -1,11 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const _ = require("lodash");
+/**
+ * Merges a list of object and returns them all. It is cascading so newest value wins.
+ */
 function merge(destinationProp, sourceProp) {
-    var destination = {}, sources = [].slice.call(arguments, 0);
+    const destination = {}, sources = [].slice.call(arguments, 0);
     sources.forEach(function (source) {
-        var prop;
-        var toTop = false;
+        let prop;
+        let toTop = false;
         for (prop in source) {
             if (prop.indexOf("^") > 0) {
                 toTop = true;

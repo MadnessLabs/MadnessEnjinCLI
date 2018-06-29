@@ -7,9 +7,9 @@ const enjinDir = path.join(__dirname, "..");
 if (process.argv.length > 2) {
     process.argv.forEach(function (val, index, array) {
         if (index === 2) {
-            var modulePath = "app/commands/" + val;
+            const modulePath = "app/commands/" + val;
             try {
-                var command = require(enjinDir + "/" + modulePath);
+                const command = require(enjinDir + "/" + modulePath);
                 command(enjinDir);
             }
             catch (e) {
@@ -25,7 +25,7 @@ if (process.argv.length > 2) {
     });
 }
 else {
-    var docs = fs.readFileSync(enjinDir + "/README.md", "utf8");
+    const docs = fs.readFileSync(enjinDir + "/README.md", "utf8");
     console.log(docs);
 }
 //# sourceMappingURL=index.js.map
