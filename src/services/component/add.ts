@@ -1,25 +1,27 @@
-const exec = require('child_process').exec;
-const fs = require('fs-extra');
-const path = require('path');
-const argv = require('yargs').argv;
+import { argv } from 'yargs';
 
-const getStencilConfig = require('../getStencilConfig');
-const editStencilConfig = require('../editStencilConfig');
-const camelize = require('../camelize');
-const capFirstLetter = require('../capFirstLetter');
-const renderComponent = require('./render');
+import { getStencilConfig } from '../getStencilConfig';
+import { editStencilConfig } from '../editStencilConfig';
+import { camelize } from '../camelize';
+import { capFirstLetter } from '../capFirstLetter';
+import { renderComponent } from './render';
 
-module.exports = function(name) {
+/**
+ * Adds a new component to the current project
+ * @param name The name of the new component
+ */
+export async function addComponent(name: string) {
   getStencilConfig((stencilConfig, stencilPath) => {
-    var namespace = argv.namespace
+    const namespace = argv.namespace
       ? argv.namespace
       : argv.n
         ? argv.n
         : stencilConfig.namespace;
-    var props = argv.props ? argv.props : argv.p ? argv.p : null;
+    let props = argv.props ? argv.props : argv.p ? argv.p : null;
+    let componentName: string;
 
     if (namespace && namespace !== true) {
-      name = namespace + '-' + name;
+      componentName = namespace + '-' + name;
     }
 
     if (name.indexOf('-') <= 0) {
@@ -27,7 +29,7 @@ module.exports = function(name) {
       return false;
     }
 
-    name = name.toLowerCase();
+    componentName = name.toLowerCase();
 
     if (props) {
       if (props.indexOf(',') > 0) {
@@ -37,7 +39,7 @@ module.exports = function(name) {
       }
     }
 
-    var data = {
+    const data = {
       name,
       className: capFirstLetter(
         camelize(name.replace(new RegExp('-', 'g'), ' '))
@@ -54,5 +56,7 @@ module.exports = function(name) {
         console.log(`${name} component has been created successfully! ^_^`);
       });
     });
+
+    return true;
   });
-};
+}
