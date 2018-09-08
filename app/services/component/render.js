@@ -4,8 +4,8 @@ const path = require("path");
 const renderToFile = require('../renderToFile');
 
 
-module.exports = function(data, config = {}, callback = false) {
-    var outputDir = `${config && config.srcDir ? config.srcDir : 'src'}/components/${data.name}`;
+module.exports = function(data, callback = false) {
+    var outputDir = `src/components/${data.name}`;
     fs.exists(path.resolve(process.cwd(), outputDir), (exists) => {
         if (exists) {
             console.log(`${data.name} component already exists!`);

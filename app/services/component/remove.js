@@ -1,7 +1,4 @@
 const fs = require('fs-extra');
-
-const getStencilConfig = require('../getStencilConfig');
-const editStencilConfig = require('../editStencilConfig');
 const deleteComponent = require('./delete');
 
 
@@ -13,11 +10,7 @@ module.exports = function(name) {
 
     name = name.toLowerCase();
 
-    getStencilConfig((stencilConfig, stencilPath) => {
-        deleteComponent(name, stencilConfig, (newConfig) => {
-            editStencilConfig(stencilPath, newConfig, () => {
-                console.log(`${name} component has been deleted! ^_^`); 
-            });
-        });
+    deleteComponent(name, (newConfig) => {
+        console.log(`${name} component has been deleted! ^_^`); 
     });
 };
