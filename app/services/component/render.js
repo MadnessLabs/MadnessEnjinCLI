@@ -12,9 +12,9 @@ module.exports = function(data, callback = false) {
             return false;
         } else {
             renderToFile(
-                '../templates/component.scss',
+                '../templates/component.css',
                 data,
-                `${outputDir}/${data.name}.scss`,
+                `${outputDir}/${data.name}.css`,
                 (scssFile) => {
                     renderToFile(
                         '../templates/component.tsx',
