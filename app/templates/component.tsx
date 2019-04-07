@@ -3,7 +3,7 @@ import { Component<% if (props && props.length) { %>, Prop<% } %> } from '@stenc
 
 @Component({
   tag: '<%= name %>',
-  styleUrl: '<%= name %>.scss'
+  styleUrl: '<%= name %>.css'
 })
 export class <%= className %> {
   <% _.each(props, function(prop) { %>
