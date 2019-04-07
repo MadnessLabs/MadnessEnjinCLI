@@ -26,9 +26,16 @@ module.exports = function(data, callback = false) {
                                 data,
                                 `${outputDir}/${data.name}.spec.ts`,
                                 (specFile) => {
-                                    if (callback && typeof callback === 'function') {
-                                        callback();
-                                    }
+                                    renderToFile(
+                                        '../templates/component.e2e.ts',
+                                        data,
+                                        `${outputDir}/${data.name}.e2e.ts`,
+                                        (e2eFile) => {
+                                            if (callback && typeof callback === 'function') {
+                                                callback();
+                                            }
+                                        }
+                                    );
                                 }
                             );
                         }
