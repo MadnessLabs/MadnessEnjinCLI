@@ -7,7 +7,7 @@ module.exports = function(repo) {
     var hostRepo = '';
 
     // Add Protocol
-    if (repo.indexOf('://') === -1) {
+    if (repo.indexOf('://') === -1 && repo.indexOf('git@github.com') === -1) {
         repoLink += 'https://';
     }
 

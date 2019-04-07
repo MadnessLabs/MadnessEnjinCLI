@@ -30,6 +30,8 @@ module.exports = function (enjinDir) {
         repo = expandGitLink(repo);
     }
 
+    console.log(repo);
+
     var newAppName = cleanString(name);
     var appDir = process.cwd() + '/' + newAppName;
 
