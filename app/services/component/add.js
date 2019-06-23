@@ -14,7 +14,7 @@ const renderComponent = require('./render');
 module.exports = function (name) {
     var namespace = argv.namespace ? argv.namespace : argv.n ? argv.n : true;
     var props = argv.props ? argv.props : argv.p ? argv.p : null;
-
+    let titleName = name;
 
     if (namespace && namespace !== true) {
         name = namespace + '-' + name;
@@ -35,12 +35,10 @@ module.exports = function (name) {
         }
     }
 
-    const nameWithSpaces = name.replace(new RegExp('-', 'g'), ' ');
-
     var data = {
         name,
-        title: titleCase(nameWithSpaces),
-        className: capFirstLetter(camelize(nameWithSpaces)),
+        title: titleCase(titleName.replace(new RegExp('-', 'g'), ' ')),
+        className: capFirstLetter(camelize(name.replace(new RegExp('-', 'g'), ' '))),
         props,
         content: `Your new ${name} component`
     };
