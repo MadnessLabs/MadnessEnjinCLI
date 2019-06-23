@@ -31,27 +31,22 @@ module.exports = function(data, callback = false) {
                                         data,
                                         `${outputDir}/${data.name}.e2e.ts`,
                                         (e2eFile) => {
-                                            fs.readJson(path.resolve(process.cwd(), 'package.json'), (err, packageObj) => {
-                                                if (err) console.error(err)
-
-                                                if (Object.keys(packageObj.devDependencies).filter(dependency => dependency.indexOf('@storybook') >= 0).length > 0) {
-                                                    renderToFile(
-                                                        '../templates/component.stories.js',
-                                                        data,
-                                                        `${outputDir}/${data.name}.stories.js`,
-                                                        (storiesFile) => {
-                                                            if (callback && typeof callback === 'function') {
-                                                                callback();
-                                                            }
+                                            if (data.stories) {
+                                                renderToFile(
+                                                    '../templates/component.stories.js',
+                                                    data,
+                                                    `${outputDir}/${data.name}.stories.js`,
+                                                    (storiesFile) => {
+                                                        if (callback && typeof callback === 'function') {
+                                                            callback();
                                                         }
-                                                    )
-                                                } else {
-                                                    if (callback && typeof callback === 'function') {
-                                                        callback();
                                                     }
+                                                )
+                                            } else {
+                                                if (callback && typeof callback === 'function') {
+                                                    callback();
                                                 }
-                                              })
-                                            
+                                            }                                            
                                         }
                                     );
                                 }

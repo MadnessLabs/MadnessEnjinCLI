@@ -14,6 +14,7 @@ const renderComponent = require('./render');
 module.exports = function (name) {
     var namespace = argv.namespace ? argv.namespace : argv.n ? argv.n : true;
     var props = argv.props ? argv.props : argv.p ? argv.p : null;
+    var stories = argv.stories ? argv.stories : argv.s ? argv.s : null;
     let titleName = name;
 
     if (namespace && namespace !== true) {
@@ -40,7 +41,8 @@ module.exports = function (name) {
         title: titleCase(titleName.replace(new RegExp('-', 'g'), ' ')),
         className: capFirstLetter(camelize(name.replace(new RegExp('-', 'g'), ' '))),
         props,
-        content: `Your new ${name} component`
+        content: `Your new ${name} component`,
+        stories
     };
 
     renderComponent(data, () => {
