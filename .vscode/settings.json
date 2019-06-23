@@ -1,5 +1,10 @@
 {
     "typescript.check.workspaceVersion": false,
     "workbench.colorTheme": "Sublime Material Theme - Dark",
-    "files.eol": "\n"
+    "files.eol": "\n",
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#0E1D6B",
+        "titleBar.activeBackground": "#142996",
+        "titleBar.activeForeground": "#FCFDFF"
+    }
 }

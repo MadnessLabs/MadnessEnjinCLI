@@ -1,4 +1,4 @@
-import { Component<% if (props && props.length) { %>, Prop<% } %> } from '@stencil/core';
+import { Component<% if (props && props.length) { %>, Prop<% } %>, h } from '@stencil/core';
 
 
 @Component({

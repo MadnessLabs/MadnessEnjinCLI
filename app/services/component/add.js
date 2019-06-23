@@ -6,6 +6,7 @@ const argv = require('yargs').argv;
 const getStencilConfig = require('../getStencilConfig');
 const editStencilConfig = require('../editStencilConfig');
 const camelize = require('../camelize');
+const titleCase = require('../titleCase');
 const capFirstLetter = require('../capFirstLetter');
 const renderComponent = require('./render');
 
@@ -34,9 +35,12 @@ module.exports = function (name) {
         }
     }
 
+    const nameWithSpaces = name.replace(new RegExp('-', 'g'), ' ');
+
     var data = {
         name,
-        className: capFirstLetter(camelize(name.replace(new RegExp('-', 'g'), ' '))),
+        title: titleCase(nameWithSpaces),
+        className: capFirstLetter(camelize(nameWithSpaces)),
         props,
         content: `Your new ${name} component`
     };
