@@ -1,3 +1,8 @@
+# ⚠️DEPRECATED⚠️
+Please use @fireenjin/cli to accomplish these tasks in today's development landscape. Much has changed in 5 years, join us on the other side.
+
+https://github.com/fireenjin/cli
+
 ## Madness Enjin CLI v1.1.13
 
 The Enjin is an application development assistant to make cross platform coding simpler and more fun. The enjin is meant to be completely opt-in, not required but will make your life easier.
